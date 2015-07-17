@@ -1,0 +1,23 @@
+{
+  "name": "gallery",
+  "version": "0.0.0",
+  "authors": [
+    "Franku <sz.frankyy@gmail.com>"
+  ],
+  "main": "index.html",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "GPL-3.0+",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.18"
+  }
+}
