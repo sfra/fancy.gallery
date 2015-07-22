@@ -6,6 +6,7 @@
 
     $config_string = json_decode(file_get_contents("config.json"));
     $numberOfImgs = $config_string->numberOfImgs;
+
 ?>
 
 
@@ -23,9 +24,12 @@
         
     <div id="gal-wrapper">    
   <?php
-        echo getImgWrapper($xdim,$ydim,'image-wrapper0','images/img0.jpg');
-        echo getImgWrapper($xdim,$ydim,'image-wrapper1','images/img1.jpg');
-        echo getImgWrapper($xdim,$ydim,'image-wrapper2','images/img2.jpg');
+        
+        for($i=0; $i<$numberOfImgs; $i++){
+            echo getImgWrapper($xdim,$ydim,'image-wrapper'.$i,'images/img'.$i.'.jpg');
+        };
+    
+
         
     ?>
         

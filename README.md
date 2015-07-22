@@ -8,6 +8,10 @@ If you want to install [require.js](http://requirejs.org/) dependency locally ju
 bower install
 ```
 
-By the way, you need [bower](http://bower.io/)
+By the way, you need [bower](http://bower.io/).
+
+Files img0.jpg, img1.jpg ... are contained in images folder. If you want to change the number of displayed images
+change the number in the file config.json and the value of variable numberOfImgs in run.js. In the case of
+js file the value can be set by the usage of ajax, but it would increase the number of requests.  
 
 

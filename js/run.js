@@ -1,9 +1,12 @@
 define(['stateSingleton','ImagesSet','libs/__ajax','libs/Promise'],function(stateSingleton,ImagesSet,__ajax, Prom){
-
+    var numberOfImgs = 4;
+    var elementsX;
+    var imgSArr=[];
 
     //var __aj = Object(__ajax('config.json',{method: 'GET'}));
     //    __aj.get().then(function(data){
-    //        console.log(data);
+    //        var numberOfImgs = JSON.parse(data).numberOfImgs;                
+    //        console.log(numberOfImgs);
     //    },
     //    function(err){
     //    console.log(err);
@@ -18,12 +21,21 @@ define(['stateSingleton','ImagesSet','libs/__ajax','libs/Promise'],function(stat
 
     var elementsX=[];
     
-    var imgSArr=[new ImagesSet.ImagesSet(false,'image-wrapper0'),
-                 new ImagesSet.ImagesSet(false,'image-wrapper1'),
-                 new ImagesSet.ImagesSet(false,'image-wrapper2')
-                 /*,
-                 new ImagesSet.ImagesSet(false,'image-wrapper3')*/
-                 ];
+
+    for(var i=0;i<numberOfImgs;i++){
+        imgSArr.push(new ImagesSet.ImagesSet(false,'image-wrapper'+i));
+    };
+
+
+
+
+    //var imgSArr=[new ImagesSet.ImagesSet(false,'image-wrapper0'),
+    //             new ImagesSet.ImagesSet(false,'image-wrapper1'),
+    //             new ImagesSet.ImagesSet(false,'image-wrapper2'),
+    //             new ImagesSet.ImagesSet(false,'image-wrapper3')
+    //             /*,
+    //             new ImagesSet.ImagesSet(false,'image-wrapper3')*/
+    //             ];
    
     imgSArr[0].setElements();
     console.log(imgSArr[0].getElements());

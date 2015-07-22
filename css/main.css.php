@@ -1,4 +1,7 @@
 <?php
+$config_string = json_decode(file_get_contents("../config.json"));
+$numberOfImgs = $config_string->numberOfImgs;
+
 header("Content-type: text/css", true);
 
 /*$configFile = fopen("config.json", "r") or die("Unable to open file!");
@@ -6,7 +9,7 @@ $config= json_decode(fread($configFile,filesize("config.json")));
 print_r($config);
 fclose($configFile);*/
 
-$imgs=3;
+/*$imgs=3;*/
 
 ?>
 
@@ -93,7 +96,7 @@ $imgs=3;
 <?php
 $current_top = null;
 $current_zIndex = null;
-for($i=1;$i<$imgs; $i++){
+for($i=1;$i<$numberOfImgs; $i++){
 $current_top = $i*200;
 $current_zIndex = $i*10;
 echo <<<EOT
@@ -110,8 +113,8 @@ EOT;
 ?>
 
 #cyc {
-    position: relative;
-    /*top:400px;*/
+    position: absolute;
+    top:600px;
     
 }
 
