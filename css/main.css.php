@@ -50,6 +50,13 @@ fclose($configFile);*/
 }
 
 
+.image-wrapper.hide2 > div > div {
+    transition: all 1s linear;
+    transform: rotateX(90deg);
+    
+}
+
+
 
 .image-wrapper.hidden > div > div {
      transform: rotateY(90deg);
@@ -60,6 +67,12 @@ fclose($configFile);*/
 .img-wrapper.hide > div  {
     transition: all 1s linear;
     transform: rotateX(45deg);
+     
+}
+
+.img-wrapper.hide2 > div  {
+    transition: all 1s linear;
+    transform: rotateY(45deg);
      
 }
 
@@ -74,6 +87,18 @@ fclose($configFile);*/
     
     transition: all 1s linear;
     transform: rotateX(90deg);
+    /*transform: skewX(90deg) skewY(70deg);*/
+    /*height: 0%;*/
+    opacity: 0;
+    
+}
+
+
+
+.img-wrapper > div > div.hide2 {
+    
+    transition: all 1s linear;
+    transform: rotateY(90deg);
     /*transform: skewX(90deg) skewY(70deg);*/
     /*height: 0%;*/
     opacity: 0;
@@ -114,7 +139,9 @@ EOT;
 
 #cyc {
     position: absolute;
-    top:600px;
+    top:300px;
+    left: 10px;
+    float: left;
     
 }
 

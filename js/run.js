@@ -2,7 +2,7 @@ define(['stateSingleton','ImagesSet','libs/__ajax','libs/Promise'],function(stat
     var numberOfImgs = 4;
     var elementsX;
     var imgSArr=[];
-
+    var effect='hide2';
     //var __aj = Object(__ajax('config.json',{method: 'GET'}));
     //    __aj.get().then(function(data){
     //        var numberOfImgs = JSON.parse(data).numberOfImgs;                
@@ -44,6 +44,7 @@ define(['stateSingleton','ImagesSet','libs/__ajax','libs/Promise'],function(stat
 
     for (var i=0, max=imgSArr.length;i<max;i++) {
         imgSArr[i].setElementsX();
+        imgSArr[i].setEffect(effect);
     }
 
     
@@ -82,22 +83,24 @@ define(['stateSingleton','ImagesSet','libs/__ajax','libs/Promise'],function(stat
         
         
         current.toggleHideShowRandom(
-                                     function(){
-            var that = this;
-            setTimeout(function(){
+                function(){
+                var that = this;
+                setTimeout(function(){
 
                 for(var i=0, max = imgSArr.length; i< max; i++){
                     imgSArr[i].getDomElement().style.zIndex=-i*10;
                     imgSArr[i].setHidden(false);
                 };
 
-                for(var i=0, max=that.getDomElement().children.length; i<max;i++){
-                    for(var j=0, max=that.getDomElement().children[i].children.length;j<max;j++){
-                        that.getDomElement().children[i].children[j].classList.remove('hide');  
-                    };
-                    
-
-                };
+                //for(var i=0, max=that.getDomElement().children.length; i<max;i++){
+                //    for(var j=0, max=that.getDomElement().children[i].children.length;j<max;j++){
+                //        that.getDomElement().children[i].children[j].classList.remove('hide');  
+                //    };
+                //    
+                //
+                //};
+            
+                that.removeClass(effect);
                 
                 stateSingleton.animation.isLasting = false;
                 

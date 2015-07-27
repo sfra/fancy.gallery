@@ -9,6 +9,7 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     var elementsRandom = [];
     var id;   
     var hidden = false;
+    var effect = 'hide';
    
    if ((typeof _elementsX)!=='undefined') {
         for(var i=0, max=_elementsX.length;i<max;i++ ){
@@ -88,11 +89,11 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
                 
                     setTimeout(function(){
                         if(hidden){
-                        elementsX[k].classList.remove('hide');
+                        elementsX[k].classList.remove(effect);
 
                         } else {
-                            elementsX[k].classList.add('hide');
-                            console.log('hide');
+                            elementsX[k].classList.add(effect);
+                            console.log(effect);
                         }
                         
                         if (j===max-1) {
@@ -123,9 +124,9 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
                         var currentIndex = parseInt(Math.random()*elementsRandom.length);
 
                         if(hidden){
-                            ((elementsRandom.splice(currentIndex,1))[0]).classList.remove('hide');
+                            ((elementsRandom.splice(currentIndex,1))[0]).classList.remove(effect);
                         } else {
-                            ((elementsRandom.splice(currentIndex,1))[0]).classList.add('hide');
+                            ((elementsRandom.splice(currentIndex,1))[0]).classList.add(effect);
                         }
                         
                         if (j===max-1) {
@@ -154,7 +155,32 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     };
 
 
+     this.setEffect = function(_effect){
+          effect = _effect;
+     };
+
+
+     this.removeClass = function(_class){
+          var $imageWrapper = document.getElementById(id);
+          var maxY = $imageWrapper.children.length;
+          var maxX= $imageWrapper.children[0].children.length;
+          
+          for(var i=0,maxY; i<maxY;i++){
+               for(var j=0; j<maxX;j++){
+                    $imageWrapper.children[i].children[j].classList.remove(_class);               
+               };          
+          };
+     
+     }
+
+
+
+     
+
+
 };
+
+
 
     return {ImagesSet:ImagesSet};
 });
