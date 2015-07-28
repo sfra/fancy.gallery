@@ -2,7 +2,7 @@ define(['stateSingleton','ImagesSet','libs/__ajax','libs/Promise'],function(stat
     var numberOfImgs = 4;
     var elementsX;
     var imgSArr=[];
-    var effect='hide2';
+    var effect='scale';
     //var __aj = Object(__ajax('config.json',{method: 'GET'}));
     //    __aj.get().then(function(data){
     //        var numberOfImgs = JSON.parse(data).numberOfImgs;                
@@ -26,16 +26,6 @@ define(['stateSingleton','ImagesSet','libs/__ajax','libs/Promise'],function(stat
         imgSArr.push(new ImagesSet.ImagesSet(false,'image-wrapper'+i));
     };
 
-
-
-
-    //var imgSArr=[new ImagesSet.ImagesSet(false,'image-wrapper0'),
-    //             new ImagesSet.ImagesSet(false,'image-wrapper1'),
-    //             new ImagesSet.ImagesSet(false,'image-wrapper2'),
-    //             new ImagesSet.ImagesSet(false,'image-wrapper3')
-    //             /*,
-    //             new ImagesSet.ImagesSet(false,'image-wrapper3')*/
-    //             ];
    
     imgSArr[0].setElements();
     console.log(imgSArr[0].getElements());

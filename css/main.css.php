@@ -25,7 +25,7 @@ fclose($configFile);*/
 }
 
 .img-wrapper > div {
-
+    overflow: hidden;
     width: 400px;
     height: 20px;
     
@@ -43,7 +43,7 @@ fclose($configFile);*/
 
 }
 
-.image-wrapper.hide > div > div {
+/*.image-wrapper.hide > div > div {
     transition: all 1s linear;
     transform: rotateY(90deg);
     
@@ -54,7 +54,8 @@ fclose($configFile);*/
     transition: all 1s linear;
     transform: rotateX(90deg);
     
-}
+}*/
+
 
 
 
@@ -104,6 +105,57 @@ fclose($configFile);*/
     opacity: 0;
     
 }
+
+
+
+.img-wrapper > div > div.hide3 {
+    
+    transition: all 1s linear;
+    transform: translateX(30px);
+/*//    width: 100px;*/
+    /*transform: skewX(90deg) skewY(70deg);*/
+    /*height: 0%;*/
+    opacity: 0;
+    
+}
+
+
+.img-wrapper > div > div.opacity {
+    
+    transition: all 1s linear;
+    /*transform: rotateY(90deg);*/
+    /*transform: skewX(90deg) skewY(70deg);*/
+    /*height: 0%;*/
+    opacity: 0;
+    
+}
+
+
+.img-wrapper > div > div.skew {
+    
+    transition: all 1s linear;
+    /*transform: rotateY(90deg);*/
+    transform: skewX(90deg);
+    /*//skewY(70deg);*/
+    /*height: 0%;*/
+    opacity: 0;
+    
+}
+
+
+
+
+.img-wrapper > div > div.scale {
+    
+    transition: all .4s cubic-bezier(0.42, 0, 0.58, 1);
+    /*transform: rotateY(90deg);*/
+    transform: scale(0);
+    /*//skewY(70deg);*/
+    /*height: 0%;*/
+    /*opacity: 0;*/
+    
+}
+
 
 
 /*.img-wrapper > div > div.hidden {
