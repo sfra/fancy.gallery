@@ -1,5 +1,27 @@
 define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'libs/Promise'], function (stateSingleton, ImagesSet, __ajax, Prom) {
-    var numberOfImgs = 4;
+    
+   var mainPromise = new Promise(function(res,rej){
+        var __aj = Object(__ajax('config.json',{method: 'GET'}));
+        __aj.get().then(function(data){
+             res(JSON.parse(data));
+        },
+        function(err){
+        console.log(err);
+    
+        });
+
+    });
+ 
+ 
+    mainPromise.then(mainResolve);
+
+    
+    function mainResolve(data) {
+
+
+    
+    var numberOfImgs = data.numberOfImgs;
+    console.log(data.effect);
     var elementsX;
     var imgSArr = [];
     var effect = 'scale';
@@ -91,7 +113,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'libs/Promise'], function 
 
     });
 
-
+    };
     return {};
 });
 
