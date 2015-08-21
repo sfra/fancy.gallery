@@ -17,53 +17,34 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'libs/Promise'], function 
 
     
     function mainResolve(data) {
-
-
     
-    var numberOfImgs = data.numberOfImgs;
-    console.log(data.effect);
-    var elementsX;
-    var imgSArr = [];
-    var effect = 'scale';
-    //var __aj = Object(__ajax('config.json',{method: 'GET'}));
-    //    __aj.get().then(function(data){
-    //        var numberOfImgs = JSON.parse(data).numberOfImgs;                
-    //        console.log(numberOfImgs);
-    //    },
-    //    function(err){
-    //    console.log(err);
-    //
-    //});
+        var numberOfImgs = data.numberOfImgs;
+        var effect = data.effect;
+        var elementsX;
+        var imgSArr = [];
+        var elementsX = [];
 
 
+        for (var i = 0; i < numberOfImgs; i++) {
+            imgSArr.push(new ImagesSet.ImagesSet(false, 'image-wrapper' + i));
+        };
 
 
+        imgSArr[0].setElements();
+  
 
+        var $imagesWrapper = imgSArr[0].getDomElement().parentNode;
 
-
-    var elementsX = [];
-
-
-    for (var i = 0; i < numberOfImgs; i++) {
-        imgSArr.push(new ImagesSet.ImagesSet(false, 'image-wrapper' + i));
-    };
-
-
-    imgSArr[0].setElements();
-    console.log(imgSArr[0].getElements());
-
-    var $imagesWrapper = imgSArr[0].getDomElement().parentNode;
-
-    for (var i = 0, max = imgSArr.length; i < max; i++) {
-        imgSArr[i].setElementsX();
-        imgSArr[i].setEffect(effect);
-    }
-
-
-    document.getElementById('cyc').addEventListener('click', function (e) {
-        if (stateSingleton.animation.isLasting) {
-            return;
+        for (var i = 0, max = imgSArr.length; i < max; i++) {
+            imgSArr[i].setElementsX();
+            imgSArr[i].setEffect(effect);
         }
+
+
+        document.getElementById('cyc').addEventListener('click', function (e) {
+            if (stateSingleton.animation.isLasting) {
+                return;
+            }
 
         stateSingleton.animation.isLasting = true;
         var current = imgSArr.shift();
