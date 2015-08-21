@@ -4,9 +4,9 @@ requirejs.config({
         ImagesSet: ['classes/ImagesSet'],
         Iteraror: ['classes/Iterator'],
 
-        }
-    
-    });
+    }
+
+});
 
 
 requirejs.onError = function (err) {
@@ -17,7 +17,7 @@ requirejs.onError = function (err) {
 };
 
 /* it does not work in firefox without loading ImageSet at this stage */
-require(['run','ImagesSet'],function(run){
-   
-   
+require(['run', 'ImagesSet'], function (run) {
+
+
 });

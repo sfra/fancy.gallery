@@ -11,16 +11,16 @@ bower install
 In your index.php file (or the file in which you want to put gallery), add to head section
 
 ```html
-			<link rel="stylesheet" href="css/main.css.php" />
-			<script data-main="js/main" src="js/libs/requirejs/require.js"></script> 
+<link rel="stylesheet" href="css/main.css.php" />
+<script data-main="js/main" src="js/libs/requirejs/require.js"></script> 
 ```
 
 and in the place where the gallery has to be rendered
 
 ```php
-   <?php
-        include "gallery.plugin.php";
-    ?>
+<?php
+	include "gallery.plugin.php";
+?>
 ```
 By the way, you need [bower](http://bower.io/).
 

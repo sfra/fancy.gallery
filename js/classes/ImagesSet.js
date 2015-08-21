@@ -79,8 +79,14 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     }
    var that=this;
    
-   
-    this.toggleHideShow = function(callback){
+
+
+     /**
+     * animates tiles in the order of occurung and then runs the callback 
+     * @method toggleHideShow 
+     * @param {function} callback the function which runs after last animation
+     */
+     this.toggleHideShow = function(callback){
     
              for(var i=0,max= elementsX.length;i<max;i++){
 
@@ -110,10 +116,14 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     
     
     
-    
+     /**
+     * animates tiles in the random order and then runs the callback 
+     * @method toggleHideShowRandom 
+     * @param {function} callback the function which runs after last animation
+     */  
     this.toggleHideShowRandom= function(callback){
         this.copyElements();
-    //    var times 
+
              
         for(var i=0,max= elementsX.length;i<max;i++){
 
