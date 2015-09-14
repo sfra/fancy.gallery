@@ -1,15 +1,9 @@
 <?php
 $config_string = json_decode(file_get_contents("../config.json"));
 $numberOfImgs = $config_string->numberOfImgs;
-
+$plugin = $config_string->plugin;
+require_once("plugins/".$plugin.".php");
 header("Content-type: text/css", true);
-
-/*$configFile = fopen("config.json", "r") or die("Unable to open file!");
-$config= json_decode(fread($configFile,filesize("config.json")));
-print_r($config);
-fclose($configFile);*/
-
-/*$imgs=3;*/
 
 ?>
 
@@ -43,104 +37,35 @@ fclose($configFile);*/
 
 }
 
-/*.image-wrapper.hide > div > div {
-    transition: all 1s linear;
-    transform: rotateY(90deg);
-    
-}
-
-
-.image-wrapper.hide2 > div > div {
-    transition: all 1s linear;
-    transform: rotateX(90deg);
-    
-}*/
 
 
 
-
-.image-wrapper.hidden > div > div {
+/*.image-wrapper.hidden > div > div {
      transform: rotateY(90deg);
 }
 
 
-
-.img-wrapper.hide > div  {
-    transition: all 1s linear;
-    transform: rotateX(45deg);
-     
-}
-
-.img-wrapper.hide2 > div  {
-    transition: all 1s linear;
-    transform: rotateY(45deg);
-     
-}
 
 .img-wrapper.hidden > div  {
      transform: rotateX(45deg);
      
 }
 
+*/
+
+
+
+
+
+
 
 
 .img-wrapper > div > div.hide {
-    
-    transition: all 1s linear;
-    transform: rotateX(90deg);
-    /*transform: skewX(90deg) skewY(70deg);*/
-    /*height: 0%;*/
-    opacity: 0;
+    <?= $hideEffect ?>;
     
 }
 
 
-
-.img-wrapper > div > div.hide2 {
-    
-    transition: all 1s linear;
-    transform: rotateY(90deg);
-    /*transform: skewX(90deg) skewY(70deg);*/
-    /*height: 0%;*/
-    opacity: 0;
-    
-}
-
-
-
-.img-wrapper > div > div.hide3 {
-    
-    transition: all 1s linear;
-    transform: translateX(30px);
-/*//    width: 100px;*/
-    /*transform: skewX(90deg) skewY(70deg);*/
-    /*height: 0%;*/
-    opacity: 0;
-    
-}
-
-
-.img-wrapper > div > div.opacity {
-    
-    transition: all 1s linear;
-    /*transform: rotateY(90deg);*/
-    /*transform: skewX(90deg) skewY(70deg);*/
-    /*height: 0%;*/
-    opacity: 0;
-    
-}
-
-
-.img-wrapper > div > div.skew {
-    
-    transition: all 1s linear;
-    /*transform: rotateY(90deg);*/
-    transform: skewX(90deg);
-    /*//skewY(70deg);*/
-    /*height: 0%;*/
-    opacity: 0;
-    
-}
 
 
 
@@ -148,24 +73,14 @@ fclose($configFile);*/
 .img-wrapper > div > div.scale {
     
     transition: all .4s cubic-bezier(0.42, 0, 0.58, 1);
-    /*transform: rotateY(90deg);*/
+
     transform: scale(0);
-    /*//skewY(70deg);*/
-    /*height: 0%;*/
-    /*opacity: 0;*/
+ 
     
 }
 
 
 
-/*.img-wrapper > div > div.hidden {
-    
-
-    transform: skewX(90deg) skewY(70deg);
-    width: 0%;
-    opacity: 0;
-    
-}*/
 
 
 

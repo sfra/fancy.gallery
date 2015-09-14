@@ -1,4 +1,5 @@
 {
     "numberOfImgs": "4",
-    "effect" : "hide3"
+    "effect" : "hide",
+    "plugin" : "fancy3"
 }
