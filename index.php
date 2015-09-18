@@ -4,6 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="css/main.css.php" />
+        <script type="text/javascript" src="js/libs/promise-polyfill/Promise.js"></script>
         <script data-main="js/main" src="js/libs/requirejs/require.js"></script> 
     
     </head>

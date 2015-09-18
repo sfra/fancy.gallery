@@ -1,4 +1,4 @@
-define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'libs/Promise'], function (stateSingleton, ImagesSet, __ajax, Prom) {
+define(['stateSingleton', 'ImagesSet', 'libs/__ajax'], function (stateSingleton, ImagesSet, __ajax) {
     
    var mainPromise = new Promise(function(res,rej){
         var __aj = Object(__ajax('config.json',{method: 'GET'}));

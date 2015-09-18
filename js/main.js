@@ -2,7 +2,8 @@ requirejs.config({
     baseUrl: 'js',
     paths: {
         ImagesSet: ['classes/ImagesSet'],
-        Iteraror: ['classes/Iterator'],
+        Iteraror: ['classes/Iterator']/*,
+       __Promise: ['libs/requirejs-promise/requirejs-promise']*/
 
     }
 
