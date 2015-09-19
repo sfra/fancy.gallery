@@ -4,7 +4,7 @@
 $hideEffect= <<<EOD
     /*opacity: 0;    */
     /*transition: all 1s linear;*/
-    animation: anim 1s normal forwards; 
+    animation: anim 2s normal forwards; 
     animation-iteration-count: 1;
     /*transform: scale(0,0);*/
 
@@ -13,25 +13,29 @@ EOD;
 $animationDef=<<<EOD
 @keyframes anim {
   0% {
-        transform: scale(1,1);
+            -webkit-filter: grayscale(0%);
   }
   
-  50%{
-        border-radius: 50px;
-        
+  20%{
+    /*-webkit-filter: grayscale(100%);*/
+    transform: scale(10,1) translateX(20px);
+  
   }
+  
+    40%{
+    /*-webkit-filter: grayscale(100%);*/
+    transform: scale(1,1) translateX(-60px);
+  
+  }
+  
   80% {
-    
-    
-  }
-
-    90% {
-    
+    /*opacity: 1;*/
   }
   
   
   100% {
-    /*transform: scale(.2,0);*/
+     /*-webkit-filter: grayscale(100%);*/
+    transform: translateX(-20px);
     opacity: 0;
   }
 }
