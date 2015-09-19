@@ -1,7 +1,7 @@
 {
     "numberOfImgs": "4",
     "effect" : "hide",
-    "plugin" : "anim",
+    "plugin" : "anim3",
     "tile" :{
         "xdim":10,
         "ydim":10
