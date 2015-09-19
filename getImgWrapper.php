@@ -5,7 +5,7 @@
         for($i=0; $i< $ydim; $i++){
             $out.= "<div>\n";
             for($j=0;$j<$xdim; $j++){
-                $out.= "<div style=\"background: url($img_name)  -".($j*40)."px -".($i*20)."px;".
+                $out.= "<div style=\"background: url($img_name)  -".($j*$tile_width)."px -".($i*$tile_height)."px;".
                 "left: ".$tile_width*$j."px\"></div>\n";
             };
             $out.= "</div>\n";    
@@ -17,4 +17,3 @@
 
 ?>
 
-        <!--.($j* $tile_width)."px;".($i*$tile_h)."px; left:".($tile_width * $i)."px\"></div>\n";-->

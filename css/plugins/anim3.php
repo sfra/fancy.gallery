@@ -4,7 +4,7 @@
 $hideEffect= <<<EOD
     /*opacity: 0;    */
     /*transition: all 1s linear;*/
-    animation: anim .3s normal forwards; 
+    animation: anim .7s normal forwards; 
     animation-iteration-count: 1;
     /*transform: scale(0,0);*/
 
@@ -21,7 +21,7 @@ $animationDef=<<<EOD
   }
   
     40%{
-    transform: scale(1,1.5);
+    transform: scale(2,3);
     border-radius: 150px;
   }
   
