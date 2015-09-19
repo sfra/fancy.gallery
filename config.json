@@ -2,8 +2,12 @@
     "numberOfImgs": "4",
     "effect" : "hide",
     "plugin" : "anim3",
+
+    
     "tile" :{
         "xdim":10,
-        "ydim":10
+        "ydim":10,
+        "w": 40,
+        "h": 20
     }
 }

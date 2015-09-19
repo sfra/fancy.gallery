@@ -18,13 +18,14 @@ if(!isset($animationDef)) {$animationDef="";};
 
 .img-wrapper {
     position: relative;
+    overflow: hidden;
     width: 100%;
 }
 
 .img-wrapper > div {
     overflow: hidden;
-    width: 400px;
-    height: 20px;
+    width: <?= $config_string->tile->w * $config_string->tile->xdim ?>px;
+    height: <?= $config_string->tile->h ?>px;
     
 }
 
@@ -33,11 +34,12 @@ if(!isset($animationDef)) {$animationDef="";};
 .img-wrapper > div > div {
     /*transition: all 1s linear;*/
     /*background-image: url("../images/obraz.jpg");*/
+    overflow: hidden;
     float: left;
-    width: 40px;
-    height: 20px;
-    position: relative;
-
+    width: <?= $config_string->tile->w ?>px;
+    height: <?= $config_string->tile->h ?>px;
+    /*position: relative;*/
+    position: absolute;
 }
 
 
