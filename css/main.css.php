@@ -2,10 +2,13 @@
 $config_string = json_decode(file_get_contents("../config.json"));
 $numberOfImgs = $config_string->numberOfImgs;
 $plugin = $config_string->plugin;
+
+
 require_once("plugins/".$plugin.".php");
 header("Content-type: text/css", true);
-
+if(!isset($animationDef)) {$animationDef="";};
 ?>
+
 
 #gal-wrapper {
     height: 300px;
@@ -55,7 +58,7 @@ header("Content-type: text/css", true);
 
 
 
-
+<?= $animationDef ?>
 
 
 

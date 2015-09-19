@@ -23,7 +23,9 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax'], function (stateSingleton,
         var elementsX;
         var imgSArr = [];
         var elementsX = [];
-
+         
+        ImagesSet.tile=data.tile;
+      
 
         for (var i = 0; i < numberOfImgs; i++) {
             imgSArr.push(new ImagesSet.ImagesSet(false, 'image-wrapper' + i));
