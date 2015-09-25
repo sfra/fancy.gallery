@@ -1,4 +1,4 @@
-define(['stateSingleton', 'ImagesSet', 'libs/__ajax'], function (stateSingleton, ImagesSet, __ajax) {
+define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0'], function (stateSingleton, ImagesSet, __ajax,order) {
     
    var mainPromise = new Promise(function(res,rej){
         var __aj = Object(__ajax('config.json',{method: 'GET'}));
@@ -24,7 +24,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax'], function (stateSingleton,
         var imgSArr = [];
         var elementsX = [];
          
-        ImagesSet.tile=data.tile;
+        ImagesSet.ImagesSet.tile=data.tile;
       
 
         for (var i = 0; i < numberOfImgs; i++) {
@@ -43,7 +43,9 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax'], function (stateSingleton,
         }
 
 
+         
         document.getElementById('cyc').addEventListener('click', function (e) {
+            console.log(e);
             if (stateSingleton.animation.isLasting) {
                 return;
             }
@@ -77,7 +79,24 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax'], function (stateSingleton,
         //});
 
 
-        current.toggleHideShowRandom(
+        //current.toggleHideShowRandom(
+        //    function () {
+        //        var that = this;
+        //        setTimeout(function () {
+        //
+        //            for (var i = 0, max = imgSArr.length; i < max; i++) {
+        //                imgSArr[i].getDomElement().style.zIndex = -i * 10;
+        //                imgSArr[i].setHidden(false);
+        //            };
+        //
+        //            that.removeClass(effect);
+        //
+        //            stateSingleton.animation.isLasting = false;
+        //
+        //        }, 1000);
+        //    });
+        
+        current.toggleShowHideFun(
             function () {
                 var that = this;
                 setTimeout(function () {
@@ -92,10 +111,14 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax'], function (stateSingleton,
                     stateSingleton.animation.isLasting = false;
 
                 }, 1000);
-            });
+            },order);
 
     });
-
+        
+         /** for debugging **/
+         var event = new MouseEvent('click');
+         document.getElementById('cyc').dispatchEvent(event);
+         /** end for debugging **/
     };
     return {};
 });

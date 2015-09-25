@@ -1,13 +1,13 @@
 {
     "numberOfImgs": "4",
     "effect" : "hide",
-    "plugin" : "anim2",
+    "plugin" : "anim4",
 
     
     "tile" :{
-        "xdim":4,
-        "ydim":2,
-        "w": 100,
-        "h": 100
+        "xdim":10,
+        "ydim":10,
+        "w": 40,
+        "h": 20
     }
 }

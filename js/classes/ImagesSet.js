@@ -10,7 +10,10 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     var id;   
     var hidden = false;
     var effect = 'hide';
+    var rowsNr;
+    var columnsNr;
    
+    
    if ((typeof _elementsX)!=='undefined') {
         for(var i=0, max=_elementsX.length;i<max;i++ ){
             elementsX.push(_elementsX[i]);
@@ -21,7 +24,21 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
         for(var i=0, max=_elementsY.length;i<max;i++ ){
             elementsY.push(_elementsY[i]);
         };
-    };
+    } else {
+        var $imageWrapper = document.getElementById(_id);
+        var rows=$imageWrapper.children;
+        var cols; 
+        for(var i=0, max=ImagesSet.tile.ydim; i<max;i++){
+  //         console.log(rows[1].children[0]);
+           cols=rows[i].children;
+  //         console.log(rows[i].children[]);
+           elementsY.push([]);
+//          console.log(elementsY);
+           for(var j=0, max=ImagesSet.tile.xdim; j<max;j++){
+               (elementsY[i])[j] = rows[i].children[j];
+           };    
+        };  
+     };
    
    if (typeof _id!=='undefined') {
         id=_id;
@@ -34,8 +51,8 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     this.setElements = function(){
         var $imageWrapper = document.getElementById(id);
         var rows=$imageWrapper.children;
-        var rowsNr = rows.length;
-        var columnsNr = rows[0].children.length;
+        rowsNr = (rows.length)+0;
+        columnsNr = (rows[0].children.length)+0;
         var currentRow=[];
          for(var i=0; i< rowsNr;i++){
                 for(var j=0; j<columnsNr; j++){
@@ -114,6 +131,45 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
            };
     };
     
+    
+    this.toggleShowHideFun=function(callback,order){
+                 this.copyElements();
+
+          // console.dir(ImagesSet.tile);
+//           console.log(columnsNr);
+           
+          console.log(elementsRandom);
+        for(var i=0,max= ImagesSet.tile.xdim * ImagesSet.tile.ydim;i<max;i++){
+
+                (function(j){
+                    var k=j;
+                    
+                    setTimeout(function(){
+                        var currentIndex = order(ImagesSet.tile.xdim ,ImagesSet.tile.xdim,k);
+                       //console.log(currentIndex);
+                        if(hidden){
+                              elementsY[currentIndex[0]][currentIndex[1]].classList.remove(effect);
+                        } else {
+                              elementsY[currentIndex[0]][currentIndex[1]].classList.add(effect);
+                        }
+                        
+                        if (j===max-1) {
+                            hidden=hidden?false:true;
+                            (callback.bind(that))();    
+                        }                           
+                           },k*50);                    
+                       })(i);
+            
+             //   }
+                
+                       //    hidden=hidden?false:true;
+                     //       (callback.bind(that))();
+
+        }
+    
+     
+     
+     };
     
     
      /**
