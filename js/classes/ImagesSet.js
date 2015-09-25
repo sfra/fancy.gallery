@@ -29,11 +29,8 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
         var rows=$imageWrapper.children;
         var cols; 
         for(var i=0, max=ImagesSet.tile.ydim; i<max;i++){
-  //         console.log(rows[1].children[0]);
            cols=rows[i].children;
-  //         console.log(rows[i].children[]);
            elementsY.push([]);
-//          console.log(elementsY);
            for(var j=0, max=ImagesSet.tile.xdim; j<max;j++){
                (elementsY[i])[j] = rows[i].children[j];
            };    
@@ -116,7 +113,6 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
 
                         } else {
                             elementsX[k].classList.add(effect);
-                            console.log(effect);
                         }
                         
                         if (j===max-1) {
@@ -131,22 +127,23 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
            };
     };
     
-    
+     /**
+     * animates tiles in the order order given by a functuon order and then runs the callback 
+     * @method toggleHideShowRandom 
+     * @param {function} callback the function which runs after last animation
+     * @param {function} order the function that for a gived xdim, ydim and index number prameters return coordinates the next element
+     */  
     this.toggleShowHideFun=function(callback,order){
-                 this.copyElements();
+          this.copyElements();
 
-          // console.dir(ImagesSet.tile);
-//           console.log(columnsNr);
-           
-          console.log(elementsRandom);
-        for(var i=0,max= ImagesSet.tile.xdim * ImagesSet.tile.ydim;i<max;i++){
+          for(var i=0,max= ImagesSet.tile.xdim * ImagesSet.tile.ydim;i<max;i++){
 
                 (function(j){
                     var k=j;
                     
                     setTimeout(function(){
                         var currentIndex = order(ImagesSet.tile.xdim ,ImagesSet.tile.xdim,k);
-                       //console.log(currentIndex);
+                        
                         if(hidden){
                               elementsY[currentIndex[0]][currentIndex[1]].classList.remove(effect);
                         } else {
@@ -160,11 +157,6 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
                            },k*50);                    
                        })(i);
             
-             //   }
-                
-                       //    hidden=hidden?false:true;
-                     //       (callback.bind(that))();
-
         }
     
      
@@ -225,7 +217,11 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
           effect = _effect;
      };
 
-
+     /**
+     * removes the class _class from the elements
+     * @method toggleHideShowRandom 
+     * @param {string} the name of the class
+     */  
      this.removeClass = function(_class){
           var $imageWrapper = document.getElementById(id);
           var maxY = $imageWrapper.children.length;

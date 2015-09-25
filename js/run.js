@@ -45,7 +45,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0'], function
 
          
         document.getElementById('cyc').addEventListener('click', function (e) {
-            console.log(e);
+        
             if (stateSingleton.animation.isLasting) {
                 return;
             }
@@ -55,7 +55,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0'], function
         imgSArr.push(current);
 
         var currentDom = current.getDomElement();
-        console.log(currentDom);
+   
         //current.toggleHideShow(function(){
         //    var that = this;
         //    setTimeout(function(){
@@ -100,16 +100,16 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0'], function
             function () {
                 var that = this;
                 setTimeout(function () {
-
+        
                     for (var i = 0, max = imgSArr.length; i < max; i++) {
                         imgSArr[i].getDomElement().style.zIndex = -i * 10;
                         imgSArr[i].setHidden(false);
                     };
-
+        
                     that.removeClass(effect);
-
+        
                     stateSingleton.animation.isLasting = false;
-
+        
                 }, 1000);
             },order);
 
