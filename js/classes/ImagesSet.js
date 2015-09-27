@@ -1,4 +1,4 @@
-define([],function(){
+define(['classes/ImagesSetOrder'],function(ImagesSetOrder){
 'use strict';
 function ImagesSet(_state, _id, _elementsX, _elementsY){
 
@@ -13,6 +13,10 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     var rowsNr;
     var columnsNr;
    
+   
+          console.log(ImagesSetOrder);
+          var imagesSetIterator=new ImagesSetOrder.ImagesSetIterator(ImagesSet.tile.xdim,ImagesSet.tile.xdim);
+          console.log(imagesSetIterator);
     
    if ((typeof _elementsX)!=='undefined') {
         for(var i=0, max=_elementsX.length;i<max;i++ ){
@@ -134,6 +138,8 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
      * @param {function} order the function that for a gived xdim, ydim and index number prameters return coordinates the next element
      */  
     this.toggleShowHideFun=function(callback,order){
+     
+
           this.copyElements();
 
           for(var i=0,max= ImagesSet.tile.xdim * ImagesSet.tile.ydim;i<max;i++){
@@ -218,7 +224,8 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
      };
 
      /**
-     * removes the class _class from the elements
+     * removes the class _class from the elements contained in
+     * element given by id
      * @method toggleHideShowRandom 
      * @param {string} the name of the class
      */  

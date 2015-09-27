@@ -117,7 +117,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0'], function
         
          /** for debugging **/
          var event = new MouseEvent('click');
-         document.getElementById('cyc').dispatchEvent(event);
+       //  document.getElementById('cyc').dispatchEvent(event);
          /** end for debugging **/
     };
     return {};
