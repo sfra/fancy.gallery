@@ -24,8 +24,8 @@ define([],function(){
         var current = 0;
         var xi=0;
         var yi=0;
-        while(current<x*y){
-            debugger;
+        while(order.length<x*y){
+           // debugger;
             if (visited[xi]===undefined) {
                 (visited[xi]=[]);
             };
@@ -59,7 +59,7 @@ define([],function(){
                         yi-=1;
                         direction=[0,-1];
                     } else {
-                        order.push([xi][yi]);
+                        order.push([xi,yi]);
                         visited[xi][yi]=true;
                         xi-=1;
                     }; break;
@@ -77,6 +77,10 @@ define([],function(){
                
             }
               
+        }
+        
+        this.getOrder=function() {
+            return order;
         }
         
     

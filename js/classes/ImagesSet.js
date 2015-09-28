@@ -138,8 +138,8 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
      * @param {function} order the function that for a gived xdim, ydim and index number prameters return coordinates the next element
      */  
     this.toggleShowHideFun=function(callback,order){
-     
-
+          var oorder=imagesSetIterator.getOrder()
+//          console.log();
           this.copyElements();
 
           for(var i=0,max= ImagesSet.tile.xdim * ImagesSet.tile.ydim;i<max;i++){
@@ -149,11 +149,15 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
                     
                     setTimeout(function(){
                         var currentIndex = order(ImagesSet.tile.xdim ,ImagesSet.tile.xdim,k);
-                        
+                        var ccurentIndex = oorder.shift();
+                        //console.log(oorder.pop());
+                     //    debugger;
                         if(hidden){
-                              elementsY[currentIndex[0]][currentIndex[1]].classList.remove(effect);
+                              //elementsY[currentIndex[0]][currentIndex[1]].classList.remove(effect);
+                              elementsY[ccurentIndex[1]][ccurentIndex[0]].classList.remove(effect);
                         } else {
-                              elementsY[currentIndex[0]][currentIndex[1]].classList.add(effect);
+//                              elementsY[currentIndex[0]][currentIndex[1]].classList.add(effect);
+                              elementsY[ccurentIndex[1]][ccurentIndex[0]].classList.add(effect);
                         }
                         
                         if (j===max-1) {
