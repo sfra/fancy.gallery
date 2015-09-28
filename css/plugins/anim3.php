@@ -15,13 +15,10 @@ $animationDef=<<<EOD
   0% {
    }
   
-  20%{
+
   
-  
-  }
-  
-    40%{
-    transform: scale(2,3);
+    20%{
+    transform: scale(1.2,2);
     border-radius: 150px;
   }
   

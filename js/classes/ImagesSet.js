@@ -13,11 +13,7 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     var rowsNr;
     var columnsNr;
    
-   
-          console.log(ImagesSetOrder);
-          var imagesSetIterator=new ImagesSetOrder.ImagesSetIterator(ImagesSet.tile.xdim,ImagesSet.tile.xdim);
-          console.log(imagesSetIterator);
-    
+
    if ((typeof _elementsX)!=='undefined') {
         for(var i=0, max=_elementsX.length;i<max;i++ ){
             elementsX.push(_elementsX[i]);
@@ -138,8 +134,10 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
      * @param {function} order the function that for a gived xdim, ydim and index number prameters return coordinates the next element
      */  
     this.toggleShowHideFun=function(callback,order){
+          var imagesSetIterator=new ImagesSetOrder.ImagesSetIterator(ImagesSet.tile.xdim,ImagesSet.tile.xdim);
           var oorder=imagesSetIterator.getOrder()
-//          console.log();
+          console.log(ImagesSetOrder.ImagesSetIterator);
+          
           this.copyElements();
 
           for(var i=0,max= ImagesSet.tile.xdim * ImagesSet.tile.ydim;i<max;i++){

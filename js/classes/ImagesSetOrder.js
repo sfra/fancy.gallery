@@ -6,15 +6,7 @@ define([],function(){
         var order=[];
         var visited = [];
         
-        //for(var i=0;i<y;i++){
-        //    visited.push([]);
-        //    for(var j=0;j<x;j++){
-        //        visited[i][j]=false;
-        //    }
-        //    
-        //}
-        //
-        //console.log(visited);
+
         
         
         /* direction expressed by right,bottom */
@@ -25,7 +17,6 @@ define([],function(){
         var xi=0;
         var yi=0;
         while(order.length<x*y){
-           // debugger;
             if (visited[xi]===undefined) {
                 (visited[xi]=[]);
             };
@@ -46,7 +37,6 @@ define([],function(){
                     if (yi>=y || visited[xi][yi]) {
                         yi-=1;
                         xi-=1;
-//                        yi-=1;
                         direction=[-1,0];
                     } else {
                         order.push([xi,yi]);
@@ -84,11 +74,7 @@ define([],function(){
         }
         
     
-    
-    
-    
-    
-    
+
        
     };    
      return { ImagesSetIterator: ImagesSetIterator};
