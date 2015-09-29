@@ -13,7 +13,7 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     var rowsNr;
     var columnsNr;
     var speed = 15;
-    var imagesSetIterator=new ImagesSetOrder.ImagesSetIterator(ImagesSet.tile.xdim,ImagesSet.tile.xdim);
+    var imagesSetIterator=new ImagesSetOrder.ImagesSetIterator(ImagesSet.tile.xdim,ImagesSet.tile.ydim);
     var oorder=imagesSetIterator.getOrder();
    if ((typeof _elementsX)!=='undefined') {
         for(var i=0, max=_elementsX.length;i<max;i++ ){
@@ -32,7 +32,7 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
         for(var i=0, max=ImagesSet.tile.ydim; i<max;i++){
            cols=rows[i].children;
            elementsY.push([]);
-           for(var j=0, max=ImagesSet.tile.xdim; j<max;j++){
+           for(var j=0, max0=ImagesSet.tile.xdim; j<max0;j++){
                (elementsY[i])[j] = rows[i].children[j];
            };    
         };  
@@ -140,7 +140,8 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     this.toggleShowHideFun=function(callback,order){
 
 //          console.log(ImagesSetOrder.ImagesSetIterator);
-          
+         // debugger;
+          console.log(elementsY);
           this.copyElements();
 
           for(var i=0,max= ImagesSet.tile.xdim * ImagesSet.tile.ydim;i<max;i++){

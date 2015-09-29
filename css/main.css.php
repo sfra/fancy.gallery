@@ -11,13 +11,15 @@ if(!isset($animationDef)) {$animationDef="";};
 
 
 #gal-wrapper {
-    height: 300px;
-    
+    /*height: 300px;*/
+
+    width: <?= $config_string->tile->w * $config_string->tile->xdim ?>px;
+    height: <?= $config_string->tile->h * $config_string->tile->ydim ?>px;
 }
 
 
 .img-wrapper {
-    position: relative;
+        position: absolute;
     overflow: hidden;
     width: 100%;
 }
@@ -100,7 +102,7 @@ echo <<<EOT
 #image-wrapper{$i} {
 
     z-index: -{$current_zIndex};
-    top:-{$current_top}px;
+    /*top:-{$current_top}px;*/
 }\n
 EOT;
 };
@@ -111,7 +113,7 @@ EOT;
 
 #cyc {
     position: absolute;
-    top:300px;
+    top:600px;
     left: 10px;
     float: left;
     

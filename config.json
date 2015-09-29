@@ -1,14 +1,14 @@
 {
-    "numberOfImgs": "4",
+    "numberOfImgs": "3",
     "effect" : "hide",
-    "plugin" : "animBlur",
-    "speed": 10,
+    "plugin" : "fancy3",
+    "speed": 50,
 
     
     "tile" :{
-        "xdim":10,
-        "ydim":10,
-        "w": 40,
-        "h": 20
+        "xdim":7,
+        "ydim":7,
+        "w": 100,
+        "h": 75    
     }
 }
