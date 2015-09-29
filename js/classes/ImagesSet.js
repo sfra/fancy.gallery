@@ -152,7 +152,7 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
                     setTimeout(function(){
                       //  var currentIndex = order(ImagesSet.tile.xdim ,ImagesSet.tile.xdim,k);
                        // var ccurentIndex = oorder.shift();
-                        var ccurentIndex = oorder[k];
+                        var ccurentIndex = oorder[max-1-k];
                         //console.log(oorder.pop());
                      //    debugger;
                         if(hidden){

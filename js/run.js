@@ -80,24 +80,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0'], function
         //});
 
 
-        //current.toggleHideShowRandom(
-        //    function () {
-        //        var that = this;
-        //        setTimeout(function () {
-        //
-        //            for (var i = 0, max = imgSArr.length; i < max; i++) {
-        //                imgSArr[i].getDomElement().style.zIndex = -i * 10;
-        //                imgSArr[i].setHidden(false);
-        //            };
-        //
-        //            that.removeClass(effect);
-        //
-        //            stateSingleton.animation.isLasting = false;
-        //
-        //        }, 1000);
-        //    });
-        
-        current.toggleShowHideFun(
+        current.toggleHideShowRandom(
             function () {
                 var that = this;
                 setTimeout(function () {
@@ -112,7 +95,24 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0'], function
                     stateSingleton.animation.isLasting = false;
         
                 }, 1000);
-            },order);
+            });
+        
+        //current.toggleShowHideFun(
+        //    function () {
+        //        var that = this;
+        //        setTimeout(function () {
+        //
+        //            for (var i = 0, max = imgSArr.length; i < max; i++) {
+        //                imgSArr[i].getDomElement().style.zIndex = -i * 10;
+        //                imgSArr[i].setHidden(false);
+        //            };
+        //
+        //            that.removeClass(effect);
+        //
+        //            stateSingleton.animation.isLasting = false;
+        //
+        //        }, 1000);
+        //    },order);
 
     });
         

@@ -1,14 +1,14 @@
 {
     "numberOfImgs": "3",
     "effect" : "hide",
-    "plugin" : "fancy3",
-    "speed": 50,
+    "plugin" : "animToTopLeft",
+    "speed": 20,
 
     
     "tile" :{
         "xdim":7,
-        "ydim":7,
+        "ydim":5,
         "w": 100,
-        "h": 75    
+        "h": 105    
     }
 }

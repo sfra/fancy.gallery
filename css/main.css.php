@@ -41,7 +41,7 @@ if(!isset($animationDef)) {$animationDef="";};
     width: <?= $config_string->tile->w ?>px;
     height: <?= $config_string->tile->h ?>px;
     /*position: relative;*/
-    position: absolute;
+    /*position: absolute;*/
 }
 
 
