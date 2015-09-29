@@ -19,7 +19,7 @@ $animationDef=<<<EOD
   
     20%{
     transform: scale(1.2,2);
-    border-radius: 150px;
+    border-radius: 1350px;
   }
   
   80% {

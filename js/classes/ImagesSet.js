@@ -12,8 +12,9 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     var effect = 'hide';
     var rowsNr;
     var columnsNr;
-   
-
+    var speed = 15;
+    var imagesSetIterator=new ImagesSetOrder.ImagesSetIterator(ImagesSet.tile.xdim,ImagesSet.tile.xdim);
+    var oorder=imagesSetIterator.getOrder();
    if ((typeof _elementsX)!=='undefined') {
         for(var i=0, max=_elementsX.length;i<max;i++ ){
             elementsX.push(_elementsX[i]);
@@ -60,6 +61,9 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
         };
     };
     
+    this.setSpeed = function(_speed){
+          speed = _speed; 
+    };
     
     this.copyElements = function(){
          for(var i=0, max=elementsX.length; i< max;i++){
@@ -134,9 +138,8 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
      * @param {function} order the function that for a gived xdim, ydim and index number prameters return coordinates the next element
      */  
     this.toggleShowHideFun=function(callback,order){
-          var imagesSetIterator=new ImagesSetOrder.ImagesSetIterator(ImagesSet.tile.xdim,ImagesSet.tile.xdim);
-          var oorder=imagesSetIterator.getOrder()
-          console.log(ImagesSetOrder.ImagesSetIterator);
+
+//          console.log(ImagesSetOrder.ImagesSetIterator);
           
           this.copyElements();
 
@@ -146,8 +149,9 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
                     var k=j;
                     
                     setTimeout(function(){
-                        var currentIndex = order(ImagesSet.tile.xdim ,ImagesSet.tile.xdim,k);
-                        var ccurentIndex = oorder.shift();
+                      //  var currentIndex = order(ImagesSet.tile.xdim ,ImagesSet.tile.xdim,k);
+                       // var ccurentIndex = oorder.shift();
+                        var ccurentIndex = oorder[k];
                         //console.log(oorder.pop());
                      //    debugger;
                         if(hidden){
@@ -162,7 +166,7 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
                             hidden=hidden?false:true;
                             (callback.bind(that))();    
                         }                           
-                           },k*50);                    
+                           },k*speed);                    
                        })(i);
             
         }

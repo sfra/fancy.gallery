@@ -1,7 +1,8 @@
 {
     "numberOfImgs": "4",
     "effect" : "hide",
-    "plugin" : "anim3",
+    "plugin" : "animBlur",
+    "speed": 10,
 
     
     "tile" :{

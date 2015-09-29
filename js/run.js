@@ -29,6 +29,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0'], function
 
         for (var i = 0; i < numberOfImgs; i++) {
             imgSArr.push(new ImagesSet.ImagesSet(false, 'image-wrapper' + i));
+            imgSArr[i].setSpeed(data.speed);
         };
 
 
