@@ -1,4 +1,4 @@
-define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0'], function (stateSingleton, ImagesSet, __ajax,order) {
+define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0','Sequence'], function (stateSingleton, ImagesSet, __ajax,order,Sequence) {
     
    var mainPromise = new Promise(function(res,rej){
         var __aj = Object(__ajax('config.json',{method: 'GET'}));
@@ -56,69 +56,20 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0'], function
         imgSArr.push(current);
 
         var currentDom = current.getDomElement();
-   
-        //current.toggleHideShow(function(){
-        //    var that = this;
-        //    setTimeout(function(){
-        //
-        //        for(var i=0, max = imgSArr.length; i< max; i++){
-        //            imgSArr[i].getDomElement().style.zIndex=-i*10;
-        //            imgSArr[i].setHidden(false);
-        //        };
-        //
-        //        for(var i=0, max=that.getDomElement().children.length; i<max;i++){
-        //            for(var j=0, max=that.getDomElement().children[i].children.length;j<max;j++){
-        //                that.getDomElement().children[i].children[j].classList.remove('hide');  
-        //            };
-        //            
-        //
-        //        };
-        //        
-        //        stateSingleton.animation.isLasting = false;
-        //        
-        //        },1000);
-        //});
 
-
-        current.toggleHideShowRandom(
-            function () {
-                var that = this;
-                setTimeout(function () {
+      
+         if (data.sequence==='random') {
+            (Sequence['random'].bind(this,current,imgSArr,effect, stateSingleton))();
+         } else if (data.sequence==='ordered') {
+            (Sequence['ordered'].bind(this,current,imgSArr,effect, stateSingleton,order))();
+         }
+         
         
-                    for (var i = 0, max = imgSArr.length; i < max; i++) {
-                        imgSArr[i].getDomElement().style.zIndex = -i * 10;
-                        imgSArr[i].setHidden(false);
-                    };
-        
-                    that.removeClass(effect);
-        
-                    stateSingleton.animation.isLasting = false;
-        
-                }, 1000);
-            });
-        
-        //current.toggleShowHideFun(
-        //    function () {
-        //        var that = this;
-        //        setTimeout(function () {
-        //
-        //            for (var i = 0, max = imgSArr.length; i < max; i++) {
-        //                imgSArr[i].getDomElement().style.zIndex = -i * 10;
-        //                imgSArr[i].setHidden(false);
-        //            };
-        //
-        //            that.removeClass(effect);
-        //
-        //            stateSingleton.animation.isLasting = false;
-        //
-        //        }, 1000);
-        //    },order);
-
     });
         
          /** for debugging **/
          var event = new MouseEvent('click');
-       //  document.getElementById('cyc').dispatchEvent(event);
+         document.getElementById('cyc').dispatchEvent(event);
          /** end for debugging **/
     };
     return {};

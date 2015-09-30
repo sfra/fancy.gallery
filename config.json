@@ -1,14 +1,15 @@
 {
-    "numberOfImgs": "3",
+    "numberOfImgs": "4",
     "effect" : "hide",
-    "plugin" : "animToTopLeft",
-    "speed": 20,
+    "plugin" : "animToTop",
+    "speed": 50,
+    "sequence": "ordered",
 
     
     "tile" :{
-        "xdim":7,
+        "xdim":10,
         "ydim":5,
-        "w": 100,
+        "w": 70,
         "h": 105    
     }
 }
