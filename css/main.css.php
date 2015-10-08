@@ -3,6 +3,8 @@ $config_string = json_decode(file_get_contents("../config.json"));
 $numberOfImgs = $config_string->numberOfImgs;
 $plugin = $config_string->plugin;
 
+$tile_width_perc = ($config_string->tile->w)/($config_string->tile->xdim * $config_string->tile->w)*100;
+$tile_height_perc = ($config_string->tile->h)/($config_string->tile->ydim * $config_string->tile->h)*100;
 
 require_once("plugins/".$plugin.".php");
 header("Content-type: text/css", true);
@@ -13,7 +15,7 @@ if(!isset($animationDef)) {$animationDef="";};
 #gal-wrapper {
     /*height: 300px;*/
 
-    width: <?= $config_string->tile->w * $config_string->tile->xdim ?>px;
+    width: 100%<?= $config_string->tile->w * $config_string->tile->xdim ?>px;
     height: <?= $config_string->tile->h * $config_string->tile->ydim ?>px;
 }
 
@@ -26,7 +28,7 @@ if(!isset($animationDef)) {$animationDef="";};
 
 .img-wrapper > div {
     overflow: hidden;
-    width: <?= $config_string->tile->w * $config_string->tile->xdim ?>px;
+    width: 100%;
     height: <?= $config_string->tile->h ?>px;
     
 }
@@ -38,8 +40,8 @@ if(!isset($animationDef)) {$animationDef="";};
     /*background-image: url("../images/obraz.jpg");*/
     overflow: hidden;
     float: left;
-    width: <?= $config_string->tile->w ?>px;
-    height: <?= $config_string->tile->h ?>px;
+    width: <?= $tile_width_perc?>%;
+    height: 100%;
     /*position: relative;*/
     /*position: absolute;*/
 }
