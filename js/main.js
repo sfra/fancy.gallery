@@ -18,7 +18,7 @@ requirejs.onError = function (err) {
 };
 
 /* it does not work in firefox without loading ImageSet at this stage */
-require(['run', 'libs/__ajax', 'ImagesSet'], function (run) {
+require(['run', 'libs/__ajax', 'ImagesSet','helpers/dom'], function (run) {
 
 
 });

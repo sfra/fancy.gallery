@@ -8,7 +8,7 @@
             for($j=0;$j<$xdim; $j++){
                 $out.= "<div style=\"background-image: url($img_name);".
                 "background-size: ".($tile_width_perc*100)."% ".($tile_width_perc*100)."%;".
-                " background-position:  ".($j*$tile_width_perc)."% -".($i*$tile_height)."px;".
+                " background-position:  ".($j*($tile_width_perc+1))."% ".($i*($tile_width_perc+1))."%;".
                 "\"></div>\n";
             };
             $out.= "</div>\n";    

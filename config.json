@@ -1,9 +1,9 @@
 {
     "numberOfImgs": "4",
     "effect" : "hide",
-    "plugin" : "animToTop",
+    "plugin" : "animBlur",
     "speed": 50,
-    "sequence": "ordered",
+    "sequence": "random",
 
     
     "tile" :{

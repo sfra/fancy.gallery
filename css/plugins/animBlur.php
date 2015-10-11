@@ -15,12 +15,14 @@ $animationDef=<<<EOD
   0% {
         /*transform: scale(1,1);*/
             -webkit-filter: blur(0px);
+            filter: blur(0px);
             /*-webkit-filter: grayscale(0%);*/
   }
   
   50%{
         /*border-radius: 450px;*/
-    -webkit-filter: blur(10px);        
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
                     /*-webkit-filter: grayscale(100%);*/
   }
   80% {
