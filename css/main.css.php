@@ -15,8 +15,8 @@ if(!isset($animationDef)) {$animationDef="";};
 #gal-wrapper {
     /*height: 300px;*/
 
-    width: 100%<?= $config_string->tile->w * $config_string->tile->xdim ?>px;
-    height: <?= $config_string->tile->h * $config_string->tile->ydim ?>px;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -24,12 +24,13 @@ if(!isset($animationDef)) {$animationDef="";};
         position: absolute;
     overflow: hidden;
     width: 100%;
+    height: 100%;
 }
 
 .img-wrapper > div {
     overflow: hidden;
     width: 100%;
-    height: <?= $config_string->tile->h ?>px;
+    height: <?= $tile_height_perc?>%;
     
 }
 
@@ -138,4 +139,13 @@ footer {
     clear: both;
 
     
+}
+
+
+
+
+.clearfix {
+    overflow: hidden;
+    display: inline-block; /* Necessary to trigger "hasLayout" in IE */
+    display: block; /* Sets element back to block */
 }

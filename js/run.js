@@ -1,4 +1,4 @@
-define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0','Sequence'], function (stateSingleton, ImagesSet, __ajax,order,Sequence) {
+define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0','Sequence','helpers/dom'], function (stateSingleton, ImagesSet, __ajax,order,Sequence,dom) {
     
    var mainPromise = new Promise(function(res,rej){
         var __aj = Object(__ajax('config.json',{method: 'GET'}));
@@ -15,8 +15,18 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0','Sequence'
  
     mainPromise.then(mainResolve);
 
+ 
+    
     
     function mainResolve(data) {
+
+   
+        dom.matchHeight(data);    
+        window.onresize = function(){
+         dom.matchHeight(data);
+
+      };
+    
     
         var numberOfImgs = data.numberOfImgs;
         var effect = data.effect;

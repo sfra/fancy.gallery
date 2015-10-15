@@ -1,6 +1,6 @@
 <?php
     function getImgWrapper($xdim,$ydim,$tile_width,$tile_height,$id,$img_name){
-        $out="<div id=\"$id\" class=\"img-wrapper\">\n";
+        $out="<div id=\"$id\" class=\"img-wrapper clearfix\">\n";
         $tile_height_perc = $tile_width/($xdim*$tile_height)*100;
         $tile_width_perc = $tile_width/($xdim*$tile_width)*100;
         for($i=0; $i< $ydim; $i++){

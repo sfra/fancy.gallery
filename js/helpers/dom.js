@@ -1,15 +1,25 @@
 define([], function () {
     // TODO: resize tile
+    'use strict';
+  
+    var $gal_wrapper = document.getElementById('gal-wrapper');
+  
 
-    window.onload = function () {
+   
 
-       // changeTileBG();
+    function matchHeight(data){
+
+        var $gal_wrapper_children = $gal_wrapper.children; 
+        var height = (((data.tile.w*data.tile.ydim)/(data.tile.h*data.tile.ydim)) * $gal_wrapper.offsetWidth)+'px'; 
+        for(var i=0;i<$gal_wrapper_children.length;i++){
+            $gal_wrapper_children[i].style.height = height;
+        };
+        
+        
     };
-
-    window.onresize = function () {
-      //  changeTileBG();
-    };
-
+    
+    
+    
     function changeTileBG() {
         var tile_height = document.querySelectorAll('.img-wrapper')[0].children[0].children[9].offsetHeight;
         var tile_width = document.querySelectorAll('.img-wrapper')[0].children[0].children[9].offsetWidth;
@@ -28,7 +38,7 @@ define([], function () {
 
         for (var i = 0; i < tiles_vert; i++) {
             for (var j = 0; j < tiles_hor; j++) {
-                debugger;
+               // debugger;
                 //      console.dir($tiles[i].children[j]);
                 
                 for (var k = 0, max = $images.length; k < max; k++) {
@@ -48,5 +58,5 @@ define([], function () {
 
 
 
-    return {};
+    return {matchHeight: matchHeight};
 });

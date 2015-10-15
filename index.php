@@ -11,7 +11,7 @@
     
     <body>
 
-    <div id="gal-wrapper">    
+    <div id="gal-wrapper" class="clearfix">    
     <?php
         include "gallery.plugin.php";
     ?>
