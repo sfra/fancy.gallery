@@ -2,14 +2,14 @@
     "numberOfImgs": "4",
     "effect" : "hide",
     "plugin" : "animBlur",
-    "speed": 50,
-    "sequence": "random",
+    "speed": 100,
+    "sequence": "ordered",
 
     
     "tile" :{
-        "xdim":10,
-        "ydim":5,
-        "w": 70,
-        "h": 105    
+        "xdim":4,
+        "ydim":3,
+        "w": 175,
+        "h": 175    
     }
 }

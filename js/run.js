@@ -78,8 +78,8 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0','Sequence'
     });
         
          /** for debugging **/
-         var event = new MouseEvent('click');
-         document.getElementById('cyc').dispatchEvent(event);
+//         var event = new MouseEvent('click');
+//         document.getElementById('cyc').dispatchEvent(event);
          /** end for debugging **/
     };
     return {};

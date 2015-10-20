@@ -16,52 +16,41 @@ if(!isset($animationDef)) {$animationDef="";};
     /*height: 300px;*/
 
     width: 100%;
-    height: 100%;
+    /*overflow: none;*/
 }
 
 
 .img-wrapper {
-        position: absolute;
-    overflow: hidden;
     width: 100%;
     height: 100%;
+    position: relative;
+/*    top: -200px;*/
 }
 
 .img-wrapper > div {
-    overflow: hidden;
     width: 100%;
-    height: <?= $tile_height_perc?>%;
+    height: <?= $tile_height_perc ?>%;
     
 }
 
 
 
 .img-wrapper > div > div {
-    /*transition: all 1s linear;*/
-    /*background-image: url("../images/obraz.jpg");*/
-    overflow: hidden;
+
+    display: block;
     float: left;
-    width: <?= $tile_width_perc?>%;
+    width: <?= $tile_width_perc ?>%;
     height: 100%;
-    /*position: relative;*/
-    /*position: absolute;*/
+
 }
 
 
 
 
-/*.image-wrapper.hidden > div > div {
-     transform: rotateY(90deg);
-}
 
 
 
-.img-wrapper.hidden > div  {
-     transform: rotateX(45deg);
-     
-}
 
-*/
 
 
 
@@ -80,14 +69,7 @@ if(!isset($animationDef)) {$animationDef="";};
 
 
 
-.img-wrapper > div > div.scale {
-    
-    transition: all .4s cubic-bezier(0.42, 0, 0.58, 1);
 
-    transform: scale(0);
- 
-    
-}
 
 
 
@@ -99,13 +81,14 @@ if(!isset($animationDef)) {$animationDef="";};
 $current_top = null;
 $current_zIndex = null;
 for($i=1;$i<$numberOfImgs; $i++){
-$current_top = $i*200;
-$current_zIndex = $i*10;
+    $current_top = $i*100;
+    $current_zIndex = $i*10;
 echo <<<EOT
 #image-wrapper{$i} {
 
     z-index: -{$current_zIndex};
-    /*top:-{$current_top}px;*/
+    top: -{$current_top}%;
+
 }\n
 EOT;
 };
@@ -142,10 +125,11 @@ footer {
 }
 
 
+.clearfix:after {
+     content: "";
+    display: table;
+    clear: both;
+}
 
 
-.clearfix {
-    overflow: hidden;
-    display: inline-block; /* Necessary to trigger "hasLayout" in IE */
-    display: block; /* Sets element back to block */
 }
