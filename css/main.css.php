@@ -11,12 +11,27 @@ header("Content-type: text/css", true);
 if(!isset($animationDef)) {$animationDef="";};
 ?>
 
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+::before,
+::after {
+    content: "";
+    display: block;
+    height: 0px;
+    line-height: 0px;
+}
 
 #gal-wrapper {
     /*height: 300px;*/
-
+    max-width: <?= $config_string->tile->w * $config_string->tile->xdim ?>px;
     width: 100%;
-    /*overflow: none;*/
+    overflow: hidden;
+    left: 33px;
+    position: relative;
 }
 
 
@@ -30,17 +45,20 @@ if(!isset($animationDef)) {$animationDef="";};
 .img-wrapper > div {
     width: 100%;
     height: <?= $tile_height_perc ?>%;
-    
+    text-decoration:none;
 }
 
 
 
 .img-wrapper > div > div {
-
+-webkit-flow-from: ads;
     display: block;
     float: left;
     width: <?= $tile_width_perc ?>%;
     height: 100%;
+    border-collapse: collapse;
+    outline: none;
+    text-decoration:none;
 
 }
 
@@ -102,6 +120,8 @@ EOT;
     top:600px;
     left: 10px;
     float: left;
+    height: 100px;
+    width: 100px;
     
 }
 

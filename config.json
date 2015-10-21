@@ -1,15 +1,15 @@
 {
-    "numberOfImgs": "4",
+    "numberOfImgs": "5",
     "effect" : "hide",
-    "plugin" : "animBlur",
-    "speed": 100,
+    "plugin" : "anim3",
+    "speed": 50,
     "sequence": "ordered",
 
     
     "tile" :{
-        "xdim":4,
-        "ydim":3,
-        "w": 175,
-        "h": 175    
+        "xdim":7,
+        "ydim":1,
+        "w": 100,
+        "h": 525    
     }
 }
