@@ -27,6 +27,7 @@
 
 
 
+    <button id="cyc2">&lt;&lt;</button>
     <button id="cyc">&gt;&gt;</button>
 
 </body>

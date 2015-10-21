@@ -4,7 +4,7 @@ define([], function () {
         image: {
             hidden: false
         },
-        numberOfImgs: 3,
+//        numberOfImgs: 4,
 
         animation: {
             isLasting: false

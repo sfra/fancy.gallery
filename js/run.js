@@ -16,7 +16,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0','Sequence'
     mainPromise.then(mainResolve);
 
  
-    
+    var currentIndex = 0;
     
     function mainResolve(data) {
 
@@ -60,22 +60,73 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax','plugins/order0','Sequence'
             if (stateSingleton.animation.isLasting) {
                 return;
             }
-
+            
         stateSingleton.animation.isLasting = true;
-        var current = imgSArr.shift();
-        imgSArr.push(current);
+        var current = imgSArr[currentIndex];
+        var previousIndex;
 
+        if(currentIndex+1<imgSArr.length){
+            previousIndex = currentIndex;
+            currentIndex+=1;
+            
+        } else {
+            currentIndex=0;
+        }
+    
+            
         var currentDom = current.getDomElement();
 
       
          if (data.sequence==='random') {
-            (Sequence['random'].bind(this,current,imgSArr,effect, stateSingleton))();
+            (Sequence['random'].bind(this,current,imgSArr,effect, stateSingleton,currentIndex))();
          } else if (data.sequence==='ordered') {
-            (Sequence['ordered'].bind(this,current,imgSArr,effect, stateSingleton,order))();
+            (Sequence['ordered'].bind(this,current,imgSArr,effect, stateSingleton,order,currentIndex))();
          }
-         
-        
+  
     });
+        
+        
+        
+        
+        
+        
+        
+        
+        document.getElementById('cyc2').addEventListener('click', function (e) {
+        
+            if (stateSingleton.animation.isLasting) {
+                return;
+            }
+            
+        stateSingleton.animation.isLasting = true;
+        var current = imgSArr[currentIndex];
+        var previousIndex;
+
+        if(currentIndex > 0 ){
+            previousIndex = currentIndex;
+            currentIndex-=1;
+            
+            
+        } else {
+            currentIndex=imgSArr.length-1;
+        }
+    
+
+            
+        var currentDom = current.getDomElement();
+
+      
+         if (data.sequence==='random') {
+            (Sequence['random'].bind(this,current,imgSArr,effect, stateSingleton,currentIndex))();
+         } else if (data.sequence==='ordered') {
+            (Sequence['ordered'].bind(this,current,imgSArr,effect, stateSingleton,order,currentIndex))();
+         }
+  
+    });
+
+        
+        
+        
         
          /** for debugging **/
 //         var event = new MouseEvent('click');
