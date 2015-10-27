@@ -6,6 +6,9 @@ $plugin = $config_string->plugin;
 $tile_width_perc = ($config_string->tile->w)/($config_string->tile->xdim * $config_string->tile->w)*100;
 $tile_height_perc = ($config_string->tile->h)/($config_string->tile->ydim * $config_string->tile->h)*100;
 
+$isMobile = preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+
+
 require_once("plugins/".$plugin.".php");
 header("Content-type: text/css", true);
 if(!isset($animationDef)) {$animationDef="";};
@@ -32,6 +35,7 @@ if(!isset($animationDef)) {$animationDef="";};
     overflow: hidden;
     left: 33px;
     position: relative;
+    background: rgba(0, 0, 0, 0);
 }
 
 
@@ -39,6 +43,7 @@ if(!isset($animationDef)) {$animationDef="";};
     width: 100%;
     height: 100%;
     position: relative;
+    background: rgba(0, 0, 0, 0); 
 /*    top: -200px;*/
 }
 
@@ -46,12 +51,20 @@ if(!isset($animationDef)) {$animationDef="";};
     width: 100%;
     height: <?= $tile_height_perc ?>%;
     text-decoration:none;
+    background: rgba(0, 0, 0, 0);
+    <?php
+        if($isMobile) {echo "margin: -1px 0px;\n";} else {
+            echo "margin: 0px;\n";
+
+        };
+    ?>
+/*    margin: -2px;*/
 }
 
 
 
 .img-wrapper > div > div {
--webkit-flow-from: ads;
+
     display: block;
     float: left;
     width: <?= $tile_width_perc ?>%;
@@ -59,6 +72,13 @@ if(!isset($animationDef)) {$animationDef="";};
     border-collapse: collapse;
     outline: none;
     text-decoration:none;
+    <?php
+        if($isMobile) {echo "margin: -1px -1px;\n";} else {
+            echo "margin: 0px;\n";
+
+        };
+    ?>
+
 
 }
 
