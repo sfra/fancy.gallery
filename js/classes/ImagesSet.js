@@ -1,5 +1,17 @@
 define(['classes/ImagesSetOrder'],function(ImagesSetOrder){
 'use strict';
+/**
+ * Constructs a ImageSet object.
+ * 
+ * Provides the wrapper for image consistiong of the many tiles.
+ * 
+ * @constructor
+ *
+ * @param {object} 
+ * @param {string} tableSettings
+ * @param {Array}
+ * @param {Array}
+ */
 function ImagesSet(_state, _id, _elementsX, _elementsY){
 
     var state = _state;
@@ -15,7 +27,9 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     var speed = 15;
     var imagesSetIterator=new ImagesSetOrder.ImagesSetIterator(ImagesSet.tile.xdim,ImagesSet.tile.ydim);
     var oorder=imagesSetIterator.getOrder();
-   if ((typeof _elementsX)!=='undefined') {
+   
+    
+    if ((typeof _elementsX)!=='undefined') {
         for(var i=0, max=_elementsX.length;i<max;i++ ){
             elementsX.push(_elementsX[i]);
         };
@@ -138,9 +152,6 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
      * @param {function} order the function that for a gived xdim, ydim and index number prameters return coordinates the next element
      */  
     this.toggleShowHideFun=function(callback,order){
-
-//          console.log(ImagesSetOrder.ImagesSetIterator);
-         // debugger;
           console.log(elementsY);
           this.copyElements();
 
@@ -150,16 +161,11 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
                     var k=j;
                     
                     setTimeout(function(){
-                      //  var currentIndex = order(ImagesSet.tile.xdim ,ImagesSet.tile.xdim,k);
-                       // var ccurentIndex = oorder.shift();
                         var ccurentIndex = oorder[max-1-k];
-                        //console.log(oorder.pop());
-                     //    debugger;
+
                         if(hidden){
-                              //elementsY[currentIndex[0]][currentIndex[1]].classList.remove(effect);
                               elementsY[ccurentIndex[1]][ccurentIndex[0]].classList.remove(effect);
                         } else {
-//                              elementsY[currentIndex[0]][currentIndex[1]].classList.add(effect);
                               elementsY[ccurentIndex[1]][ccurentIndex[0]].classList.add(effect);
                         }
                         

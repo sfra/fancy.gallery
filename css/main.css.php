@@ -116,13 +116,22 @@ EOT;
 ?>
 
 #cyc {
-    position: absolute;
-    top:600px;
+    position: relative;
+/*    top:300px;*/
     left: 10px;
     float: left;
     height: 100px;
     width: 100px;
     
+}
+
+#cyc2 {
+    position: relative;
+/*    top:200px;*/
+    left: 10px;
+    float: left;
+    height: 100px;
+    width: 100px;
 }
 
 

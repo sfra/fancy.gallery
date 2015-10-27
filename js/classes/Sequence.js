@@ -23,8 +23,8 @@ define([],function(){
             
             
             
-            function ordered(current, imgSArr, effect,  stateSingleton,order,currentIndex) {
-                current.toggleShowHideFun(
+            function ordered(previous, imgSArr, effect,  stateSingleton,order,currentIndex) {
+                previous.toggleShowHideFun(
                 function () {
                     var that = this;
                     //debugger;
