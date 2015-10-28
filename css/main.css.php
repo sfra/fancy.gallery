@@ -48,6 +48,7 @@ if(!isset($animationDef)) {$animationDef="";};
 }
 
 .img-wrapper > div {
+    position: relative;
     width: 100%;
     height: <?= $tile_height_perc ?>%;
     text-decoration:none;
@@ -64,7 +65,7 @@ if(!isset($animationDef)) {$animationDef="";};
 
 
 .img-wrapper > div > div {
-
+    position: relative;
     display: block;
     float: left;
     width: <?= $tile_width_perc ?>%;
@@ -135,23 +136,80 @@ EOT;
 
 ?>
 
-#cyc {
-    position: relative;
-/*    top:300px;*/
-    left: 10px;
+
+
+#navi {
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    min-height: 50px;
+    background-color: rgba(100,100,100,0);
+    color: #ff0000;
+    bottom: 0px;      
+    display: block;
+      margin-left: auto;
+  margin-right: auto;
+    transform: translate(20%,0%);
+}
+
+#navi > div {
     float: left;
-    height: 100px;
-    width: 100px;
+    border-radius: 10px;
+    height: 50px;
+    
     
 }
 
-#cyc2 {
-    position: relative;
-/*    top:200px;*/
-    left: 10px;
+#navi > div:nth-child(3) {
+    transform: rotate(180deg);
+}
+
+
+#slides-nav {
+/*    width: 80%;*/
+    margin-left: 30px;
+    margin-right: 30px;
+    height: 50px;
+    line-height: 50px;
+    display: block;
+}
+
+
+
+
+#navi div > .slide-button {
+    width: 10px;
+    height: 10px;
     float: left;
-    height: 100px;
-    width: 100px;
+    background-color: #112233;
+    border-radius: 10px;
+    margin: 15px 20px;
+        line-height: 20px;
+      display: block;
+    vertical-align: middle;
+
+}
+
+.slide-button:hover {
+        background-color: #556677;
+    
+}
+
+.slide-button > p > img {
+    transform: scale(0);
+    transition: all .5s linear;
+    position: relative;
+    top:-85px;
+    left:-50px;
+    border: 4px solid rgba(100,100,100,0.5);
+    border-radius: 10px;
+    opacity: 0;
+}
+
+.slide-button:hover > p > img {
+    transition: all 1s linear;
+    transform: scale(1);
+    opacity: 1;
 }
 
 

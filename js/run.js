@@ -29,6 +29,24 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
         var elementsX = [];
         
         
+        var $slidesNav = document.getElementById('slides-nav');
+        
+        
+        for(var i=0;i<numberOfImgs;i++){
+            $slidesNav.appendChild((function(j){ var out = document.createElement('div');
+                                                out.classList.add('slide-button');
+                                                var inside = document.createElement('p');
+                                                var img = new Image(data.tile.xdim*data.tile.w/7,data.tile.ydim*data.tile.h/7);
+                                                img.src = 'images/img'+j+'.jpg';
+                                                inside.appendChild(img);
+                                                inside.classList.add('clearfix');
+                                                out.appendChild(inside);
+                                                
+                                                return out;})(i));
+            
+        };
+        
+        
         
         /* resize image according to the windows height */
         dom.adjustTiles(data);

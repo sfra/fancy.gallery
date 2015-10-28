@@ -154,7 +154,7 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     this.toggleShowHideFun=function(callback,order){
           console.log(elementsY);
           this.copyElements();
-
+//        debugger;
           for(var i=0,max= ImagesSet.tile.xdim * ImagesSet.tile.ydim;i<max;i++){
 
                 (function(j){

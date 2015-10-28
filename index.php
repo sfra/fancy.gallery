@@ -13,22 +13,20 @@
 <body>
 
     <div>
-
+    <div>AAAAA</div>
         <div id="gal-wrapper" class="clearfix">
             <?php
         include "gallery.plugin.php";
     ?>
 
+
+  <div id="navi"><div id="cyc2"><img src="img/left_arrow.png" /></div><div id="slides-nav"></div><div id="cyc"><img src="img/left_arrow.png" /></div></div></div>  
         </div>
-
-
     </div>
 
 
 
 
-    <button id="cyc2">&lt;&lt;</button>
-    <button id="cyc">&gt;&gt;</button>
 
 </body>
 

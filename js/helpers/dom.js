@@ -37,7 +37,7 @@ define([], function () {
      */
     function reindexImgWrappers(current) {
 
-        for (var i = 0, max_ = $gal_wrapper.children.length; i < max_; i++) {
+        for (var i = 0, max_ = $gal_wrapper.children.length-1; i < max_; i++) {
             console.log($gal_wrapper.children[i]);
 
         }
@@ -45,7 +45,7 @@ define([], function () {
 
         var index = 0;
         $gal_wrapper.children[current].style.zIndex = -5;
-        for (var i = current + 1, maxUpper = $gal_wrapper.children.length; i < maxUpper; i++) {
+        for (var i = current + 1, maxUpper = $gal_wrapper.children.length-1; i < maxUpper; i++) {
             $gal_wrapper.children[i].style.zIndex = -(index++ * 10);
         }
 
@@ -53,7 +53,7 @@ define([], function () {
             $gal_wrapper.children[i].style.zIndex = -(index++ * 10);
         }
 
-        for (var i = 0; i < $gal_wrapper.children.length; i++) {
+        for (var i = 0; i < $gal_wrapper.children.length-1; i++) {
             console.log($gal_wrapper.children[i].style.zIndex);
         };
 
