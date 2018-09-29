@@ -2,7 +2,7 @@ define([], function () {
     // TODO: resize tile
     'use strict';
 
-    var $gal_wrapper = document.getElementById('gal-wrapper');
+    var $gal_wrapper = document.getElementById('fancy-gallery-gal-wrapper');
 
 
     /**
@@ -60,10 +60,10 @@ define([], function () {
     * @method changeTileBG 
     */
     function changeTileBG() {
-        var tile_height = document.querySelectorAll('.img-wrapper')[0].children[0].children[9].offsetHeight;
-        var tile_width = document.querySelectorAll('.img-wrapper')[0].children[0].children[9].offsetWidth;
-        var $tiles = document.querySelectorAll('.img-wrapper > div');
-        var $images = document.querySelectorAll('.img-wrapper');
+        var tile_height = document.querySelectorAll('.fancy-gallery-img-wrapper')[0].children[0].children[9].offsetHeight;
+        var tile_width = document.querySelectorAll('.fancy-gallery-img-wrapper')[0].children[0].children[9].offsetWidth;
+        var $tiles = document.querySelectorAll('.fancy-gallery-img-wrapper > div');
+        var $images = document.querySelectorAll('.fancy-gallery-img-wrapper');
         var tiles_vert = $tiles.length;
         var tiles_hor = $tiles[0].children.length;
         var current_image = null;
@@ -91,7 +91,7 @@ define([], function () {
         referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     };
 
-    let $buttons=document.getElementById('slides-nav').children;
+    let $buttons=document.getElementById('fancy-gallery-slides-nav').children;
     
     function setButton(nr) {
 

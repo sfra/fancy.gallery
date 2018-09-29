@@ -29,19 +29,19 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
         var elementsX = [];
 
 
-        var $slidesNav = document.getElementById('slides-nav');
+        var $slidesNav = document.getElementById('fancy-gallery-slides-nav');
 
 
         for (var i = 0; i < numberOfImgs; i++) {
             $slidesNav.appendChild(((j)=> {
                 var out = document.createElement('div');
-                out.classList.add('slide-button');
+                out.classList.add('fancy-gallery-slide-button');
                 var inside = document.createElement('p');
                 inside.setAttribute('x-data-nr',i);
                 var img = new Image(data.tile.xdim * data.tile.w / 7, data.tile.ydim * data.tile.h / 7);
                 img.src = 'images/img' + j + '.jpg';
                 inside.appendChild(img);
-                inside.classList.add('clearfix');
+                inside.classList.add('fancy-gallery-clearfix');
                 out.appendChild(inside);
                 
                 return out;
@@ -80,7 +80,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
 
         /* events listeners */
-        document.getElementById('switch-right').addEventListener('click', (e)=> {
+        document.getElementById('fancy-gallery-switch-right').addEventListener('click', (e)=> {
 
             if (stateSingleton.animation.isLasting) { // do not execute the function if during animation 
                 return;
@@ -201,7 +201,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
         /** for debugging **/
         //         var event = new MouseEvent('click');
-        //         document.getElementById('switch-right').dispatchEvent(event);
+        //         document.getElementById('fancy-gallery-switch-right').dispatchEvent(event);
         /** end for debugging **/
     };
     return {};

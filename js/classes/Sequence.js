@@ -5,7 +5,7 @@ define([],function(){
             function random (current, imgSArr, effect,  stateSingleton,currentIndex) {           
                current.toggleHideShowRandom(
                     ()=>{
-                    setTimeout(function () {
+                    setTimeout(()=> {
                     rearangeAfterMove(imgSArr, effect,stateSingleton,currentIndex);
         
                    }, 1000);

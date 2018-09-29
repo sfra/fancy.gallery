@@ -28,7 +28,7 @@ if(!isset($animationDef)) {$animationDef="";};
     line-height: 0px;
 }
 
-#gal-wrapper {
+#fancy-gallery-gal-wrapper {
     /*height: 300px;*/
     max-width: <?= $config_string->tile->w * $config_string->tile->xdim ?>px;
     width: 100%;
@@ -39,7 +39,7 @@ if(!isset($animationDef)) {$animationDef="";};
 }
 
 
-.img-wrapper {
+.fancy-gallery-img-wrapper {
     width: 100%;
     height: 100%;
     position: relative;
@@ -47,7 +47,7 @@ if(!isset($animationDef)) {$animationDef="";};
 /*    top: -200px;*/
 }
 
-.img-wrapper > div {
+.fancy-gallery-img-wrapper > div {
     position: relative;
     width: 100%;
     height: <?= $tile_height_perc ?>%;
@@ -64,7 +64,7 @@ if(!isset($animationDef)) {$animationDef="";};
 
 
 
-.img-wrapper > div > div {
+.fancy-gallery-img-wrapper > div > div {
     position: relative;
     display: block;
     float: left;
@@ -98,7 +98,7 @@ if(!isset($animationDef)) {$animationDef="";};
 
 
 
-.img-wrapper > div > div.hide {
+.fancy-gallery-img-wrapper > div > div.hide {
     <?= $hideEffect ?>;
     
 }
@@ -127,7 +127,7 @@ EOT;
 
 
 
-#navi {
+#fancy-gallery-navi {
     position: absolute;
     z-index: 99;
     width: 100%;
@@ -141,19 +141,20 @@ EOT;
     transform: translate(20%,0%);
 }
 
-#navi > div {
+#fancy-gallery-navi > div {
     float: left;
     border-radius: 10px;
     height: 50px;
+    margin-top: -14px;
     
 }
 
-#navi > div:nth-child(3) {
+#fancy-gallery-navi > div:nth-child(3) {
     transform: rotate(180deg);
 }
 
 
-#slides-nav {
+#fancy-gallery-slides-nav {
 /*    width: 80%;*/
     margin-left: 30px;
     margin-right: 30px;
@@ -165,7 +166,7 @@ EOT;
 
 
 
-#navi div > .slide-button {
+#fancy-gallery-navi div > .fancy-gallery-slide-button {
     width: 10px;
     height: 10px;
     float: left;
@@ -179,18 +180,18 @@ EOT;
 
 }
 
-#navi div > .slide-button.active {
+#fancy-gallery-navi div > .fancy-gallery-slide-button.active {
     transition: all 1s ease-in;
     background-color: #fafafa;
 }
 
 
-.slide-button:hover {
+.fancy-gallery-slide-button:hover {
         background-color: #556677;
     
 }
 
-.slide-button > p > img {
+.fancy-gallery-slide-button > p > img {
     transform: scale(0);
     transition: all .5s linear;
     position: relative;
@@ -201,7 +202,7 @@ EOT;
     opacity: 0;
 }
 
-.slide-button:hover > p > img {
+.fancy-gallery-slide-button:hover > p > img {
     transition: all 1s linear;
     transform: scale(1);
     opacity: 1;
@@ -227,13 +228,13 @@ footer {
 }
 
 
-.clearfix:after {
+.fancy-gallery-clearfix:after {
      content: "";
     display: table;
     clear: both;
 }
 
-#switch-right {
+#fancy-gallery-switch-right {
     position: relative;
     bottom: 18px;
 }
