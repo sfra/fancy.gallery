@@ -59,7 +59,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
         };
 
-
+        dom.setButton(0);
         /* set import properties from config to ImagesSet */
         ImagesSet.ImagesSet.tile = data.tile;
 
@@ -93,6 +93,8 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
             currentIndex=(currentIndex+1)%numberOfImgs;
 
+
+            dom.setButton(currentIndex);
             reindexPromise = new Promise((res,rej)=>{
                 if(dom.reindexImgWrappers(previousIndex,currentIndex)){
                     res();
@@ -137,7 +139,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
                 currentIndex = imgSArr.length - 1;
             };
 
-            var previousDom = previous.getDomElement();
+  
 
             reindexPromise = new Promise((res, rej)=> {
                 
@@ -146,7 +148,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
                 };
 
             });
-
+            dom.setButton(currentIndex);
 
             reindexPromise.then(() =>{
                 if (data.sequence === 'random') {
@@ -173,10 +175,12 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
                 return;
             }
 
+
             stateSingleton.animation.isLasting = true;
             console.log('========');
             let previousIndex = currentIndex;
-            currentIndex= $target.getAttribute('x-data-nr');
+            currentIndex= parseInt($target.getAttribute('x-data-nr'),10);
+            dom.setButton(currentIndex);
             reindexPromise = new Promise((res, rej)=> {
                 if (dom.reindexImgWrappers(previousIndex,currentIndex)) {
                     res();

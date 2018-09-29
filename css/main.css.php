@@ -146,7 +146,6 @@ EOT;
     border-radius: 10px;
     height: 50px;
     
-    
 }
 
 #navi > div:nth-child(3) {
@@ -171,13 +170,20 @@ EOT;
     height: 10px;
     float: left;
     background-color: #112233;
+    
     border-radius: 10px;
     margin: 15px 20px;
         line-height: 20px;
       display: block;
-    vertical-align: middle;
+
 
 }
+
+#navi div > .slide-button.active {
+    transition: all 1s ease-in;
+    background-color: #fafafa;
+}
+
 
 .slide-button:hover {
         background-color: #556677;

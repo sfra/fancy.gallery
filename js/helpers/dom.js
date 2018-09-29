@@ -48,27 +48,6 @@ define([], function () {
         $gal_wrapper.children[next].style.zIndex=10;
 
 
-        // for (var i = 0, max_ = $gal_wrapper.children.length-1; i < max_; i++) {
-        //     console.log($gal_wrapper.children[i]);
-
-        // }
-        
-
-        // var index = 0;
-
-        // $gal_wrapper.children[current].style.zIndex = -5;
-        // for (var i = current + 1, maxUpper = $gal_wrapper.children.length-1; i < maxUpper; i++) {
-        //     $gal_wrapper.children[i].style.zIndex = -(index++ * 10);
-        // }
-
-        // for (var i = 0; i < current; i++) {
-        //     $gal_wrapper.children[i].style.zIndex = -(index++ * 10);
-        // }
-
-        // for (var i = 0; i < $gal_wrapper.children.length-1; i++) {
-        //     console.log('sequence');
-        //     console.log($gal_wrapper.children[i].style.zIndex);
-        // };
 
 
 
@@ -112,10 +91,26 @@ define([], function () {
         referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     };
 
+    let $buttons=document.getElementById('slides-nav').children;
+    
+    function setButton(nr) {
+
+        for(let i=0, max=$buttons.length; i<max;i++){
+            if(i===nr) {
+                $buttons[i].classList.add('active');
+            } else {
+                $buttons[i].classList.remove('active');
+
+            }
+
+        }    
+    }
+
 
     return {
-        adjustTiles: adjustTiles,
-        reindexImgWrappers: reindexImgWrappers,
-        insertAfter: insertAfter
+        adjustTiles,
+        reindexImgWrappers,
+        insertAfter,
+        setButton
     };
 });
