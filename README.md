@@ -6,7 +6,7 @@ Clone the repository to the place on the server (php support is required).
 Then put in the console
 If you want to install [require.js](http://requirejs.org/) dependency locally just put into console
 ```bash
-bower install
+bower install && npm install
 ```
 
 In your index.php file (or the file in which you want to put gallery), add to head section

@@ -1,10 +1,10 @@
 {
-  "name": "gallery",
+  "name": "fancy.gallery",
   "version": "0.0.0",
   "authors": [
     "Franku <sz.frankyy@gmail.com>"
   ],
-  "main": "index.html",
+  "main": "index.php",
   "moduleType": [
     "amd"
   ],
@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "requirejs": "^2.3.6",
-    "normalize.css": "^8.0.0"
+  
   },
   "devDependencies": {}
 }
