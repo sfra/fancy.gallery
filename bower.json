@@ -18,8 +18,8 @@
     "tests"
   ],
   "dependencies": {
-    "promise-polyfill": "~2.1.0",
-    "requirejs": "~2.1.18",
-    "normalize-css": "normalize.css#~3.0.3"
-  }
+    "requirejs": "^2.3.6",
+    "normalize.css": "^8.0.0"
+  },
+  "devDependencies": {}
 }

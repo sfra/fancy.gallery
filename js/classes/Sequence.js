@@ -25,12 +25,12 @@ define([],function(){
             
             function ordered(previous, imgSArr, effect,  stateSingleton,order,currentIndex) {
                 previous.toggleShowHideFun(
-                function () {
-                    var that = this;
-                    //debugger;
-                    setTimeout(function () {
+                    ()=>{
+                    setTimeout(()=>{
                         var indexNext=0;
-                        var i = currentIndex;
+                        let i = currentIndex;
+                        
+                        
                         for (i, max = imgSArr.length; i < max; i++) {
                             imgSArr[i].getDomElement().style.zIndex = -(indexNext++) * 10;
                             imgSArr[i].setHidden(false);
@@ -44,11 +44,6 @@ define([],function(){
                         }
         
                         
-                    
-                    
-
-
-        
                         stateSingleton.animation.isLasting = false;
         
                     }, 1000);

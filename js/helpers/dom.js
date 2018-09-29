@@ -35,27 +35,40 @@ define([], function () {
      * @method reindexImgWrappers 
      * @param {number} index of the current image
      */
-    function reindexImgWrappers(current) {
+    function reindexImgWrappers(current,next) {
 
-        for (var i = 0, max_ = $gal_wrapper.children.length-1; i < max_; i++) {
-            console.log($gal_wrapper.children[i]);
 
+        for(let i=0, max=$gal_wrapper.children.length-1; i<max; i++){
+            if(i!==current && i!==next) {
+                $gal_wrapper.children[i].style.zIndex=0;
+            }
         }
+        
+        $gal_wrapper.children[current].style.zIndex=20;
+        $gal_wrapper.children[next].style.zIndex=10;
 
 
-        var index = 0;
-        $gal_wrapper.children[current].style.zIndex = -5;
-        for (var i = current + 1, maxUpper = $gal_wrapper.children.length-1; i < maxUpper; i++) {
-            $gal_wrapper.children[i].style.zIndex = -(index++ * 10);
-        }
+        // for (var i = 0, max_ = $gal_wrapper.children.length-1; i < max_; i++) {
+        //     console.log($gal_wrapper.children[i]);
 
-        for (var i = 0; i < current; i++) {
-            $gal_wrapper.children[i].style.zIndex = -(index++ * 10);
-        }
+        // }
+        
 
-        for (var i = 0; i < $gal_wrapper.children.length-1; i++) {
-            console.log($gal_wrapper.children[i].style.zIndex);
-        };
+        // var index = 0;
+
+        // $gal_wrapper.children[current].style.zIndex = -5;
+        // for (var i = current + 1, maxUpper = $gal_wrapper.children.length-1; i < maxUpper; i++) {
+        //     $gal_wrapper.children[i].style.zIndex = -(index++ * 10);
+        // }
+
+        // for (var i = 0; i < current; i++) {
+        //     $gal_wrapper.children[i].style.zIndex = -(index++ * 10);
+        // }
+
+        // for (var i = 0; i < $gal_wrapper.children.length-1; i++) {
+        //     console.log('sequence');
+        //     console.log($gal_wrapper.children[i].style.zIndex);
+        // };
 
 
 

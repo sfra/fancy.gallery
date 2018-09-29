@@ -105,17 +105,6 @@ if(!isset($animationDef)) {$animationDef="";};
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 <?php
 $current_top = null;
 $current_zIndex = null;
@@ -238,5 +227,9 @@ footer {
     clear: both;
 }
 
+#switch-right {
+    position: relative;
+    bottom: 18px;
+}
 
 }
