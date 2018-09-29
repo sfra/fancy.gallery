@@ -1,19 +1,19 @@
-define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequence', 'helpers/dom'], function (stateSingleton, ImagesSet, __ajax, order, Sequence, dom) {
+define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequence', 'helpers/dom'],  (stateSingleton, ImagesSet, __ajax, order, Sequence, dom)=> {
+'use strict';
+    let currentIndex = 0; // the number of the current image
+    let reindexPromise=null;
 
-    var currentIndex = 0; // the number of the current image
 
-
-
-    var mainPromise = new Promise(function (res, rej) { //promise loading config file
-        var __aj = Object(__ajax('config.json', {
+    let mainPromise = new Promise((res, rej)=> { //promise loading config file
+        let __aj = Object(__ajax('config.json', {
             method: 'GET'
         }));
-        __aj.get().then(function (data) {
+        __aj.get().then((data)=> {
                 res(JSON.parse(data));
             },
-            function (err) {
+            (err)=> {
                 console.log(err);
-
+                rej(err);
             });
     });
 
@@ -22,23 +22,20 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
     function mainResolve(data) {
 
-        var numberOfImgs = data.numberOfImgs;
-        var effect = data.effect;
-        var elementsX;
-        var imgSArr = [];
-        var elementsX = [];
+        const numberOfImgs = data.numberOfImgs, effect = data.effect;
+        let imgSArr = [], elementsX = [];
 
 
-        var $slidesNav = document.getElementById('fancy-gallery-slides-nav');
+        let $slidesNav = document.getElementById('fancy-gallery-slides-nav');
 
 
-        for (var i = 0; i < numberOfImgs; i++) {
+        for (let i = 0; i < numberOfImgs; i++) {
             $slidesNav.appendChild(((j)=> {
-                var out = document.createElement('div');
+                let out = document.createElement('div');
                 out.classList.add('fancy-gallery-slide-button');
-                var inside = document.createElement('p');
+                let inside = document.createElement('p');
                 inside.setAttribute('x-data-nr',i);
-                var img = new Image(data.tile.xdim * data.tile.w / 7, data.tile.ydim * data.tile.h / 7);
+                let img = new Image(data.tile.xdim * data.tile.w / 7, data.tile.ydim * data.tile.h / 7);
                 img.src = 'images/img' + j + '.jpg';
                 inside.appendChild(img);
                 inside.classList.add('fancy-gallery-clearfix');
@@ -47,35 +44,36 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
                 return out;
             })(i));
 
-        };
+        }
 
 
 
         /* resize image according to the windows height */
         dom.adjustTiles(data);
 
-        window.onresize = function () {
+        window.onresize = ()=> {
             dom.adjustTiles(data);
 
         };
 
+        /* set switch button to 0 */
         dom.setButton(0);
         /* set import properties from config to ImagesSet */
         ImagesSet.ImagesSet.tile = data.tile;
 
-        for (var i = 0; i < numberOfImgs; i++) {
+        for (let i = 0; i < numberOfImgs; i++) {
             imgSArr.push(new ImagesSet.ImagesSet(false, 'image-wrapper' + i));
             imgSArr[i].setSpeed(data.speed);
-        };
+        }
 
         imgSArr[0].setElements();
 
-        var $imagesWrapper = imgSArr[0].getDomElement().parentNode;
+        let $imagesWrapper = imgSArr[0].getDomElement().parentNode;
 
-        for (var i = 0, max = imgSArr.length; i < max; i++) {
+        for (let i = 0, max = imgSArr.length; i < max; i++) {
             imgSArr[i].setElementsX();
             imgSArr[i].setEffect(effect);
-        };
+        }
 
 
 
@@ -84,12 +82,12 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
             if (stateSingleton.animation.isLasting) { // do not execute the function if during animation 
                 return;
-            };
+            }
 
             stateSingleton.animation.isLasting = true;
 
-            var current = imgSArr[currentIndex];
-            var previousIndex=currentIndex;
+            let current = imgSArr[currentIndex];
+            let previousIndex=currentIndex;
 
             currentIndex=(currentIndex+1)%numberOfImgs;
 
@@ -98,38 +96,33 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
             reindexPromise = new Promise((res,rej)=>{
                 if(dom.reindexImgWrappers(previousIndex,currentIndex)){
                     res();
-                };
+                }
 
             });
-                
-
-            
 
             reindexPromise.then(()=>{
                 
                 console.log(data.sequence);
                 if (data.sequence === 'random') {
-                    (Sequence['random'].bind(this, current, imgSArr, effect, stateSingleton, currentIndex))();
+                    (Sequence.random.bind(this, current, imgSArr, effect, stateSingleton, currentIndex))();
                 } else if (data.sequence === 'ordered') {
-                    (Sequence['ordered'].bind(this, current, imgSArr, effect, stateSingleton, order, currentIndex))();
+                    (Sequence.ordered.bind(this, current, imgSArr, effect, stateSingleton, order, currentIndex))();
                 }
             });
 
 
         });
 
-
-//        console.log(imgSArr[0].getDomElement().classList);
         document.getElementById('switch-left').addEventListener('click', (e)=> {
 
             if (stateSingleton.animation.isLasting) {
                 return;
-            };
+            }
 
             stateSingleton.animation.isLasting = true;
 
-            var previous = imgSArr[currentIndex];
-            var previousIndex=currentIndex;
+            let previous = imgSArr[currentIndex];
+            let previousIndex=currentIndex;
 
 
             
@@ -137,7 +130,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
                 currentIndex -= 1;
             } else {
                 currentIndex = imgSArr.length - 1;
-            };
+            }
 
   
 
@@ -145,18 +138,18 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
                 
                 if (dom.reindexImgWrappers(previousIndex,currentIndex)) {
                     res();
-                };
+                }
 
             });
             dom.setButton(currentIndex);
 
             reindexPromise.then(() =>{
                 if (data.sequence === 'random') {
-                    (Sequence['random'].bind(this, previous, imgSArr, effect, stateSingleton, currentIndex))();
+                    (Sequence.random.bind(this, previous, imgSArr, effect, stateSingleton, currentIndex))();
                 } else if (data.sequence === 'ordered') {
-                    (Sequence['ordered'].bind(this, previous, imgSArr, effect, stateSingleton, order, currentIndex))();
+                    (Sequence.ordered.bind(this, previous, imgSArr, effect, stateSingleton, order, currentIndex))();
                 }
-            }, function () {}); 
+            }, (err)=> { console.log(err);}); 
 
 
 
@@ -177,22 +170,21 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
 
             stateSingleton.animation.isLasting = true;
-            console.log('========');
             let previousIndex = currentIndex;
             currentIndex= parseInt($target.getAttribute('x-data-nr'),10);
             dom.setButton(currentIndex);
             reindexPromise = new Promise((res, rej)=> {
                 if (dom.reindexImgWrappers(previousIndex,currentIndex)) {
                     res();
-                };
+                }
             });
 
 
             reindexPromise.then(()=> {
                 if (data.sequence === 'random') {
-                    (Sequence['random'].bind(this, imgSArr[previousIndex], imgSArr, effect, stateSingleton, $target.getAttribute('x-data-nr')))();
+                    (Sequence.random.bind(this, imgSArr[previousIndex], imgSArr, effect, stateSingleton, $target.getAttribute('x-data-nr')))();
                 } else if (data.sequence === 'ordered') {
-                    (Sequence['ordered'].bind(this, imgSArr[previousIndex], imgSArr, effect, stateSingleton, order, $target.getAttribute('x-data-nr')))();
+                    (Sequence.ordered.bind(this, imgSArr[previousIndex], imgSArr, effect, stateSingleton, order, $target.getAttribute('x-data-nr')))();
                 }
             }, ()=>{});
 
@@ -200,9 +192,9 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
         },false);
 
         /** for debugging **/
-        //         var event = new MouseEvent('click');
+        //         let event = new MouseEvent('click');
         //         document.getElementById('fancy-gallery-switch-right').dispatchEvent(event);
         /** end for debugging **/
-    };
+    }
     return {};
 });

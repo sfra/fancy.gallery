@@ -9,7 +9,8 @@ requirejs.config({
 });
 
 
-requirejs.onError = function (err) {
+requirejs.onError = (err)=> {
+    'use strict';
     console.warn(err);
     console.log(err.requireType);
     console.log('modules: ' + err.requireModules);
@@ -17,7 +18,7 @@ requirejs.onError = function (err) {
 };
 
 /* it does not work in firefox without loading ImageSet at this stage */
-require(['run', 'libs/__ajax', 'ImagesSet'], function (run) {
+require(['run', 'libs/__ajax', 'ImagesSet'], (run)=> {
 
 
 });

@@ -1,10 +1,11 @@
-define([],function(){
-var Iteraror = function(_elements){
-    //debugger;
-    var elements;    
-    var index;
-    var length;
+define([],()=>{
+'use strict';
+const Iteraror = function(_elements){
+
+    let elements, index, length;
+    
     this.setElements = function(_elements){
+        
         if (typeof _elements=== 'undefined') {
             elements =[];
 
@@ -19,28 +20,28 @@ var Iteraror = function(_elements){
    
    length = elements.length ;
    
-    this.next = function(){
+    this.next = ()=>{
         if (!this.hasNext()) {
             return null;
         }
         index++;
         
         return elements[index];
-    }
+    };
     
-    this.hasNext = function(){
+    this.hasNext = ()=>{
         return index<length;
-    }
+    };
     
-    this.rewind = function(){
+    this.rewind = ()=>{
         index =0;
         return elements[index];
-    }
+    };
     
-    this.current = function(){
+    this.current = ()=>{
         
         return elements[index];
-    }
+    };
     
    
    

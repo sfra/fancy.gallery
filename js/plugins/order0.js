@@ -1,4 +1,4 @@
-define([],function(){
+define([],()=>{
     var order=function(x,y,index){
         var direction;
         if (!index%2) {

@@ -1,0 +1,6 @@
+{
+  "browser": true,
+  "esversion": 6,
+  "predef": ["state", "console", "sessionStorage", "resizeImages", "functions"]
+
+}
