@@ -1,9 +1,9 @@
 {
     "numberOfImgs": "5",
     "effect" : "hide",
-    "plugin" : "anim3",
+    "plugin" : "anim4",
     "speed": 50,
-    "sequence": "ordered",
+    "sequence": "random",
 
     
     "tile" :{

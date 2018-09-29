@@ -107,7 +107,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
             reindexPromise.then(()=>{
                 
-
+                console.log(data.sequence);
                 if (data.sequence === 'random') {
                     (Sequence['random'].bind(this, current, imgSArr, effect, stateSingleton, currentIndex))();
                 } else if (data.sequence === 'ordered') {
