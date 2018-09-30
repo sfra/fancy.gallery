@@ -1,7 +1,7 @@
 {
     "numberOfImgs": "6",
     "effect" : "hide",
-    "plugin" : "anim4",
+    "plugin" : "anim2",
     "speed": 50,
     "sequence": "random",
 

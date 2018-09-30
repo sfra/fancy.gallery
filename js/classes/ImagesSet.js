@@ -136,7 +136,7 @@ function ImagesSet(_state, _id, _elementsX, _elementsY){
     
      /**
      * animates tiles in the order order given by a functuon order and then runs the callback 
-     * @method toggleHideShowRandom 
+     * @method toggleShowHideFun 
      * @param {function} callback the function which runs after last animation
      * @param {function} order the function that for a gived xdim, ydim and index number prameters return coordinates the next element
      */  

@@ -93,7 +93,7 @@ define([], function () {
           };
 
           xmlhttp.open(config.method, url, true);
-          console.log(config.method);
+
           //                    if(config.method==='post') {
           xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
           xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

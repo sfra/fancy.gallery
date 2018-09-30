@@ -9,6 +9,7 @@ window.onload = ()=>{
     let $link = document.createElement('link');
     $link.setAttribute('rel','stylesheet');
     $link.setAttribute('href','css/main.css.php');
+    $link.setAttribute('id','css-plugin');
     let $script = document.createElement('script');
     $script.setAttribute('data-main','js/main')
     $script.setAttribute('src','js/libs/requirejs/require.js');

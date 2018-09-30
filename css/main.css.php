@@ -1,7 +1,13 @@
 <?php
 $config_string = json_decode(file_get_contents("../config.json"));
 $numberOfImgs = $config_string->numberOfImgs;
-$plugin = $config_string->plugin;
+$plugin = null;
+
+if(isset($_GET['plugin'])) {
+    $plugin=$_GET['plugin'];
+} else {
+    $plugin = $config_string->plugin;
+}
 
 $tile_width_perc = ($config_string->tile->w)/($config_string->tile->xdim * $config_string->tile->w)*100;
 $tile_height_perc = ($config_string->tile->h)/($config_string->tile->ydim * $config_string->tile->h)*100;
