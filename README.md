@@ -1,24 +1,21 @@
-fancy gallery (no jquery required)  
-=====================
+# fancy gallery (no jquery required)  
 
-[bower](http://bower.io/) is required. 
+We assume that [bower](https://github.com/bower/bower) and [node](https://github.com/nodejs/node) are installed.
+
 Clone the repository to the place on the server (php support is required).
-Then put in the console
+
 If you want to install [require.js](http://requirejs.org/) dependency locally just put into console
 ```bash
 bower install && npm install
 ```
-
+### Usage
 In your index.php file (or the file in which you want to put gallery), add to head section
 
 ```html
 <script type="text/javascript" src="gallery.js"></script>
 ```
-
-
 Files img0.jpg, img1.jpg ... are contained in images folder. If you want to change the number of displayed images
-change the number in the file config.json and the value of variable numberOfImgs in run.js. In the case of
-js file the value can be set by the usage of ajax, but it would increase the number of requests.
+change the number in the file config.json and the value of variable numberOfImgs in run.js. .
 
 All of options contained in config.json are:
 ```javascript
@@ -38,6 +35,7 @@ All of options contained in config.json are:
     }
 }
 ```
+The current repository contains demo of the fancy.gallery.
 
 
 

@@ -1,8 +1,9 @@
 {
   "name": "fancy.gallery",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "homepage": "https://github.com/sfra/__ajax",
   "authors": [
-    "Franku <sz.frankyy@gmail.com>"
+    "zymon Frankowski <sz.frankyy@gmail.com>"
   ],
   "main": "index.php",
   "moduleType": [
