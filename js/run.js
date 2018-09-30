@@ -173,16 +173,12 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
                 console.log(err);
             });
 
-
-
         });
 
 
 
         $slidesNav.addEventListener('click', (e) => {
             const $target = e.target;
-
-
 
             if ($target.tagName !== 'P') {
                 return;
