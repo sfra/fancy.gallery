@@ -1,18 +1,19 @@
-define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequence', 'helpers/dom'],  (stateSingleton, ImagesSet, __ajax, order, Sequence, dom)=> {
-'use strict';
+define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequence', 'helpers/dom'], (stateSingleton, ImagesSet, __ajax, order, Sequence, dom) => {
+    'use strict';
     let currentIndex = 0; // the number of the current image
-    let reindexPromise=null, sequence=null;
+    let reindexPromise = null,
+        sequence = null;
 
     const $slidesNav = document.getElementById('fancy-gallery-slides-nav');
 
-    let mainPromise = new Promise((res, rej)=> { //promise loading config file
+    let mainPromise = new Promise((res, rej) => { //promise loading config file
         let __aj = Object(__ajax('config.json', {
             method: 'GET'
         }));
-        __aj.get().then((data)=> {
+        __aj.get().then((data) => {
                 res(JSON.parse(data));
             },
-            (err)=> {
+            (err) => {
                 console.log(err);
                 rej(err);
             });
@@ -24,25 +25,27 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
     function mainResolve(data) {
 
         const numberOfImgs = data.numberOfImgs;
-        let imgSArr = [], elementsX = [], effect = data.effect;
+        let imgSArr = [],
+            elementsX = [],
+            effect = data.effect;
 
-        sequence=data.sequence;
-        
-   
+        sequence = data.sequence;
+
+
 
 
         for (let i = 0; i < numberOfImgs; i++) {
-            $slidesNav.appendChild(((j)=> {
+            $slidesNav.appendChild(((j) => {
                 let out = document.createElement('div');
                 out.classList.add('fancy-gallery-slide-button');
                 let inside = document.createElement('p');
-                inside.setAttribute('x-data-nr',i);
+                inside.setAttribute('x-data-nr', i);
                 let img = new Image(data.tile.xdim * data.tile.w / 7, data.tile.ydim * data.tile.h / 7);
                 img.src = 'images/img' + j + '.jpg';
                 inside.appendChild(img);
                 inside.classList.add('fancy-gallery-clearfix');
                 out.appendChild(inside);
-                
+
                 return out;
             })(i));
 
@@ -53,7 +56,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
         /* resize image according to the windows height */
         dom.adjustTiles(data);
 
-        window.onresize = ()=> {
+        window.onresize = () => {
             dom.adjustTiles(data);
 
         };
@@ -80,34 +83,37 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
 
         /* events listeners */
-        document.getElementById('fancy-gallery-switch-right').addEventListener('click', (e)=> {
+        document.getElementById('fancy-gallery-switch-right').addEventListener('click', (e) => {
 
             if (stateSingleton.animation.isLasting) { // do not execute the function if during animation 
                 return;
             }
 
-            let sequence=data.sequence;
-           if(typeof sessionStorage.getItem('fancy-gallery-sequence')!=='undefined'){
-                sequence = sessionStorage.getItem('fancy-gallery-sequence');
+            let sequence = data.sequence;
+
+            let fgs = sessionStorage.getItem('fancy-gallery-sequence');
+            if (typeof fgs !== 'undefined' && fgs !== null) {
+                sequence = fgs;
             }
+
             stateSingleton.animation.isLasting = true;
 
             let current = imgSArr[currentIndex];
-            let previousIndex=currentIndex;
+            let previousIndex = currentIndex;
 
-            currentIndex=(currentIndex+1)%numberOfImgs;
+            currentIndex = (currentIndex + 1) % numberOfImgs;
 
 
             dom.setButton(currentIndex);
-            reindexPromise = new Promise((res,rej)=>{
-                if(dom.reindexImgWrappers(previousIndex,currentIndex)){
+            reindexPromise = new Promise((res, rej) => {
+                if (dom.reindexImgWrappers(previousIndex, currentIndex)) {
                     res();
                 }
 
             });
 
-            reindexPromise.then(()=>{
-                
+            reindexPromise.then(() => {
+
 
                 if (sequence === 'random') {
 
@@ -120,15 +126,15 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
         });
 
-        document.getElementById('switch-left').addEventListener('click', (e)=> {
+        document.getElementById('switch-left').addEventListener('click', (e) => {
 
             if (stateSingleton.animation.isLasting) {
                 return;
             }
 
-            if(typeof sessionStorage.getItem('fancy-gallery-sequence')!=='undefined') {
-
-                sequence = sessionStorage.getItem('fancy-gallery-sequence');
+            let fgs = sessionStorage.getItem('fancy-gallery-sequence');
+            if (typeof fgs !== 'undefined' && fgs !== null) {
+                sequence = fgs;
             } else {
                 sequence = data.sequence;
             }
@@ -136,34 +142,36 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
             stateSingleton.animation.isLasting = true;
 
             let previous = imgSArr[currentIndex];
-            let previousIndex=currentIndex;
+            let previousIndex = currentIndex;
 
 
-            
+
             if (currentIndex > 0) {
                 currentIndex -= 1;
             } else {
                 currentIndex = imgSArr.length - 1;
             }
 
-  
 
-            reindexPromise = new Promise((res, rej)=> {
 
-                if (dom.reindexImgWrappers(previousIndex,currentIndex)) {
+            reindexPromise = new Promise((res, rej) => {
+
+                if (dom.reindexImgWrappers(previousIndex, currentIndex)) {
                     res();
                 }
 
             });
             dom.setButton(currentIndex);
 
-            reindexPromise.then(() =>{
+            reindexPromise.then(() => {
                 if (sequence === 'random') {
                     (Sequence.random.bind(this, previous, imgSArr, effect, stateSingleton, currentIndex))();
                 } else if (sequence === 'ordered') {
                     (Sequence.ordered.bind(this, previous, imgSArr, effect, stateSingleton, order, currentIndex))();
                 }
-            }, (err)=> { console.log(err);}); 
+            }, (err) => {
+                console.log(err);
+            });
 
 
 
@@ -171,21 +179,22 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
 
 
-        $slidesNav.addEventListener('click',(e)=>{
+        $slidesNav.addEventListener('click', (e) => {
             const $target = e.target;
 
 
 
-            if($target.tagName!=='P') {
+            if ($target.tagName !== 'P') {
                 return;
             }
 
-            if(stateSingleton.animation.isLasting) {
+            if (stateSingleton.animation.isLasting) {
                 return;
             }
 
-            if(typeof sessionStorage.getItem('fancy-gallery-sequence')!=='undefined') {
-                sequence = sessionStorage.getItem('fancy-gallery-sequence');
+            let fgs = sessionStorage.getItem('fancy-gallery-sequence');
+            if (typeof fgs !== 'undefined' && fgs !== null) {
+                sequence = fgs;
             } else {
                 sequence = data.sequence;
             }
@@ -193,25 +202,25 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
             stateSingleton.animation.isLasting = true;
             let previousIndex = currentIndex;
-            currentIndex= parseInt($target.getAttribute('x-data-nr'),10);
+            currentIndex = parseInt($target.getAttribute('x-data-nr'), 10);
             dom.setButton(currentIndex);
-            reindexPromise = new Promise((res, rej)=> {
-                if (dom.reindexImgWrappers(previousIndex,currentIndex)) {
+            reindexPromise = new Promise((res, rej) => {
+                if (dom.reindexImgWrappers(previousIndex, currentIndex)) {
                     res();
                 }
             });
 
 
-            reindexPromise.then(()=> {
+            reindexPromise.then(() => {
                 if (sequence === 'random') {
                     (Sequence.random.bind(this, imgSArr[previousIndex], imgSArr, effect, stateSingleton, $target.getAttribute('x-data-nr')))();
                 } else if (sequence === 'ordered') {
                     (Sequence.ordered.bind(this, imgSArr[previousIndex], imgSArr, effect, stateSingleton, order, $target.getAttribute('x-data-nr')))();
                 }
-            }, ()=>{});
+            }, () => {});
 
 
-        },false);
+        }, false);
 
 
 
