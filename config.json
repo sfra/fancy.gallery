@@ -1,15 +1,15 @@
 {
     "numberOfImgs": "6",
-    "effect" : "hide",
-    "plugin" : "anim2",
+    "effect": "hide",
+    "plugin": "anim",
     "speed": 50,
-    "sequence": "random",
+    "sequence": "ordered",
 
-    
-    "tile" :{
-        "xdim":7,
-        "ydim":5,
+
+    "tile": {
+        "xdim": 7,
+        "ydim": 5,
         "w": 100,
-        "h": 105    
+        "h": 105
     }
 }

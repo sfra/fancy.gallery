@@ -19,7 +19,7 @@
     "tests"
   ],
   "dependencies": {
-    "requirejs": "^2.3.6",
+    "requirejs": "^2.3.6"
   
   },
   "devDependencies": {}
