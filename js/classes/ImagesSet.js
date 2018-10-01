@@ -38,7 +38,7 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
 
 
             if (stateSingleton.order.direction === 'reverse') {
-                imagesSetIterator.getReverseOrder();
+                imagesSetIterator.setReverseOrder();
             }
             oorder = imagesSetIterator.getOrder();
             if ((typeof _elementsX) !== 'undefined') {

@@ -10,7 +10,7 @@ define([], () => {
                 return this.order;
             };
 
-            this.getReverseOrder = () => {
+            this.setReverseOrder = () => {
                 return this.order.reverse();
             };
 
@@ -20,7 +20,7 @@ define([], () => {
         getOrder() {
             return this.order;
         }
-        getReverseOrder() {
+        setReverseOrder() {
             return this.order.reverse();
         }
     }
@@ -35,8 +35,6 @@ define([], () => {
                 xi = 0,
                 yi = 0;
             const visited = [];
-
-
 
             while (this.order.length < this.x * this.y) {
 
@@ -93,17 +91,13 @@ define([], () => {
                         }
                         break;
                 }
-
             }
-
-
         }
     }
 
     class ImagesSetIteratorSnake extends ImagesSetOrder {
         constructor(x, y) {
             super(x, y);
-
 
             for (let i = 0; i < this.x; i++) {
                 if (i % 2 === 0) {
@@ -117,11 +111,33 @@ define([], () => {
                         this.order.push([i, j]);
                     }
                 }
-
             }
-
         }
     }
+
+
+
+    class ImagesSetIteratorSnake2 extends ImagesSetOrder {
+        constructor(x, y) {
+            super(x, y);
+
+            for (let i = 0; i < this.y; i++) {
+                if (i % 2 === 0) {
+                    for (let j = 0; j < this.x; j++) {
+                        this.order.push([j, i]);
+                    }
+                }
+
+                if (i % 2 === 1) {
+                    for (let j = this.x - 1; j >= 0; j--) {
+                        this.order.push([j, i]);
+                    }
+                }
+            }
+        }
+    }
+
+
 
     class ImagesSetIteratorFactory {
         constructor(x, y, order) {
@@ -136,6 +152,8 @@ define([], () => {
                     return new ImagesSetIterator(this.x, this.y);
                 case 'snake':
                     return new ImagesSetIteratorSnake(this.x, this.y);
+                case 'snake2':
+                    return new ImagesSetIteratorSnake2(this.x, this.y);
 
             }
         }
