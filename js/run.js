@@ -63,7 +63,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
         /* set switch button to 0 */
         dom.setButton(0);
-        /* set import properties from config to ImagesSet */
+        /* set imported properties from config to ImagesSet */
         ImagesSet.ImagesSet.tile = data.tile;
 
         for (let i = 0; i < numberOfImgs; i++) {
@@ -119,7 +119,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
 
                     (Sequence.random.bind(this, current, imgSArr, effect, stateSingleton, currentIndex))();
                 } else if (sequence === 'ordered') {
-                    (Sequence.ordered.bind(this, current, imgSArr, effect, stateSingleton, order, currentIndex))();
+                    (Sequence.ordered.bind(this, current, imgSArr, effect, stateSingleton, [], currentIndex))();
                 }
             });
 

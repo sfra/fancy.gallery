@@ -1,4 +1,4 @@
-define(['classes/ImagesSetOrder'], function (ImagesSetOrder) {
+define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, stateSingleton) {
     'use strict';
     /**
      * Constructs a ImageSet object.
@@ -13,10 +13,13 @@ define(['classes/ImagesSetOrder'], function (ImagesSetOrder) {
      * @param {Array}
      */
     function ImagesSet(_state, _id, _elementsX, _elementsY) {
+        console.log('ImagesSet');
+        const state = _state;
 
-        const state = _state,
-            imagesSetIterator = new ImagesSetOrder.ImagesSetIterator(ImagesSet.tile.xdim, ImagesSet.tile.ydim),
-            oorder = imagesSetIterator.getReverseOrder();
+
+        const imgSetItFactory = new ImagesSetOrder.ImagesSetIteratorFactory(ImagesSet.tile.xdim, ImagesSet.tile.ydim, stateSingleton.order);
+        let imagesSetIterator = imgSetItFactory.get(),
+            oorder = imagesSetIterator.getOrder();
 
         let id, hidden = false,
             effect = 'hide',
@@ -145,13 +148,13 @@ define(['classes/ImagesSetOrder'], function (ImagesSetOrder) {
         };
 
         /**
-         * animates tiles in the order order given by a function order and then runs the callback 
+         * animates tiles in the order given by a function order and then runs the callback 
          * @method toggleShowHideFun 
          * @param {function} callback the function which runs after last animation
          * @param {function} order the function that for a gived xdim, ydim and index number prameters return coordinates the next element
          */
         this.toggleShowHideFun = (callback, order) => {
-
+            console.log('toggleShowHideFun');
             this.copyElements();
 
             for (let i = 0, max = ImagesSet.tile.xdim * ImagesSet.tile.ydim; i < max; i++) {
