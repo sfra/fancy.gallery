@@ -2,10 +2,13 @@
 $dir = opendir('css/plugins/');
 $dirList = array();
 while (($file = readdir($dir)) !== false) {
-    if ($file === '.' || $file === '..') {
+    if ($file === '.' || $file === '..' || (preg_match('/.plg$/', $file)===0 && preg_match('/.css$/', $file)===0)) {
         continue;
     }
-    array_push($dirList, preg_replace('/\.php/', '', $file));
+    
+    array_push($dirList, preg_replace('/\..../', '', $file));
+
+    $dirList = array_unique($dirList);
 }
 
 sort($dirList);

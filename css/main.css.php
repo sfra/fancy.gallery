@@ -14,8 +14,22 @@ $tile_height_perc = ($config_string->tile->h)/($config_string->tile->ydim * $con
 
 $isMobile = preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 
+$hideEffect= <<<EOD
+    /*opacity: 0;    */
+    /*transition: all 1s linear;*/
+    animation: anim 2s normal forwards; 
+    animation-iteration-count: 1;
+    /*transform: scale(0,0);*/
 
-require_once("plugins/".$plugin.".plg");
+EOD;
+
+if (file_exists("plugins/".$plugin.".css")) {
+    require_once("plugins/".$plugin.".css");
+} else {
+    require_once("plugins/".$plugin.".plg");
+}
+
+
 header("Content-type: text/css", true);
 if (!isset($animationDef)) {
     $animationDef="";

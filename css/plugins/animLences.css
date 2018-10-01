@@ -1,0 +1,15 @@
+@keyframes anim {
+    0% {}
+
+    20% {
+        transform: scale(1.2, 2);
+        border-radius: 1350px;
+    }
+
+    80% {}
+
+
+    100% {
+        transform: scale(0, 0);
+    }
+}
