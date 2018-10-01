@@ -17,8 +17,8 @@ $animationDef=<<<EOD
   }
   
   50%{
-        transform: scaleY(600);
-        
+        transform: scaleY(4);
+    opacity: 0.2;        
   }
   80% {
     
@@ -36,5 +36,3 @@ $animationDef=<<<EOD
   }
 }
 EOD;
-
-?>

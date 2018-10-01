@@ -7,7 +7,7 @@ define([], () => {
             isLasting: false
         },
         order: {
-            name: 'snake2',
+            name: 'snail',
             direction: 'reverse'
         }
     };

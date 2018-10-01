@@ -13,7 +13,7 @@ EOD;
 $animationDef=<<<EOD
 @keyframes anim {
   0% {
-            -webkit-filter: grayscale(0%);
+          filter: grayscale(0%);
   }
   
   20%{

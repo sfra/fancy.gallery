@@ -3,7 +3,7 @@ $config_string = json_decode(file_get_contents("../config.json"));
 $numberOfImgs = $config_string->numberOfImgs;
 $plugin = null;
 
-if(isset($_GET['plugin'])) {
+if (isset($_GET['plugin'])) {
     $plugin=$_GET['plugin'];
 } else {
     $plugin = $config_string->plugin;
@@ -15,9 +15,11 @@ $tile_height_perc = ($config_string->tile->h)/($config_string->tile->ydim * $con
 $isMobile = preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 
 
-require_once("plugins/".$plugin.".php");
+require_once("plugins/".$plugin.".plg");
 header("Content-type: text/css", true);
-if(!isset($animationDef)) {$animationDef="";};
+if (!isset($animationDef)) {
+    $animationDef="";
+};
 ?>
 
 * {
@@ -60,9 +62,10 @@ if(!isset($animationDef)) {$animationDef="";};
     text-decoration:none;
     background: rgba(0, 0, 0, 0);
     <?php
-        if($isMobile) {echo "margin: -1px 0px;\n";} else {
+        if ($isMobile) {
+            echo "margin: -1px 0px;\n";
+        } else {
             echo "margin: 0px;\n";
-
         };
     ?>
 /*    margin: -2px;*/
@@ -80,9 +83,10 @@ if(!isset($animationDef)) {$animationDef="";};
     outline: none;
     text-decoration:none;
     <?php
-        if($isMobile) {echo "margin: -1px -1px;\n";} else {
+        if ($isMobile) {
+            echo "margin: -1px -1px;\n";
+        } else {
             echo "margin: 0px;\n";
-
         };
     ?>
 
@@ -114,10 +118,10 @@ if(!isset($animationDef)) {$animationDef="";};
 <?php
 $current_top = null;
 $current_zIndex = null;
-for($i=1;$i<$numberOfImgs; $i++){
+for ($i=1;$i<$numberOfImgs; $i++) {
     $current_top = $i*100;
     $current_zIndex = $i*10;
-echo <<<EOT
+    echo <<<EOT
 #image-wrapper{$i} {
 
     z-index: -{$current_zIndex};
