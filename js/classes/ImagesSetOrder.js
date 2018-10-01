@@ -139,6 +139,9 @@ define([], () => {
 
             }
         }
+        set(order) {
+            this.order = order;
+        }
     }
 
     return {

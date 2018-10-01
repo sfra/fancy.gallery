@@ -6,6 +6,9 @@ define([], () => {
         animation: {
             isLasting: false
         },
-        order: 'snail'
+        order: {
+            name: 'snake',
+            direction: 'reverse'
+        }
     };
 });

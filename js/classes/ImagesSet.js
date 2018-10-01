@@ -17,9 +17,9 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
         const state = _state;
 
 
-        const imgSetItFactory = new ImagesSetOrder.ImagesSetIteratorFactory(ImagesSet.tile.xdim, ImagesSet.tile.ydim, stateSingleton.order);
-        let imagesSetIterator = imgSetItFactory.get(),
-            oorder = imagesSetIterator.getOrder();
+        const imgSetItFactory = new ImagesSetOrder.ImagesSetIteratorFactory(ImagesSet.tile.xdim, ImagesSet.tile.ydim, stateSingleton.order.name);
+        let imagesSetIterator = null,
+            oorder = null;
 
         let id, hidden = false,
             effect = 'hide',
@@ -32,28 +32,39 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
 
 
 
-        if ((typeof _elementsX) !== 'undefined') {
-            for (let i = 0, max = _elementsX.length; i < max; i++) {
-                elementsX.push(_elementsX[i]);
-            }
-        }
+        this.setSequence = (order) => {
+            imgSetItFactory.set(order.name);
+            imagesSetIterator = imgSetItFactory.get();
 
-        if (typeof _elementsY !== 'undefined') {
-            for (let i = 0, max = _elementsY.length; i < max; i++) {
-                elementsY.push(_elementsY[i]);
+
+            if (stateSingleton.order.direction === 'reverse') {
+                imagesSetIterator.getReverseOrder();
             }
-        } else {
-            let $imageWrapper = document.getElementById(_id);
-            let rows = $imageWrapper.children;
-            let cols;
-            for (let i = 0, max = ImagesSet.tile.ydim; i < max; i++) {
-                cols = rows[i].children;
-                elementsY.push([]);
-                for (let j = 0, max0 = ImagesSet.tile.xdim; j < max0; j++) {
-                    (elementsY[i])[j] = rows[i].children[j];
+            oorder = imagesSetIterator.getOrder();
+            if ((typeof _elementsX) !== 'undefined') {
+                for (let i = 0, max = _elementsX.length; i < max; i++) {
+                    elementsX.push(_elementsX[i]);
+                }
+            }
+
+            if (typeof _elementsY !== 'undefined') {
+                for (let i = 0, max = _elementsY.length; i < max; i++) {
+                    elementsY.push(_elementsY[i]);
+                }
+            } else {
+                let $imageWrapper = document.getElementById(_id);
+                let rows = $imageWrapper.children;
+                let cols;
+                for (let i = 0, max = ImagesSet.tile.ydim; i < max; i++) {
+                    cols = rows[i].children;
+                    elementsY.push([]);
+                    for (let j = 0, max0 = ImagesSet.tile.xdim; j < max0; j++) {
+                        (elementsY[i])[j] = rows[i].children[j];
+                    }
                 }
             }
         }
+        this.setSequence(stateSingleton.order);
 
         if (typeof _id !== 'undefined') {
             id = _id;
