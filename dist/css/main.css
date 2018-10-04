@@ -1,0 +1,89 @@
+.fancy-gallery-img-wrapper {
+    width: 100%;
+}
+
+.fancy-gallery-img-wrapper>div {
+
+    width: 400px;
+    height: 20px;
+
+}
+
+
+
+.fancy-gallery-img-wrapper>div>div {
+    /*transition: all 1s linear;*/
+    /*background-image: url("../images/obraz.jpg");*/
+    float: left;
+    width: 40px;
+    height: 20px;
+
+}
+
+.image-wrapper.hide>div>div {
+    transition: all 1s linear;
+    transform: rotateY(90deg);
+
+}
+
+
+
+.image-wrapper.hidden>div>div {
+    transform: rotateY(90deg);
+}
+
+
+
+.fancy-gallery-img-wrapper.hide>div {
+    transition: all 1s linear;
+    transform: rotateX(45deg);
+
+}
+
+.fancy-gallery-img-wrapper.hidden>div {
+    transform: rotateX(45deg);
+
+}
+
+
+
+.fancy-gallery-img-wrapper>div>div.hide {
+
+    transition: all 1s linear;
+    /*transform: rotateY(90deg);*/
+    transform: skewX(90deg) skewY(70deg);
+    width: 0%;
+    opacity: 0;
+
+}
+
+
+/*.fancy-gallery-img-wrapper > div > div.hidden {
+    
+
+    transform: skewX(90deg) skewY(70deg);
+    width: 0%;
+    opacity: 0;
+    
+}*/
+
+
+
+
+
+
+#image-wrapper1 {
+    position: relative;
+    z-index: -10;
+    top: -200px;
+
+}
+
+
+
+#image-wrapper2 {
+    position: relative;
+    z-index: -20;
+    top: -400px;
+
+}

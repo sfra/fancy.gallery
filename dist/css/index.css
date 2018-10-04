@@ -1,0 +1,137 @@
+body {
+  height: 90vh;
+  background-color: rgb(122, 122, 122);
+}
+
+h1 {
+  color: rgb(150, 150, 150);
+  background: rgba(40, 40, 40, .7);
+  float: right;
+  font-size: 20px;
+  position: absolute;
+  z-index: 300;
+  right: 10px;
+  top: 10px;
+  padding-right: 0px;
+  padding-left: 40px;
+  padding-bottom: 10px;
+  width: 200px;
+  text-decoration-line: underline;
+  font-variant: small-caps;
+  box-shadow: 2px 2px 5px rgb(200, 200, 200), -2px -2px 1px rgb(200, 200, 200);
+}
+
+#fancy-gallery {
+  position: relative;
+  top: 20px;
+}
+
+form {
+
+  position: absolute;
+  top: 150px;
+  left: 750px;
+  width: 200px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: rgba(100, 100, 100, .5);
+  padding: 30px;
+  border-radius: 5px;
+  transition: all .3s ease-out;
+  z-index: 500;
+}
+
+@media (max-width:900px) {
+  form {
+    transition: all .3s ease-in;
+    transform: translate(-10px, 140px);
+  }
+
+  form:hover {
+    transition: all .3s ease-in;
+    transform: translate(-190px, 140px);
+
+
+  }
+}
+
+
+form select {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 5px;
+  width: 150px;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 10px;
+}
+
+form select option {
+  border-radius: 5px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+form select option:active {
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000;
+
+}
+
+#fancy-gallery-order {
+  margin-top: 5px;
+  transition: all .5s ease-out;
+}
+
+#fancy-gallery-order.hidden {
+  transition: all .5s ease-in;
+  height: 0px;
+  opacity: 0;
+}
+
+
+
+footer {
+  position: absolute;
+  right: 0px;
+  bottom: -180px;
+  left: 0px;
+  /* padding: 15px auto 1rem 10px; */
+  /* padding-bottom: 1rem; */
+  padding-left: 10px;
+  clear: both;
+  position: relative;
+  transform: translate(0px, -110px);
+  z-index: 400;
+  height: 60px;
+  line-height: 60px;
+  width: 100vw;
+  margin-top: 20px;
+  color: #ffffff;
+  font-size: 13px;
+  background-color: #000000;
+  font-family: 'Droid Sans',
+    'Helvetica Neue',
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  text-align: left ! important;
+
+}
+
+footer div {
+  float: left;
+  width: 70px;
+}
+
+footer a {
+  display: block;
+  float: left;
+
+  text-decoration: none;
+  color: #ababab;
+
+}

@@ -1,4 +1,4 @@
-define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes/Sequence', 'helpers/dom' /*[rm*/ , 'helpers/changeImgsParams' /*rm]*/ ], (stateSingleton, ImagesSet, __ajax, order, Sequence, dom /*[rm*/ , changeImgsParams /*rm]*/ ) => {
+define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes/Sequence', 'helpers/dom'  ], (stateSingleton, ImagesSet, __ajax, order, Sequence, dom  ) => {
     'use strict';
     let currentIndex = 0; // the number of the current image
     let reindexPromise = null,
@@ -64,8 +64,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
 
         }
 
-        /*[rm*/
-        changeImgsParams(imgSArr); /*rm]*/
+        
 
         /* resize image according to the windows height */
         dom.adjustTiles(data);
