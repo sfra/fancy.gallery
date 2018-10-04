@@ -1,8 +1,9 @@
-define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequence', 'helpers/dom'], (stateSingleton, ImagesSet, __ajax, order, Sequence, dom) => {
+define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes/Sequence', 'helpers/dom'], (stateSingleton, ImagesSet, __ajax, order, Sequence, dom) => {
     'use strict';
     let currentIndex = 0; // the number of the current image
     let reindexPromise = null,
-        sequence = null;
+        sequence = null,
+        imgSArr = [];
 
     const $slidesNav = document.getElementById('fancy-gallery-slides-nav');
 
@@ -20,13 +21,31 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
     });
 
 
+    try {
+        window.ee.addListener('orderChanged', () => {
+            let name = sessionStorage.getItem('fancy-gallery-order');
+            let direction = parseInt(sessionStorage.getItem('fancy-gallery-reversed'),10) === 1 ? 'reverse' : 'normal';
+
+            for (let i = 0, max = imgSArr.length; i < max; i++) {
+                imgSArr[i].setSequence({
+                    name: name,
+                    direction
+                });
+                imgSArr[i].setElementsX();
+            }
+//            stateSingleton.order.direction = direction;
+        });
+    } catch (e) {
+
+    }
+
+
     mainPromise.then(mainResolve);
 
     function mainResolve(data) {
 
         const numberOfImgs = data.numberOfImgs;
-        let imgSArr = [],
-            elementsX = [],
+        let elementsX = [],
             effect = data.effect;
 
         sequence = data.sequence;
@@ -85,7 +104,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'Sequenc
         /* events listeners */
         document.getElementById('fancy-gallery-switch-right').addEventListener('click', (e) => {
 
-            if (stateSingleton.animation.isLasting) { // do not execute the function if during animation 
+            if (stateSingleton.animation.isLasting) { // do not execute the function if during animation
                 return;
             }
 

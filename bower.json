@@ -20,7 +20,8 @@
   ],
   "dependencies": {
     "requirejs": "^2.3.6"
-  
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eventEmitter": "^5.2.5"
+  }
 }

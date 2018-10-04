@@ -2,22 +2,21 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
     'use strict';
     /**
      * Constructs a ImageSet object.
-     * 
+     *
      * Provides the wrapper for image consistiong of the many tiles.
-     * 
+     *
      * @constructor
      *
-     * @param {object} 
+     * @param {object}
      * @param {string} tableSettings
      * @param {Array}
      * @param {Array}
      */
     function ImagesSet(_state, _id, _elementsX, _elementsY) {
-        console.log('ImagesSet');
+
         const state = _state;
-
-
         const imgSetItFactory = new ImagesSetOrder.ImagesSetIteratorFactory(ImagesSet.tile.xdim, ImagesSet.tile.ydim, stateSingleton.order.name);
+
         let imagesSetIterator = null,
             oorder = null;
 
@@ -30,17 +29,20 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
             elementsRandom = [];
 
 
-
-
         this.setSequence = (order) => {
+            console.log(order);
             imgSetItFactory.set(order.name);
             imagesSetIterator = imgSetItFactory.get();
-
-
-            if (stateSingleton.order.direction === 'reverse') {
-                imagesSetIterator.setReverseOrder();
+            console.log(stateSingleton.order.direction === 'reverse');
+            console.log(order.direction === 'reverse');
+            if (stateSingleton.order.direction === 'reverse' || order.direction === 'reverse') {
+              console.log('rev');
+              oorder = imagesSetIterator.setReverseOrder();
+            } else {
+              console.log('normal');
+                oorder = imagesSetIterator.getOrder();
             }
-            oorder = imagesSetIterator.getOrder();
+
             if ((typeof _elementsX) !== 'undefined') {
                 for (let i = 0, max = _elementsX.length; i < max; i++) {
                     elementsX.push(_elementsX[i]);
@@ -63,7 +65,9 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
                     }
                 }
             }
-        }
+
+
+        };
         this.setSequence(stateSingleton.order);
 
         if (typeof _id !== 'undefined') {
@@ -126,9 +130,12 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
 
 
 
+
+
+
         /**
-         * animates tiles in the order of occurung and then runs the callback 
-         * @method toggleHideShow 
+         * animates tiles in the order of occurung and then runs the callback
+         * @method toggleHideShow
          * @param {function} callback the function which runs after last animation
          */
         this.toggleHideShow = (callback) => {
@@ -159,13 +166,12 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
         };
 
         /**
-         * animates tiles in the order given by a function order and then runs the callback 
-         * @method toggleShowHideFun 
+         * animates tiles in the order given by a function order and then runs the callback
+         * @method toggleShowHideFun
          * @param {function} callback the function which runs after last animation
          * @param {function} order the function that for a gived xdim, ydim and index number prameters return coordinates the next element
          */
         this.toggleShowHideFun = (callback, order) => {
-            console.log('toggleShowHideFun');
             this.copyElements();
 
             for (let i = 0, max = ImagesSet.tile.xdim * ImagesSet.tile.ydim; i < max; i++) {
@@ -196,8 +202,8 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
 
 
         /**
-         * animates tiles in the random order and then runs the callback 
-         * @method toggleHideShowRandom 
+         * animates tiles in the random order and then runs the callback
+         * @method toggleHideShowRandom
          * @param {function} callback the function which runs after last animation
          */
         this.toggleHideShowRandom = (callback) => {
@@ -246,7 +252,7 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
         /**
          * removes the class _class from the elements contained in
          * element given by id
-         * @method toggleHideShowRandom 
+         * @method toggleHideShowRandom
          * @param {string} the name of the class
          */
         this.removeClass = (_class) => {

@@ -6,13 +6,13 @@ define([], () => {
             this.x = x;
             this.y = y;
 
-            this.getOrder = () => {
-                return this.order;
-            };
+            // this.getOrder = () => {
+            //     return this.order;
+            // };
 
-            this.setReverseOrder = () => {
-                return this.order.reverse();
-            };
+            // this.setReverseOrder = () => {
+            //     return this.order.reverse();
+            // };
 
             this.order = [];
         }

@@ -1,5 +1,5 @@
 body {
-  height: 120vh;
+  height: 90vh;
   background-color: rgb(122, 122, 122);
 }
 
@@ -29,7 +29,7 @@ h1 {
 form {
 
   position: absolute;
-  top: 250px;
+  top: 150px;
   left: 750px;
   width: 200px;
   font-family: 'Courier New', Courier, monospace;
@@ -80,34 +80,58 @@ form select option:active {
 
 }
 
+#fancy-gallery-order {
+  margin-top: 5px;
+  transition: all .5s ease-out;
+}
+
+#fancy-gallery-order.hidden {
+  transition: all .5s ease-in;
+  height: 0px;
+  opacity: 0;
+}
+
+
 
 footer {
   position: absolute;
   right: 0px;
-  bottom: -200px;
+  bottom: -180px;
   left: 0px;
-  padding: auto auto auto 40px;
-  padding-bottom: 1rem;
+  /* padding: 15px auto 1rem 10px; */
+  /* padding-bottom: 1rem; */
+  padding-left: 10px;
   clear: both;
   position: relative;
   transform: translate(0px, -110px);
   z-index: 400;
-  height: 40px;
-  margin-top: 20px;
-  background-color: #ffffff;
-  font-size: 13px;
-  color: #000000;
-  font-family: 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 40px;
+  height: 60px;
+  line-height: 60px;
   width: 100vw;
-  text-align: left !important;
+  margin-top: 20px;
+  color: #ffffff;
+  font-size: 13px;
+  background-color: #000000;
+  font-family: 'Droid Sans',
+    'Helvetica Neue',
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  text-align: left ! important;
+
+}
+
+footer div {
+  float: left;
+  width: 70px;
 }
 
 footer a {
-  right: 5px;
+  display: block;
+  float: left;
+
   text-decoration: none;
-  color: #101010;
-  position: relative;
-  top: -40px;
-  left: 70px;
+  color: #ababab;
+
 }

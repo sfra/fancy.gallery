@@ -22,7 +22,7 @@ $hideEffect= <<<EOD
     /*transform: scale(0,0);*/
 
 EOD;
-
+/** plugin file can be in plg and css files or only css file */
 if (file_exists("plugins/".$plugin.".css")) {
     require_once("plugins/".$plugin.".css");
 } else {
@@ -106,14 +106,6 @@ if (!isset($animationDef)) {
 
 
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -233,23 +225,7 @@ EOT;
 }
 
 
-footer {
-    position: relative;
-    z-index: 10;
-    height: 40px;
-    line-height: 40px;
-    padding-left: 40px;
-    background-color: #445566;
-    color: #bbaabb;
-    text-align: center;
-    padding: 10px;
-    font-family: Arial;
-    font-size: 13px;
 
-    clear: both;
-
-    
-}
 
 
 .fancy-gallery-clearfix:after {
