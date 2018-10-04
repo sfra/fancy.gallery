@@ -11,31 +11,7 @@
         "ydim": 5,
         "w": 100,
         "h": 105
-    },
-    "images": [{
-            "plugin": "animBlur",
-            "sequence": "ordered"
-        },
-        {
-            "plugin": "anim",
-            "sequence": "random"
-        },
-        {
-            "plugin": "animBlur",
-            "sequence": "ordered"
-        },
-        {
-            "plugin": "fancy",
-            "sequence": "random"
-        },
-        {
-            "plugin": "fancy2",
-            "sequence": "ordered"
-        },
-        {
-            "plugin": "animBlur",
-            "sequence": "ordered"
-        }
+    }
 
-    ]
+
 }

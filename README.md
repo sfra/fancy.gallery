@@ -1,5 +1,7 @@
 # fancy gallery (no jquery required)  
 
+
+### Installation
 We assume that [bower](https://github.com/bower/bower) and [node](https://github.com/nodejs/node) are installed.
 
 Clone the repository to the place on the server (php support is required).
@@ -35,6 +37,31 @@ All of options contained in config.json are:
     }
 }
 ```
+
+If you want to apply different plugins to different images add to config.json the section "images"
+
+```javascript
+"images": [
+        {
+            "plugin": <name>,
+            "sequence": "<ordered/random>"
+        },
+          
+        {  "plugin": <name>,
+            "sequence": "<ordered/random>"
+        },
+        
+        ...
+        
+        "plugin": <name>,
+        "sequence": "<ordered/random>"
+    ]
+
+```
+
+
+Example of file is contained in config.many.files.json file.
+
 The current repository contains demo of the fancy.gallery.
 
 

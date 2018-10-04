@@ -43,7 +43,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
 
         for (let i = 0; i < numberOfImgs; i++) {
 
-            if (typeof data.images) {
+            if (typeof data.images !== 'undefined') {
                 images[i] = data.images[i];
             }
 
