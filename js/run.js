@@ -1,9 +1,10 @@
-define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes/Sequence', 'helpers/dom'], (stateSingleton, ImagesSet, __ajax, order, Sequence, dom) => {
+define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes/Sequence', 'helpers/dom', 'helpers/changeImgsParams'], (stateSingleton, ImagesSet, __ajax, order, Sequence, dom, changeImgsParams) => {
     'use strict';
     let currentIndex = 0; // the number of the current image
     let reindexPromise = null,
         sequence = null,
-        imgSArr = [];
+        imgSArr = [],
+        images = [];
 
     const $slidesNav = document.getElementById('fancy-gallery-slides-nav');
 
@@ -21,23 +22,10 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
     });
 
 
-    try {
-        window.ee.addListener('orderChanged', () => {
-            let name = sessionStorage.getItem('fancy-gallery-order');
-            let direction = parseInt(sessionStorage.getItem('fancy-gallery-reversed'),10) === 1 ? 'reverse' : 'normal';
 
-            for (let i = 0, max = imgSArr.length; i < max; i++) {
-                imgSArr[i].setSequence({
-                    name: name,
-                    direction
-                });
-                imgSArr[i].setElementsX();
-            }
-//            stateSingleton.order.direction = direction;
-        });
-    } catch (e) {
 
-    }
+
+
 
 
     mainPromise.then(mainResolve);
@@ -54,6 +42,12 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
 
 
         for (let i = 0; i < numberOfImgs; i++) {
+
+            if (typeof data.images) {
+                images[i] = data.images[i];
+            }
+
+
             $slidesNav.appendChild(((j) => {
                 let out = document.createElement('div');
                 out.classList.add('fancy-gallery-slide-button');
@@ -70,7 +64,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
 
         }
 
-
+        changeImgsParams(imgSArr);
 
         /* resize image according to the windows height */
         dom.adjustTiles(data);
@@ -110,13 +104,16 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
 
             let sequence = data.sequence;
 
+
             let fgs = sessionStorage.getItem('fancy-gallery-sequence');
             if (typeof fgs !== 'undefined' && fgs !== null) {
                 sequence = fgs;
             }
 
             stateSingleton.animation.isLasting = true;
-
+            if (images.length > 0) {
+                document.getElementById('css-plugin').setAttribute('href', `css/main.css.php?plugin=${images[currentIndex].plugin}`);
+            }
             let current = imgSArr[currentIndex];
             let previousIndex = currentIndex;
 
@@ -133,9 +130,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
 
             reindexPromise.then(() => {
 
-
                 if (sequence === 'random') {
-
                     (Sequence.random.bind(this, current, imgSArr, effect, stateSingleton, currentIndex))();
                 } else if (sequence === 'ordered') {
                     (Sequence.ordered.bind(this, current, imgSArr, effect, stateSingleton, [], currentIndex))();
@@ -158,7 +153,11 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
                 sequence = data.sequence;
             }
 
+
             stateSingleton.animation.isLasting = true;
+            if (images.length > 0) {
+                document.getElementById('css-plugin').setAttribute('href', `css/main.css.php?plugin=${images[currentIndex].plugin}`);
+            }
 
             let previous = imgSArr[currentIndex];
             let previousIndex = currentIndex;
@@ -205,6 +204,10 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
 
             if (stateSingleton.animation.isLasting) {
                 return;
+            }
+
+            if (images.length > 0) {
+                document.getElementById('css-plugin').setAttribute('href', `css/main.css.php?plugin=${images[currentIndex].plugin}`);
             }
 
             let fgs = sessionStorage.getItem('fancy-gallery-sequence');
