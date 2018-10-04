@@ -16,7 +16,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
                 res(JSON.parse(data));
             },
             (err) => {
-                console.log(err);
+                ;
                 rej(err);
             });
     });
@@ -188,7 +188,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
                     (Sequence.ordered.bind(this, previous, imgSArr, effect, stateSingleton, order, currentIndex))();
                 }
             }, (err) => {
-                console.log(err);
+                ;
             });
 
         });

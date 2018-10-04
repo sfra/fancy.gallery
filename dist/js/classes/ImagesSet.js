@@ -14,6 +14,7 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
      */
     function ImagesSet(_state, _id, _elementsX, _elementsY) {
 
+        
         const state = _state;
         const imgSetItFactory = new ImagesSetOrder.ImagesSetIteratorFactory(ImagesSet.tile.xdim, ImagesSet.tile.ydim, stateSingleton.order.name);
 
@@ -30,16 +31,16 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
 
 
         this.setSequence = (order) => {
-            console.log(order);
+            ;
             imgSetItFactory.set(order.name);
             imagesSetIterator = imgSetItFactory.get();
-            console.log(stateSingleton.order.direction === 'reverse');
-            console.log(order.direction === 'reverse');
+            ;
+            ;
             if (stateSingleton.order.direction === 'reverse' || order.direction === 'reverse') {
-              console.log('rev');
-              oorder = imagesSetIterator.setReverseOrder();
+                ;
+                oorder = imagesSetIterator.setReverseOrder();
             } else {
-              console.log('normal');
+                ;
                 oorder = imagesSetIterator.getOrder();
             }
 

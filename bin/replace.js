@@ -59,6 +59,7 @@ readdirRec(pth, (file) => {
     }
     fs.readFile(file, 'utf8', (err, data) => {
         let out = data.replace(/\/\*\[rm[\s\S]*?\/\*rm\]\*\//g, '');
+        out = out.replace(/console\.log\([^\)]*\)/g, '');
         fs.writeFile(file, out, () => {});
     });
 

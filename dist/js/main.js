@@ -12,8 +12,8 @@ requirejs.config({
 requirejs.onError = (err) => {
     'use strict';
     console.warn(err);
-    console.log(err.requireType);
-    console.log('modules: ' + err.requireModules);
+    ;
+    ;
     throw err;
 };
 

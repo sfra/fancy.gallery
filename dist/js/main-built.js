@@ -197,7 +197,7 @@ define('classes/ImagesSet',['classes/ImagesSetOrder', 'stateSingleton'], functio
      * @param {Array}
      */
     function ImagesSet(_state, _id, _elementsX, _elementsY) {
-        console.log('ImagesSet');
+        ;
         const state = _state;
 
 
@@ -347,7 +347,7 @@ define('classes/ImagesSet',['classes/ImagesSetOrder', 'stateSingleton'], functio
          * @param {function} order the function that for a gived xdim, ydim and index number prameters return coordinates the next element
          */
         this.toggleShowHideFun = (callback, order) => {
-            console.log('toggleShowHideFun');
+            ;
             this.copyElements();
 
             for (let i = 0, max = ImagesSet.tile.xdim * ImagesSet.tile.ydim; i < max; i++) {
@@ -774,7 +774,7 @@ define('run',['stateSingleton', 'classes/ImagesSet', 'libs/__ajax', 'plugins/ord
                 res(JSON.parse(data));
             },
             (err) => {
-                console.log(err);
+                ;
                 rej(err);
             });
     });
@@ -930,7 +930,7 @@ define('run',['stateSingleton', 'classes/ImagesSet', 'libs/__ajax', 'plugins/ord
                     (Sequence.ordered.bind(this, previous, imgSArr, effect, stateSingleton, order, currentIndex))();
                 }
             }, (err) => {
-                console.log(err);
+                ;
             });
 
         });
@@ -1001,8 +1001,8 @@ requirejs.config({
 requirejs.onError = (err) => {
     'use strict';
     console.warn(err);
-    console.log(err.requireType);
-    console.log('modules: ' + err.requireModules);
+    ;
+    ;
     throw err;
 };
 
