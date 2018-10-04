@@ -5,7 +5,8 @@
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "bash bin/build.sh"
+    "build": "bash bin/build.sh",
+    "clear": "cd dist && rm -Rf config.json css images img js php scripts"
   },
   "repository": {
     "type": "git",
