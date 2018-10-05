@@ -156,6 +156,45 @@ define([], () => {
     }
 
 
+    class ImagesSetIteratorBee2 extends ImagesSetOrder {
+        constructor(x, y) {
+            super(x, y);
+
+            for (let m = 0; m < this.x + this.y - 1; m++) {
+                for (let j = 0; j < this.y; j++) {
+                    for (let i = 0; i < this.x; i++) {
+                        if (i + j === m) {
+                            this.order.push([j, i]);
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    class ImagesSetIteratorChees extends ImagesSetOrder {
+        constructor(x, y) {
+            super(x, y);
+
+            for (let i = 0; i < this.x; i++) {
+
+                for (let j = i % 2; j < this.y; j += 2) {
+
+                    this.order.push([i, j]);
+                }
+            }
+
+            for (let i = 0; i < this.x; i++) {
+
+                for (let j = (i + 1) % 2; j < this.y; j += 2) {
+
+                    this.order.push([i, j]);
+                }
+            }
+
+        }
+    }
 
 
 
@@ -176,6 +215,10 @@ define([], () => {
                     return new ImagesSetIteratorSnake2(this.x, this.y);
                 case 'bee':
                     return new ImagesSetIteratorBee(this.x, this.y);
+                case 'bee2':
+                    return new ImagesSetIteratorBee(this.x, this.y);
+                case 'chess':
+                    return new ImagesSetIteratorChees(this.x, this.y);
 
             }
         }

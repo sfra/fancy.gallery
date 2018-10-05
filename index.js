@@ -1,81 +1,32 @@
-/*	[ x ][ x ][ x ][ x ][ x ]
-	[ x ][ x ][ x ][ x ][ x ]
-	[ x ][ x ][ x ][ x ][ x ]			
-0 0
+/*	[ x ][ o ][ x  ][ o ][ x ]
+	[ o ][ x ][ o ][ x ][ o]
+	[ x ][ o ][ x ][ o ][ x ]*/
+/*0 0	1 0
+2 0		3 0
+4 0		
 
-0 1
-1 0
+1 1		0 1
+3 1		2 1
+		4 1	
 
-0 2
-1 1
-2 0
-
-1 2
-2 1
-3 0
-
-2 2
-3 1
-4 0
-
-3 2
-4 1
-
-4 2 */
+0 2		1 2
+2 2		3 2
+4 2*/
 let ydim = 5,
-	xdim = 10;
+	xdim = 3;
 
+for (let i = 0; i < xdim; i++) {
 
-for (let m = 0; m < ydim + xdim - 1; m++) {
-	for (let j = 0; j < xdim; j++) {
-		for (let i = 0; i < ydim; i++) {
-			if (i + j === m) {
-				console.log(i, j);
-			}
-		}
+	for (let j = i % 2; j < ydim; j += 2) {
+
+		console.log(j, i);
 	}
 }
 
+for (let i = 0; i < xdim; i++) {
 
+	for (let j = (i + 1) % 2; j < ydim; j += 2) {
 
-
-
-
-
-
-
-
-
-// for (let m = 1; m < ydim; m++) {
-// 	for (let j = ydim - m, i = 0; i < m; i++, j++) {
-// 		console.log(j, i);
-// 	}
-// }
-
-
-
-
-// for (let k = 0; k < xdim; k++) {
-
-// 	for (let m = 0; m < 1; m++) {
-// 		for (let i = k, j = 0; i < xdim && j < ydim; i++, j++) {
-
-// 			console.log(j, i);
-
-
-
-// 		}
-// 	}
-// }
-// for (let k = 0; k < xdim; k++) {
-
-// 	for (let m = 0; m < 1; m++) {
-// 		for (let i = k, j = 0; i < xdim && j < ydim; i++, j++) {
-
-// 			console.log(j, i);
-
-
-
-// 		}
-// 	}
-// }
+		console.log(j, i);
+	}
+}
