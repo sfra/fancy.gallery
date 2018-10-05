@@ -31,18 +31,16 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
 
 
         this.setSequence = (order) => {
-            ;
+
             imgSetItFactory.set(order.name);
-            imagesSetIterator = imgSetItFactory.get();
-            ;
-            ;
+
+            imagesSetIterator = imgSetItFactory.get(stateSingleton.order.shuffled || order.shuffled);
             if (stateSingleton.order.direction === 'reverse' || order.direction === 'reverse') {
-                ;
                 oorder = imagesSetIterator.setReverseOrder();
             } else {
-                ;
                 oorder = imagesSetIterator.getOrder();
             }
+
 
             if ((typeof _elementsX) !== 'undefined') {
                 for (let i = 0, max = _elementsX.length; i < max; i++) {

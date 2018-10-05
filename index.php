@@ -33,10 +33,14 @@
             <option>snake2</option>
             <option>bee</option>
                <option>bee2</option>
-                              <option>chess</option>
+                 <option>chess</option>
+                 <option>chess3d</option>
         </select>
         <label>reversed</label>
-        <input type="checkbox" value="0" name="reversed"/>
+        <input type="checkbox" value="0" name="reversed"/><br />
+       <label>shuffled</label>
+        <input type="checkbox" value="0" name="shuffled"/>
+
     </div>
 </form>
 

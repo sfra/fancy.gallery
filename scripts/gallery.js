@@ -17,8 +17,18 @@ window.onload = () => {
     $link.setAttribute('href', 'css/main.css.php');
     $link.setAttribute('id', 'css-plugin');
     let $script = document.createElement('script');
+    /*[rm]*/
+
     $script.setAttribute('data-main', 'js/main');
     $script.setAttribute('src', 'js/libs/requirejs/require.js');
+    /*rm]*/
+
+    /*[rm*/
+    if (false) { /*rm]*/
+        $script.setAttribute('src', 'js/build/main-built.js');
+        /*[rm*/
+    } /*rm]*/
+
     $head.appendChild($link);
     $head.appendChild($script);
 

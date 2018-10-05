@@ -1,4 +1,5 @@
 <?php
+header("Content-type: text/css; charset: UTF-8");
 $config_string = json_decode(file_get_contents("../config.json"));
 $numberOfImgs = $config_string->numberOfImgs;
 $plugin = null;
@@ -30,7 +31,7 @@ if (file_exists("plugins/".$plugin.".css")) {
 }
 
 
-header("Content-type: text/css", true);
+
 if (!isset($animationDef)) {
     $animationDef="";
 };

@@ -2,7 +2,7 @@ const $plugin = document.getElementById('fancy-gallery-plugin');
 const $sequence = document.getElementById('fancy-gallery-sequence');
 const $order = document.querySelector('#fancy-gallery-order > select');
 const $reversed = document.querySelector('#fancy-gallery-order > input');
-
+const $shuffled = document.querySelectorAll('#fancy-gallery-order > input')[1];
 
 window.ee = new EventEmitter();
 
@@ -34,9 +34,18 @@ $order.addEventListener('change', () => {
 
 }, false);
 $reversed.addEventListener('change', () => {
-    $reversed.value  = 1 - parseInt($reversed.value, 10);
+    $reversed.value = 1 - parseInt($reversed.value, 10);
 
     sessionStorage.setItem('fancy-gallery-reversed', parseInt($reversed.value, 10));
-console.log(sessionStorage.getItem('fancy-gallery-reversed'));
+    console.log(sessionStorage.getItem('fancy-gallery-reversed'));
     ee.emit('orderChanged');
+}, false);
+
+
+$shuffled.addEventListener('change', () => {
+    $shuffled.value = 1 - parseInt($shuffled.value, 10);
+
+    sessionStorage.setItem('fancy-gallery-shuffled', parseInt($shuffled.value, 10));
+    // console.log(sessionStorage.getItem('fancy-gallery-reversed'));
+    ee.emit('shufflingChanged');
 }, false);

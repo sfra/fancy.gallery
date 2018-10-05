@@ -1,18 +1,29 @@
 define([], () => {
 
+
+    function handleChange(imgSArr) {
+        let name = sessionStorage.getItem('fancy-gallery-order');
+        let direction = parseInt(sessionStorage.getItem('fancy-gallery-reversed'), 10) === 1 ? 'reverse' : 'normal';
+        let shuffled = parseInt(sessionStorage.getItem('fancy-gallery-shuffled'), 10) === 1;
+
+
+        for (let i = 0, max = imgSArr.length; i < max; i++) {
+            imgSArr[i].setSequence({
+                name: name,
+                direction,
+                shuffled
+            });
+            imgSArr[i].setElementsX();
+        }
+    }
+
     function changeImgsParams(imgSArr) {
         window.ee.addListener('orderChanged', () => {
-            let name = sessionStorage.getItem('fancy-gallery-order');
-            let direction = parseInt(sessionStorage.getItem('fancy-gallery-reversed'), 10) === 1 ? 'reverse' : 'normal';
+            handleChange(imgSArr);
+        });
 
-            for (let i = 0, max = imgSArr.length; i < max; i++) {
-                imgSArr[i].setSequence({
-                    name: name,
-                    direction
-                });
-                imgSArr[i].setElementsX();
-            }
-            //            stateSingleton.order.direction = direction;
+        window.ee.addListener('shufflingChanged', () => {
+            handleChange(imgSArr);
         });
     }
 

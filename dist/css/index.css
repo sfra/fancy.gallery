@@ -29,7 +29,7 @@ h1 {
 form {
 
   position: absolute;
-  top: 150px;
+  top: 100px;
   left: 750px;
   width: 200px;
   font-family: 'Courier New', Courier, monospace;
@@ -78,6 +78,11 @@ form select option:active {
   background-color: #ffffff;
   color: #000000;
 
+}
+
+form label {
+  margin-top: 10px;
+  display: inline-block;
 }
 
 #fancy-gallery-order {

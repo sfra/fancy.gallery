@@ -1,3 +1,5 @@
+'use strict';
+
 define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, stateSingleton) {
     'use strict';
     /**
@@ -12,26 +14,28 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
      * @param {Array}
      * @param {Array}
      */
+
     function ImagesSet(_state, _id, _elementsX, _elementsY) {
+        var _this = this;
 
-        /*[rm*/
-        console.log('From dev'); /*rm]*/
-        const state = _state;
-        const imgSetItFactory = new ImagesSetOrder.ImagesSetIteratorFactory(ImagesSet.tile.xdim, ImagesSet.tile.ydim, stateSingleton.order.name);
+        var state = _state;
+        var imgSetItFactory = new ImagesSetOrder.ImagesSetIteratorFactory(ImagesSet.tile.xdim, ImagesSet.tile.ydim, stateSingleton.order.name);
 
-        let imagesSetIterator = null,
+        var imagesSetIterator = null,
             oorder = null;
 
-        let id, hidden = false,
+        var id = void 0,
+            hidden = false,
             effect = 'hide',
-            rowsNr, columnsNr, speed = 15,
+            rowsNr = void 0,
+            columnsNr = void 0,
+            speed = 15,
             elementsX = [],
             elementsY = [],
             elements = [],
             elementsRandom = [];
 
-
-        this.setSequence = (order) => {
+        this.setSequence = function (order) {
 
             imgSetItFactory.set(order.name);
 
@@ -42,31 +46,28 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
                 oorder = imagesSetIterator.getOrder();
             }
 
-
-            if ((typeof _elementsX) !== 'undefined') {
-                for (let i = 0, max = _elementsX.length; i < max; i++) {
+            if (typeof _elementsX !== 'undefined') {
+                for (var i = 0, max = _elementsX.length; i < max; i++) {
                     elementsX.push(_elementsX[i]);
                 }
             }
 
             if (typeof _elementsY !== 'undefined') {
-                for (let i = 0, max = _elementsY.length; i < max; i++) {
-                    elementsY.push(_elementsY[i]);
+                for (var _i = 0, _max = _elementsY.length; _i < _max; _i++) {
+                    elementsY.push(_elementsY[_i]);
                 }
             } else {
-                let $imageWrapper = document.getElementById(_id);
-                let rows = $imageWrapper.children;
-                let cols;
-                for (let i = 0, max = ImagesSet.tile.ydim; i < max; i++) {
-                    cols = rows[i].children;
+                var $imageWrapper = document.getElementById(_id);
+                var rows = $imageWrapper.children;
+                var cols = void 0;
+                for (var _i2 = 0, _max2 = ImagesSet.tile.ydim; _i2 < _max2; _i2++) {
+                    cols = rows[_i2].children;
                     elementsY.push([]);
-                    for (let j = 0, max0 = ImagesSet.tile.xdim; j < max0; j++) {
-                        (elementsY[i])[j] = rows[i].children[j];
+                    for (var j = 0, max0 = ImagesSet.tile.xdim; j < max0; j++) {
+                        elementsY[_i2][j] = rows[_i2].children[j];
                     }
                 }
             }
-
-
         };
         this.setSequence(stateSingleton.order);
 
@@ -74,18 +75,18 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
             id = _id;
         }
 
-        this.getState = () => {
+        this.getState = function () {
             return state;
         };
 
-        this.setElements = () => {
-            const $imageWrapper = document.getElementById(id),
+        this.setElements = function () {
+            var $imageWrapper = document.getElementById(id),
                 rows = $imageWrapper.children;
-            rowsNr = (rows.length);
-            columnsNr = (rows[0].children.length) + 0;
-            let currentRow = [];
-            for (let i = 0; i < rowsNr; i++) {
-                for (let j = 0; j < columnsNr; j++) {
+            rowsNr = rows.length;
+            columnsNr = rows[0].children.length + 0;
+            var currentRow = [];
+            for (var i = 0; i < rowsNr; i++) {
+                for (var j = 0; j < columnsNr; j++) {
                     currentRow.push(rows[i].children[j]);
                 }
                 elements.push(currentRow);
@@ -93,71 +94,67 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
             }
         };
 
-        this.setSpeed = (_speed) => {
+        this.setSpeed = function (_speed) {
             speed = _speed;
         };
 
-        this.copyElements = () => {
-            for (let i = 0, max = elementsX.length; i < max; i++) {
+        this.copyElements = function () {
+            for (var i = 0, max = elementsX.length; i < max; i++) {
                 elementsRandom[i] = elementsX[i];
             }
         };
 
-        this.getElements = () => {
+        this.getElements = function () {
             return elements;
         };
 
+        this.setElementsX = function () {
+            var $imageWrapper = document.getElementById(id);
 
-        this.setElementsX = () => {
-            let $imageWrapper = document.getElementById(id);
+            elementsX = function () {
+                var elementsY = $imageWrapper.children;
+                var elementsX = [];
+                var maxY = $imageWrapper.children.length;
+                var maxX = $imageWrapper.children[0].children.length;
 
-            elementsX = (() => {
-                let elementsY = $imageWrapper.children;
-                let elementsX = [];
-                let maxY = $imageWrapper.children.length;
-                let maxX = $imageWrapper.children[0].children.length;
-
-                for (let i = 0; i < maxY; i++) {
-                    for (let j = 0; j < maxX; j++) {
+                for (var i = 0; i < maxY; i++) {
+                    for (var j = 0; j < maxX; j++) {
                         elementsX.push($imageWrapper.children[i].children[j]);
                     }
                 }
 
                 return elementsX;
-
-            })();
+            }();
         };
-
 
         /**
          * animates tiles in the order of occurung and then runs the callback
          * @method toggleHideShow
          * @param {function} callback the function which runs after last animation
          */
-        this.toggleHideShow = (callback) => {
+        this.toggleHideShow = function (callback) {
+            var _loop = function _loop(i, max) {
 
-            for (let i = 0, max = elementsX.length; i < max; i++) {
+                (function (j) {
+                    var k = j;
 
-                ((j) => {
-                    let k = j;
-
-                    setTimeout(() => {
+                    setTimeout(function () {
                         if (hidden) {
                             elementsX[k].classList.remove(effect);
-
                         } else {
                             elementsX[k].classList.add(effect);
                         }
 
                         if (j === max - 1) {
                             hidden = hidden ? false : true;
-                            (callback.bind(this))();
-
+                            callback.bind(_this)();
                         }
-
                     }, k * 5);
                 })(i);
+            };
 
+            for (var i = 0, max = elementsX.length; i < max; i++) {
+                _loop(i, max);
             }
         };
 
@@ -167,16 +164,16 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
          * @param {function} callback the function which runs after last animation
          * @param {function} order the function that for a gived xdim, ydim and index number prameters return coordinates the next element
          */
-        this.toggleShowHideFun = (callback, order) => {
-            this.copyElements();
+        this.toggleShowHideFun = function (callback, order) {
+            _this.copyElements();
 
-            for (let i = 0, max = ImagesSet.tile.xdim * ImagesSet.tile.ydim; i < max; i++) {
+            var _loop2 = function _loop2(i, max) {
 
-                ((j) => {
-                    let k = j;
+                (function (j) {
+                    var k = j;
 
-                    setTimeout(() => {
-                        let ccurentIndex = oorder[max - 1 - k];
+                    setTimeout(function () {
+                        var ccurentIndex = oorder[max - 1 - k];
 
                         if (hidden) {
                             elementsY[ccurentIndex[1]][ccurentIndex[0]].classList.remove(effect);
@@ -186,62 +183,61 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
 
                         if (j === max - 1) {
                             hidden = hidden ? false : true;
-                            (callback.bind(this))();
+                            callback.bind(_this)();
                         }
                     }, k * speed);
                 })(i);
+            };
 
+            for (var i = 0, max = ImagesSet.tile.xdim * ImagesSet.tile.ydim; i < max; i++) {
+                _loop2(i, max);
             }
-
-
         };
-
 
         /**
          * animates tiles in the random order and then runs the callback
          * @method toggleHideShowRandom
          * @param {function} callback the function which runs after last animation
          */
-        this.toggleHideShowRandom = (callback) => {
-            this.copyElements();
+        this.toggleHideShowRandom = function (callback) {
+            _this.copyElements();
 
+            var _loop3 = function _loop3(i, max) {
 
-            for (let i = 0, max = elementsX.length; i < max; i++) {
+                (function (j) {
+                    var k = j;
 
-                ((j) => {
-                    let k = j;
-
-                    setTimeout(() => {
-                        let currentIndex = parseInt(Math.random() * elementsRandom.length);
+                    setTimeout(function () {
+                        var currentIndex = parseInt(Math.random() * elementsRandom.length);
 
                         if (hidden) {
-                            ((elementsRandom.splice(currentIndex, 1))[0]).classList.remove(effect);
+                            elementsRandom.splice(currentIndex, 1)[0].classList.remove(effect);
                         } else {
-                            ((elementsRandom.splice(currentIndex, 1))[0]).classList.add(effect);
+                            elementsRandom.splice(currentIndex, 1)[0].classList.add(effect);
                         }
 
                         if (j === max - 1) {
                             hidden = hidden ? false : true;
-                            (callback.bind(this))();
+                            callback.bind(_this)();
                         }
                     }, k * 25);
                 })(i);
+            };
 
+            for (var i = 0, max = elementsX.length; i < max; i++) {
+                _loop3(i, max);
             }
-
-
         };
 
-        this.getDomElement = () => {
+        this.getDomElement = function () {
             return document.getElementById(id);
         };
 
-        this.setHidden = (isHidden) => {
+        this.setHidden = function (isHidden) {
             hidden = isHidden;
         };
 
-
-        this.setEffect = (_effect) => {
+        this.setEffect = function (_effect) {
             effect = _effect;
         };
 
@@ -251,24 +247,20 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
          * @method toggleHideShowRandom
          * @param {string} the name of the class
          */
-        this.removeClass = (_class) => {
-            let $imageWrapper = document.getElementById(id);
-            let maxY = $imageWrapper.children.length;
-            let maxX = $imageWrapper.children[0].children.length;
+        this.removeClass = function (_class) {
+            var $imageWrapper = document.getElementById(id);
+            var maxY = $imageWrapper.children.length;
+            var maxX = $imageWrapper.children[0].children.length;
 
-            for (let i = 0; i < maxY; i++) {
-                for (let j = 0; j < maxX; j++) {
+            for (var i = 0; i < maxY; i++) {
+                for (var j = 0; j < maxX; j++) {
                     $imageWrapper.children[i].children[j].classList.remove(_class);
                 }
             }
-
         };
-
     }
 
-
-
     return {
-        ImagesSet
+        ImagesSet: ImagesSet
     };
 });

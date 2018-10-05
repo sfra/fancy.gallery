@@ -6,7 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "bash bin/build.sh",
+    "babel": "babel dist/js -d dist/js/build",
+    "r.js": "cd dist/js/build/ && node ../../../bin/r.js -o build.js",
     "clear": "cd dist && rm -Rf config.json css images img js php scripts"
+
+
+
   },
   "repository": {
     "type": "git",

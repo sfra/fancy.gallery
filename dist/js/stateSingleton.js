@@ -8,7 +8,8 @@ define([], () => {
         },
         order: {
             name: 'snail',
-            direction: 'normal'
+            direction: 'normal',
+            shuffled: false
         }
     };
 });

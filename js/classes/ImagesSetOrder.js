@@ -1,20 +1,13 @@
 define([], () => {
     'use strict';
+
     class ImagesSetOrder {
         constructor(x, y) {
 
             this.x = x;
             this.y = y;
-
-            // this.getOrder = () => {
-            //     return this.order;
-            // };
-
-            // this.setReverseOrder = () => {
-            //     return this.order.reverse();
-            // };
-
             this.order = [];
+            this.basicOrder = [];
         }
 
         getOrder() {
@@ -22,6 +15,22 @@ define([], () => {
         }
         setReverseOrder() {
             return this.order.reverse();
+        }
+
+        saveOrder() {
+            this.basicOrder = this.order;
+        }
+        shuffle() {
+            this.saveOrder();
+            let order0 = this.order.slice(0, (Math.floor(this.order.length / 2) + this.order.length % 2));
+            let order1 = this.order.slice().reverse().slice(0, (Math.floor(this.order.length / 2) + this.order.length % 2));
+
+
+            this.order = [];
+            for (let i = 0; i < order0.length; i++) {
+                this.order.push(order0[i]);
+                this.order.push(order1[i]);
+            }
         }
     }
 
@@ -112,6 +121,7 @@ define([], () => {
                     }
                 }
             }
+            this.basicOrder = this.order;
         }
     }
 
@@ -173,7 +183,7 @@ define([], () => {
         }
     }
 
-    class ImagesSetIteratorChees extends ImagesSetOrder {
+    class ImagesSetIteratorChess extends ImagesSetOrder {
         constructor(x, y) {
             super(x, y);
 
@@ -197,33 +207,91 @@ define([], () => {
     }
 
 
+    class ImagesSetIteratorChess3D extends ImagesSetOrder {
+        constructor(x, y) {
+            super(x, y);
+
+            for (let i = 0; i < this.x; i++) {
+
+                for (let j = i % 3; j < this.y; j += 3) {
+
+                    this.order.push([i, j]);
+                }
+            }
+
+            for (let i = 0; i < this.x; i++) {
+
+                for (let j = (i + 1) % 3; j < this.y; j += 3) {
+
+                    this.order.push([i, j]);
+                }
+            }
+
+            for (let i = 0; i < this.x; i++) {
+
+                for (let j = (i + 2) % 3; j < this.y; j += 3) {
+
+                    this.order.push([i, j]);
+                }
+            }
+
+
+        }
+    }
+
 
     class ImagesSetIteratorFactory {
-        constructor(x, y, order) {
+        constructor(x, y, order, shuffled) {
             this.x = x;
             this.y = y;
             this.order = order;
-
+            this.shuffled = shuffled;
         }
-        get() {
+        get(shuffled = false) {
+            let iterator = null;
+
             switch (this.order) {
                 case 'snail':
-                    return new ImagesSetIterator(this.x, this.y);
+                    iterator = new ImagesSetIterator(this.x, this.y);
+                    break;
                 case 'snake':
-                    return new ImagesSetIteratorSnake(this.x, this.y);
+                    iterator = new ImagesSetIteratorSnake(this.x, this.y);
+                    break;
                 case 'snake2':
-                    return new ImagesSetIteratorSnake2(this.x, this.y);
+                    iterator = new ImagesSetIteratorSnake2(this.x, this.y);
                 case 'bee':
-                    return new ImagesSetIteratorBee(this.x, this.y);
+                    iterator = new ImagesSetIteratorBee(this.x, this.y);
+                    break;
                 case 'bee2':
-                    return new ImagesSetIteratorBee(this.x, this.y);
+                    iterator = new ImagesSetIteratorBee2(this.x, this.y);
+                    break;
                 case 'chess':
-                    return new ImagesSetIteratorChees(this.x, this.y);
+                    iterator = new ImagesSetIteratorChess(this.x, this.y);
+
+                    break;
+                case 'chess3d':
+                    iterator = new ImagesSetIteratorChess3D(this.x, this.y);
 
             }
+
+            if (shuffled) {
+                this.shuffled = true;
+
+                iterator.shuffle();
+
+            }
+
+            return iterator;
         }
-        set(order) {
+
+        set(order, shuffled = false) {
             this.order = order;
+            if (shuffled) {
+                this.shuffled = shuffled;
+            }
+
+
+
         }
     }
 

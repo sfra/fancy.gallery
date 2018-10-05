@@ -1,4 +1,6 @@
-define([], () => {
+'use strict';
+
+define([], function () {
     return {
         image: {
             hidden: false

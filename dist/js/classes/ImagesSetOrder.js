@@ -1,20 +1,13 @@
 define([], () => {
     'use strict';
+
     class ImagesSetOrder {
         constructor(x, y) {
 
             this.x = x;
             this.y = y;
-
-            // this.getOrder = () => {
-            //     return this.order;
-            // };
-
-            // this.setReverseOrder = () => {
-            //     return this.order.reverse();
-            // };
-
             this.order = [];
+            this.basicOrder = [];
         }
 
         getOrder() {
@@ -22,6 +15,22 @@ define([], () => {
         }
         setReverseOrder() {
             return this.order.reverse();
+        }
+
+        saveOrder() {
+            this.basicOrder = this.order;
+        }
+        shuffle() {
+            this.saveOrder();
+            let order0 = this.order.slice(0, (Math.floor(this.order.length / 2) + this.order.length % 2));
+            let order1 = this.order.slice().reverse().slice(0, (Math.floor(this.order.length / 2) + this.order.length % 2));
+
+
+            this.order = [];
+            for (let i = 0; i < order0.length; i++) {
+                this.order.push(order0[i]);
+                this.order.push(order1[i]);
+            }
         }
     }
 
@@ -112,6 +121,7 @@ define([], () => {
                     }
                 }
             }
+            this.basicOrder = this.order;
         }
     }
 
@@ -142,67 +152,151 @@ define([], () => {
         constructor(x, y) {
             super(x, y);
 
+            for (let m = 0; m < this.y + this.x - 1; m++) {
+                for (let j = 0; j < this.x; j++) {
+                    for (let i = 0; i < this.y; i++) {
+                        if (i + j === m) {
+                            this.order.push([j, i]);
+                        }
+                    }
+                }
+            }
+
+        }
+    }
 
 
-            let nr = 0;
+    class ImagesSetIteratorBee2 extends ImagesSetOrder {
+        constructor(x, y) {
+            super(x, y);
+
+            for (let m = 0; m < this.x + this.y - 1; m++) {
+                for (let j = 0; j < this.y; j++) {
+                    for (let i = 0; i < this.x; i++) {
+                        if (i + j === m) {
+                            this.order.push([j, i]);
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    class ImagesSetIteratorChess extends ImagesSetOrder {
+        constructor(x, y) {
+            super(x, y);
+
+            for (let i = 0; i < this.x; i++) {
+
+                for (let j = i % 2; j < this.y; j += 2) {
+
+                    this.order.push([i, j]);
+                }
+            }
+
+            for (let i = 0; i < this.x; i++) {
+
+                for (let j = (i + 1) % 2; j < this.y; j += 2) {
+
+                    this.order.push([i, j]);
+                }
+            }
+
+        }
+    }
 
 
-            // for (let k = 0; k < this.y; k++) {
+    class ImagesSetIteratorChess3D extends ImagesSetOrder {
+        constructor(x, y) {
+            super(x, y);
 
+            for (let i = 0; i < this.x; i++) {
 
-            //     for (let i = k, j = 0; i < this.x && j < this.y; i++, j++) {
+                for (let j = i % 3; j < this.y; j += 3) {
 
-            //         this.order.push([j, i]);
+                    this.order.push([i, j]);
+                }
+            }
 
-            //         nr++;
+            for (let i = 0; i < this.x; i++) {
 
+                for (let j = (i + 1) % 3; j < this.y; j += 3) {
 
-            //     }
-            // }
-            ;
+                    this.order.push([i, j]);
+                }
+            }
 
-            // for (let m = 1; m < this.y; m++) {
-            //     for (let j = this.y - m, i = 0; i < m; i++, j++) {
-            //         this.order.push([j, i]);
-            //     }
-            // }
+            for (let i = 0; i < this.x; i++) {
+
+                for (let j = (i + 2) % 3; j < this.y; j += 3) {
+
+                    this.order.push([i, j]);
+                }
+            }
 
 
         }
     }
 
 
-
-
-
     class ImagesSetIteratorFactory {
-        constructor(x, y, order) {
+        constructor(x, y, order, shuffled) {
             this.x = x;
             this.y = y;
             this.order = order;
-
+            this.shuffled = shuffled;
         }
-        get() {
+        get(shuffled = false) {
+            let iterator = null;
+
             switch (this.order) {
                 case 'snail':
-                    return new ImagesSetIterator(this.x, this.y);
+                    iterator = new ImagesSetIterator(this.x, this.y);
+                    break;
                 case 'snake':
-                    return new ImagesSetIteratorSnake(this.x, this.y);
+                    iterator = new ImagesSetIteratorSnake(this.x, this.y);
+                    break;
                 case 'snake2':
-                    return new ImagesSetIteratorSnake2(this.x, this.y);
+                    iterator = new ImagesSetIteratorSnake2(this.x, this.y);
                 case 'bee':
-                    return new ImagesSetIteratorBee(this.x, this.y);
+                    iterator = new ImagesSetIteratorBee(this.x, this.y);
+                    break;
+                case 'bee2':
+                    iterator = new ImagesSetIteratorBee2(this.x, this.y);
+                    break;
+                case 'chess':
+                    iterator = new ImagesSetIteratorChess(this.x, this.y);
+
+                    break;
+                case 'chess3d':
+                    iterator = new ImagesSetIteratorChess3D(this.x, this.y);
 
             }
+
+            if (shuffled) {
+                this.shuffled = true;
+
+                iterator.shuffle();
+
+            }
+
+            return iterator;
         }
-        set(order) {
+
+        set(order, shuffled = false) {
             this.order = order;
+            if (shuffled) {
+                this.shuffled = shuffled;
+            }
+
+
+
         }
     }
 
     return {
         ImagesSetIterator,
-        //        ImagesSetIteratorSnake,
         ImagesSetIteratorFactory
-    };
+    }
 });
