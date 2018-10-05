@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css" />
+
     <link rel="stylesheet" href="css/index.css" />
     <script type="text/javascript" src="scripts/gallery.js"></script>
     <script type="text/javascript" src="js/libs/eventEmitter/EventEmitter.min.js"></script>
@@ -24,13 +24,14 @@
             ordered
         </option>
         <option>random</option> 
-    </select>
-    <div id="fancy-gallery-order">
+        </select>
+        <div id="fancy-gallery-order">
         <label>Select an order</label>
         <select>
             <option>snail</option>
             <option>snake</option>
             <option>snake2</option>
+            <option>bee</option>
         </select>
         <label>reversed</label>
         <input type="checkbox" value="0" name="reversed"/>

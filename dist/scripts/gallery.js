@@ -1,3 +1,5 @@
+const $head = document.querySelector('head');
+
 window.onload = () => {
     setTimeout(
         () => {
@@ -17,8 +19,8 @@ window.onload = () => {
     let $script = document.createElement('script');
     $script.setAttribute('data-main', 'js/main');
     $script.setAttribute('src', 'js/libs/requirejs/require.js');
-    document.querySelector('head').appendChild($link);
-    document.querySelector('head').appendChild($script);
+    $head.appendChild($link);
+    $head.appendChild($script);
 
 
 };

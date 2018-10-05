@@ -138,6 +138,42 @@ define([], () => {
     }
 
 
+    class ImagesSetIteratorBee extends ImagesSetOrder {
+        constructor(x, y) {
+            super(x, y);
+
+
+
+            let nr = 0;
+
+
+            // for (let k = 0; k < this.y; k++) {
+
+
+            //     for (let i = k, j = 0; i < this.x && j < this.y; i++, j++) {
+
+            //         this.order.push([j, i]);
+
+            //         nr++;
+
+
+            //     }
+            // }
+            ;
+
+            // for (let m = 1; m < this.y; m++) {
+            //     for (let j = this.y - m, i = 0; i < m; i++, j++) {
+            //         this.order.push([j, i]);
+            //     }
+            // }
+
+
+        }
+    }
+
+
+
+
 
     class ImagesSetIteratorFactory {
         constructor(x, y, order) {
@@ -154,6 +190,8 @@ define([], () => {
                     return new ImagesSetIteratorSnake(this.x, this.y);
                 case 'snake2':
                     return new ImagesSetIteratorSnake2(this.x, this.y);
+                case 'bee':
+                    return new ImagesSetIteratorBee(this.x, this.y);
 
             }
         }
@@ -164,7 +202,7 @@ define([], () => {
 
     return {
         ImagesSetIterator,
-        ImagesSetIteratorSnake,
+        //        ImagesSetIteratorSnake,
         ImagesSetIteratorFactory
     };
 });

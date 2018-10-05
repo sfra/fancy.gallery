@@ -130,10 +130,6 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
         };
 
 
-
-
-
-
         /**
          * animates tiles in the order of occurung and then runs the callback
          * @method toggleHideShow

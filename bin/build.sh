@@ -10,5 +10,7 @@ cp -R js dist/
 cp -R php dist/
 cp -R scripts dist/
 node bin/replace.js dist/
+rm -R dist/js/libs/eventEmitter
+
 
 
