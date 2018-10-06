@@ -30,18 +30,23 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
             elements = [],
             elementsRandom = [];
 
-
+        this.setSpeed = (_speed) => {
+            speed = _speed;
+        };
         this.setSequence = (order) => {
 
             imgSetItFactory.set(order.name);
 
             imagesSetIterator = imgSetItFactory.get(stateSingleton.order.shuffled || order.shuffled);
+
             if (stateSingleton.order.direction === 'reverse' || order.direction === 'reverse') {
                 oorder = imagesSetIterator.setReverseOrder();
             } else {
                 oorder = imagesSetIterator.getOrder();
             }
 
+
+            this.setSpeed(order.speed);
 
             if ((typeof _elementsX) !== 'undefined') {
                 for (let i = 0, max = _elementsX.length; i < max; i++) {
@@ -68,6 +73,8 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
 
 
         };
+
+
         this.setSequence(stateSingleton.order);
 
         if (typeof _id !== 'undefined') {
@@ -93,9 +100,7 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
             }
         };
 
-        this.setSpeed = (_speed) => {
-            speed = _speed;
-        };
+
 
         this.copyElements = () => {
             for (let i = 0, max = elementsX.length; i < max; i++) {

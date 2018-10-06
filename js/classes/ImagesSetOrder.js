@@ -173,7 +173,7 @@ define([], () => {
                 for (let j = 0; j < this.y; j++) {
                     for (let i = 0; i < this.x; i++) {
                         if (i + j === m) {
-                            this.order.push([j, i]);
+                            this.order.push([i, j]);
                         }
                     }
                 }

@@ -38,7 +38,10 @@
             <option>rainbow</option>
             <option>rainbow2</option>
         </select>
+        <label>Set speed <br />(less is quicker)</label>
+        <input type="number" value="50" name="speed" min="0" max="500" step="10" />
         <label>reversed</label>
+        
         <input type="checkbox" value="0" name="reversed"/><br />
        <label>shuffled</label>
         <input type="checkbox" value="0" name="shuffled"/>

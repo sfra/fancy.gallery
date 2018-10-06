@@ -12,23 +12,29 @@
 
     const $head = document.querySelector('head');
 
+    const run = window.onload || (() => {});
+
     window.onload = () => {
 
-
+        run();
 
         let $link = document.createElement('link');
         $link.setAttribute('rel', 'stylesheet');
         $link.setAttribute('href', 'css/main.css.php');
         $link.setAttribute('id', 'css-plugin');
         let $script = document.createElement('script');
-        /*[rm]*/
 
+
+
+
+        /*[rm]*/
         $script.setAttribute('data-main', 'js/main');
         $script.setAttribute('src', 'js/libs/requirejs/require.js');
         /*rm]*/
 
         /*[rm*/
         if (false) { /*rm]*/
+
             $script.setAttribute('data-main', 'js/index.min.js');
             $script.setAttribute('src', 'js/require.min.js');
             /*[rm*/
@@ -55,7 +61,7 @@
 
         $fancyGalleryGalWrapper.innerHTML = `${$fancyGalleryGalWrapper.innerHTML}
         <div id = "fancy-gallery-navi" >
-            <div id = "switch-left" >
+            <div id = "fancy-gallery-switch-left" >
                 <img src = "img/left_arrow.png" / >
             </div>
         <div id="fancy-gallery-slides-nav"></div>

@@ -141,7 +141,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
 
         });
 
-        document.getElementById('switch-left').addEventListener('click', (e) => {
+        document.getElementById('fancy-gallery-switch-left').addEventListener('click', (e) => {
 
             if (stateSingleton.animation.isLasting) {
                 return;

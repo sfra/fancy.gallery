@@ -43,12 +43,12 @@ form {
 @media (max-width:900px) {
   form {
     transition: all .3s ease-in;
-    transform: translate(-10px, 140px);
+    transform: translate(-30px, -10px);
   }
 
   form:hover {
     transition: all .3s ease-in;
-    transform: translate(-190px, 140px);
+    transform: translate(-250px, -10px);
 
 
   }
@@ -85,6 +85,20 @@ form label {
   display: inline-block;
 }
 
+
+form input[name='speed'] {
+  margin-top: 10px;
+  width: 50px;
+  display: block;
+  height: 15px;
+  line-height: 15px;
+  border-radius: 5px;
+  padding: 5px;
+  color: #ffffff;
+  background: #000000;
+}
+
+
 #fancy-gallery-order {
   margin-top: 5px;
   transition: all .5s ease-out;
@@ -95,6 +109,8 @@ form label {
   height: 0px;
   opacity: 0;
 }
+
+
 
 
 
