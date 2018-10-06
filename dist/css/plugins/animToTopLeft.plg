@@ -1,5 +1,5 @@
 <?php
-$config_string = json_decode(file_get_contents("../config.json"));
+$config_string = json_decode(file_get_contents("../fancy.gallery.config.json"));
 $heigth =$config_string->tile->h;
 $width =$config_string->tile->w;
 $hideEffect= <<<EOD

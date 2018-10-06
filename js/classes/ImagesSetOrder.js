@@ -130,7 +130,6 @@ define([], () => {
     class ImagesSetIteratorSnake2 extends ImagesSetOrder {
         constructor(x, y) {
             super(x, y);
-
             for (let i = 0; i < this.y; i++) {
                 if (i % 2 === 0) {
                     for (let j = 0; j < this.x; j++) {
@@ -238,6 +237,44 @@ define([], () => {
 
         }
     }
+    class ImagesSetIteratorRainbow extends ImagesSetOrder {
+        constructor(x, y) {
+            super(x, y);
+
+            // this.order.push([0, 0]);
+            // this.order.push([0, 1]);
+
+            for (let i = 0; i < this.x; i++) {
+                for (let j = 0; j < this.y; j++) {
+                    this.order.push([i, j]);
+                }
+
+            }
+
+        }
+
+    }
+
+
+
+    class ImagesSetIteratorRainbow2 extends ImagesSetOrder {
+        constructor(x, y) {
+            super(x, y);
+
+            // this.order.push([0, 0]);
+            // this.order.push([0, 1]);
+            for (let j = 0; j < this.y; j++) {
+
+                for (let i = 0; i < this.x; i++) {
+                    this.order.push([i, j]);
+                }
+
+            }
+
+        }
+
+    }
+
 
 
     class ImagesSetIteratorFactory {
@@ -259,6 +296,7 @@ define([], () => {
                     break;
                 case 'snake2':
                     iterator = new ImagesSetIteratorSnake2(this.x, this.y);
+                    break;
                 case 'bee':
                     iterator = new ImagesSetIteratorBee(this.x, this.y);
                     break;
@@ -271,6 +309,14 @@ define([], () => {
                     break;
                 case 'chess3d':
                     iterator = new ImagesSetIteratorChess3D(this.x, this.y);
+                    break;
+                case 'rainbow':
+                    iterator = new ImagesSetIteratorRainbow(this.x, this.y);
+                    break;
+                case 'rainbow2':
+                    iterator = new ImagesSetIteratorRainbow2(this.x, this.y);
+                    break;
+
 
             }
 

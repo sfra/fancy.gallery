@@ -1,6 +1,6 @@
 <?php
 header("Content-type: text/css; charset: UTF-8");
-$config_string = json_decode(file_get_contents("../config.json"));
+$config_string = json_decode(file_get_contents("../fancy.gallery.config.json"));
 $numberOfImgs = $config_string->numberOfImgs;
 $plugin = null;
 

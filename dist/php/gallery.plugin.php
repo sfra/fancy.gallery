@@ -2,7 +2,7 @@
         include "getImgWrapper.php";
 
         
-        $config_string = json_decode(file_get_contents("../config.json"));
+        $config_string = json_decode(file_get_contents("../fancy.gallery.config.json"));
 
         $numberOfImgs = $config_string->numberOfImgs;
         $xdim = $config_string->tile->xdim;

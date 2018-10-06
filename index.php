@@ -32,9 +32,11 @@
             <option>snake</option>
             <option>snake2</option>
             <option>bee</option>
-               <option>bee2</option>
-                 <option>chess</option>
-                 <option>chess3d</option>
+            <option>bee2</option>
+            <option>chess</option>
+            <option>chess3d</option>
+            <option>rainbow</option>
+            <option>rainbow2</option>
         </select>
         <label>reversed</label>
         <input type="checkbox" value="0" name="reversed"/><br />

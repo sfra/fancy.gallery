@@ -17,9 +17,9 @@ In your index.php file (or the file in which you want to put gallery), add to he
 <script type="text/javascript" src="gallery.js"></script>
 ```
 Files img0.jpg, img1.jpg ... are contained in images folder. If you want to change the number of displayed images
-change the number in the file config.json and the value of variable numberOfImgs in run.js. .
+change the number in the file fancy.gallery.config.json and the value of variable numberOfImgs in run.js. .
 
-All of options contained in config.json are:
+All of options contained in fancy.gallery.config.json are:
 ```javascript
 {
     "numberOfImgs": "4",
@@ -38,7 +38,7 @@ All of options contained in config.json are:
 }
 ```
 
-If you want to apply different plugins to different images add to config.json the section "images"
+If you want to apply different plugins to different images add to fancy.gallery.config.json the section "images"
 
 ```javascript
 "images": [

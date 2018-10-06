@@ -15,18 +15,9 @@
 let ydim = 5,
 	xdim = 3;
 
-for (let i = 0; i < xdim; i++) {
-
-	for (let j = i % 2; j < ydim; j += 2) {
-
+for (let i = 0; i < ydim; i++) {
+	for (let j = 0; j < xdim; j++) {
 		console.log(j, i);
 	}
-}
 
-for (let i = 0; i < xdim; i++) {
-
-	for (let j = (i + 1) % 2; j < ydim; j += 2) {
-
-		console.log(j, i);
-	}
 }

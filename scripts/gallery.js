@@ -25,7 +25,8 @@ window.onload = () => {
 
     /*[rm*/
     if (false) { /*rm]*/
-        $script.setAttribute('src', 'js/build/main-built.js');
+        $script.setAttribute('data-main', 'js/index.min.js');
+        $script.setAttribute('src', 'js/require.min.js');
         /*[rm*/
     } /*rm]*/
 

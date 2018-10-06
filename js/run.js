@@ -9,7 +9,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
     const $slidesNav = document.getElementById('fancy-gallery-slides-nav');
 
     let mainPromise = new Promise((res, rej) => { //promise loading config file
-        let __aj = Object(__ajax('config.json', {
+        let __aj = Object(__ajax('fancy.gallery.config.json', {
             method: 'GET'
         }));
         __aj.get().then((data) => {
