@@ -40,14 +40,30 @@
         </select>
         <label>Set speed <br />(less is quicker)</label>
         <input type="number" value="50" name="speed" min="0" max="500" step="10" />
-        <label>reversed</label>
-        
-        <input type="checkbox" value="0" name="reversed"/><br />
-       <label>shuffled</label>
-        <input type="checkbox" value="0" name="shuffled"/>
+        <br />
+        <input type="range" min="0" max="500" value="50"/>
+                 <label>reversed</label>
+<div class="onoffswitch">
+
+        <input type="checkbox" value="0" name="reversed" class="onoffswitch-checkbox" id="reversed" checked>
+    <label class="onoffswitch-label" for="reversed">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+    <label>shuffled</label>
+<div class="onoffswitch">
+    <input type="checkbox" value="0" name="shuffled" class="onoffswitch-checkbox" id="shuffled" checked>
+    <label class="onoffswitch-label" for="shuffled">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+
 
     </div>
 </form>
+
 
 
     <footer>

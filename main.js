@@ -3,17 +3,26 @@ const $plugin = document.getElementById('fancy-gallery-plugin');
 const $form = document.querySelector('input');
 const $sequence = document.getElementById('fancy-gallery-sequence');
 const $order = document.querySelector('#fancy-gallery-order > select');
-const $reversed = document.querySelector('#fancy-gallery-order > input[name="reversed"]');
-const $shuffled = document.querySelector('#fancy-gallery-order > input[name="shuffled"]');
+const $reversed = document.querySelector('input[name="reversed"]');
+const $shuffled = document.querySelector('input[name="shuffled"]');
 const $speed = document.querySelector('input[name="speed"]');
+const $range = document.querySelector('input[type="range"]');
+
+const state = {
+    mouseIsDown: false
+};
+
 const run = window.onload || (() => {});
 
 
 window.ee = new EventEmitter();
 
+console.dir(ee);
 window.onload = () => {
 
     run();
+
+    $order.dispatchEvent(new Event('focus')); //.focus();
 
 
 
@@ -34,16 +43,55 @@ window.onload = () => {
     }, false);
 
 
+    $speed.addEventListener('focus', (e) => {
+        $speed.setAttribute('prev-value', $speed.value);
+    }, false);
 
     $speed.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
+            unfocusAll();
+
         }
+
+        if (e.key === 'Escape') {
+            $speed.value = $speed.getAttribute('prev-value');
+            unfocusAll();
+        }
+
+
+        console.log(e.key);
+
+
+
     });
 
     $speed.addEventListener('change', handleSpeed, false);
 
+    $range.addEventListener('change', (e) => {
+        $speed.value = $range.value;
+    }, false);
 
+    // $range.addEventListener('mousedown', (e) => {
+    //     console.log(e);
+    // }, false);
+
+    $range.addEventListener('mousemove', (e) => {
+
+        if (!state.mouseIsDown) return;
+        $speed.value = $range.value;
+    }, false);
+
+    $range.addEventListener('change', handleSpeed, false);
+
+    document.addEventListener('mousedown', () => {
+        state.mouseIsDown = true;
+    }, false);
+
+
+    document.addEventListener('mouseup', () => {
+        state.mouseIsDown = false;
+    }, false);
 
     $plugin.addEventListener('change', () => {
         document.getElementById('css-plugin').setAttribute('href', `css/main.css.php?plugin=${$plugin.value}`);
@@ -58,7 +106,7 @@ window.onload = () => {
     $reversed.addEventListener('change', handleReversed, false);
 
     $shuffled.addEventListener('change', handleShuffled, false);
-    console.log($shuffled);
+    //wconsole.log($shuffled);
 
     function handleSequence() {
         let sequence = $sequence.value;
@@ -93,6 +141,7 @@ window.onload = () => {
 
 
     function handleSpeed() {
+        $range.value = $speed.value;
         sessionStorage.setItem('fancy-gallery-speed', $speed.value);
         ee.emit('orderChanged');
     }
@@ -105,5 +154,13 @@ window.onload = () => {
         ee.emit('orderChanged');
     }
 
-
+    function unfocusAll() {
+        let $input = document.createElement('input');
+        document.body.appendChild($input);
+        $input.style.position = 'absolute';
+        $input.style.top = `${pageYOffset}px`;
+        $input.style.left = `${pageXOffset}px`;
+        $input.focus();
+        document.body.removeChild($input);
+    }
 }

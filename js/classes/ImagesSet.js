@@ -3,7 +3,7 @@ define(['classes/ImagesSetOrder', 'stateSingleton'], function (ImagesSetOrder, s
     /**
      * Constructs a ImageSet object.
      *
-     * Provides the wrapper for image consistiong of the many tiles.
+     * Provides the wrapper for image consisting of the many tiles.
      *
      * @constructor
      *
