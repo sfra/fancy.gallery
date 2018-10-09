@@ -1,4 +1,4 @@
-define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes/Sequence', 'helpers/dom' /*[rm*/ , 'helpers/changeImgsParams' /*rm]*/ , 'helpers/insertCss'], (stateSingleton, ImagesSet, __ajax, order, Sequence, dom /*[rm*/ , changeImgsParams /*rm]*/ , insertCss) => {
+define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes/Sequence', 'helpers/dom'  , 'helpers/insertCss'], (stateSingleton, ImagesSet, __ajax, order, Sequence, dom  , insertCss) => {
     'use strict';
     let currentIndex = 0; // the number of the current image
     let reindexPromise = null,
@@ -17,7 +17,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
                 res(JSON.parse(data));
             },
             (err) => {
-                console.log(err);
+                ;
                 rej(err);
             });
     });
@@ -41,13 +41,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
 
 
 
- /*[rm*/
- console.log(configJSON);
  
- 
-            sessionStorage.setItem('fancy-gallery-configJSON',JSON.stringify(configJSON));
-            
-            /*rm]*/
         for (let i = 0; i < numberOfImgs; i++) {
 
             if (typeof data.images !== 'undefined') {
@@ -71,11 +65,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
 
         }
 
-        /*[rm*/
-        changeImgsParams(imgSArr,()=>{
-
-            dom.adjustTiles(data);
-        }); /*rm]*/
+        
 
         /* resize image according to the windows height */
         dom.adjustTiles(data);
@@ -205,7 +195,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
                     (Sequence.ordered.bind(this, previous, imgSArr, effect, stateSingleton, order, currentIndex))();
                 }
             }, (err) => {
-                console.log(err);
+                ;
             });
 
         });

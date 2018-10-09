@@ -2,7 +2,7 @@
 $dir = opendir('css/plugins/');
 $dirList = array();
 while (($file = readdir($dir)) !== false) {
-    if ($file === '.' || $file === '..' || (preg_match('/.plg$/', $file)===0 && preg_match('/.css$/', $file)===0)) {
+    if ($file === '.' || $file === '..' || (preg_match('/.css$/', $file)===0)) {
         continue;
     }
     

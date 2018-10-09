@@ -15,8 +15,8 @@ let pth = path.resolve(process.argv[2]);
 
 function readdirRec(pth, callback) {
 
-    console.log('pth');
-    console.log(pth);
+    //    console.log('pth');
+    //   console.log(pth);
     fs.readdir(pth, (err, list) => {
 
 
@@ -29,14 +29,14 @@ function readdirRec(pth, callback) {
         for (let i = 0, max = list.length; i < max; i++) {
 
             file = path.resolve(pth, list[i]);
-            console.log('[');
-            console.log(list[i]);
+            // console.log('[');
+            // console.log(list[i]);
 
-            console.log(file);
+            //            console.log(file);
 
             let stat = fs.statSync(file); // console.log(file);
-            console.log(stat.isDirectory());
-            console.log(']');
+            //console.log(stat.isDirectory());
+            //console.log(']');
             if (stat && stat.isDirectory()) {
                 readdirRec(file + '/', callback);
             } else {
@@ -58,8 +58,19 @@ readdirRec(pth, (file) => {
         return;
     }
     fs.readFile(file, 'utf8', (err, data) => {
-        let out = data.replace(/\/\*\[rm[\s\S]*?\/\*rm\]\*\//g, '');
-        out = out.replace(/console\.log\([^\)]*\)/g, '');
+        let out = data.replace(/\/\*\[rm[\s\S]*?\/\*rm\]\*\//g, (match) => {
+            console.log(match);
+            return '';
+        });
+        out = out.replace(/console\.log\([^\)]*\)/g, (match) => {
+            console.log(match);
+            return '';
+        });
+
+        // out = out.replace(/.use strict./g, (match) => {
+        //     console.log(match);
+        //     return '';
+        // });
         fs.writeFile(file, out, () => {});
     });
 

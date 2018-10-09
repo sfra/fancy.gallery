@@ -1,4 +1,4 @@
-define([ /*[rm*/ 'helpers/insertCss' /*rm]*/ ], ( /*[rm*/ insertCss /*rm]*/ ) => {
+define([  ], (  ) => {
 
 
     function handleChange(imgSArr, callback) {
@@ -8,17 +8,12 @@ define([ /*[rm*/ 'helpers/insertCss' /*rm]*/ ], ( /*[rm*/ insertCss /*rm]*/ ) =>
         let speed = parseInt(sessionStorage.getItem('fancy-gallery-speed', 10));
         let plugin = sessionStorage.getItem('fancy-gallery-plugin');
 
-        console.log(plugin);
+
 
 
         insertCss(JSON.parse(sessionStorage.getItem('fancy-gallery-configJSON')), plugin, callback);
 
-        console.log({
-            name: name,
-            direction,
-            shuffled,
-            speed
-        });
+        ;
 
         for (let i = 0, max = imgSArr.length; i < max; i++) {
             imgSArr[i].setSequence({
@@ -32,7 +27,6 @@ define([ /*[rm*/ 'helpers/insertCss' /*rm]*/ ], ( /*[rm*/ insertCss /*rm]*/ ) =>
     }
 
     function changeImgsParams(imgSArr, callback) {
-
         window.ee.addListener('orderChanged', () => {
             handleChange(imgSArr, callback);
         });

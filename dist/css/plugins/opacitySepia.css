@@ -1,0 +1,22 @@
+ @keyframes anim {
+     0% {
+         filter: sepia(1);
+         opacity: 1;
+
+     }
+
+
+     80% {
+
+         opacity: 1;
+
+
+     }
+
+
+     100% {
+         filter: sepia(0);
+         opacity: 0;
+
+     }
+ }

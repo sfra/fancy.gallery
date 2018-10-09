@@ -40,7 +40,7 @@
             /*[rm*/
         } /*rm]*/
 
-        $head.appendChild($link);
+        // $head.appendChild($link);
         $head.appendChild($script);
 
 

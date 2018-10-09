@@ -1,0 +1,25 @@
+ @keyframes anim {
+    0% {
+        filter: saturate(1);
+                opacity: 1;
+
+    }
+
+    20%{
+        filter: blur(20px);
+    }
+
+    90% {
+        filter: saturate(0);
+                        opacity: 1;     
+
+    }
+
+
+    100% {
+        filter: saturate(0);
+        opacity: 0;
+
+    }
+}
+

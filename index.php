@@ -40,6 +40,7 @@
         </select>
         <label>Set speed <br />(less is quicker)</label>
         <input type="number" value="50" name="speed" min="0" max="500" step="10" />
+        <div id="linear"><div>0</div><div>250</div><div>500</div></div>
         <br />
         <input type="range" min="0" max="500" value="50"/>
                  <label>reversed</label>

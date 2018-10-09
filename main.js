@@ -3,6 +3,7 @@ const $plugin = document.getElementById('fancy-gallery-plugin');
 const $form = document.querySelector('input');
 const $sequence = document.getElementById('fancy-gallery-sequence');
 const $order = document.querySelector('#fancy-gallery-order > select');
+
 const $reversed = document.querySelector('input[name="reversed"]');
 const $shuffled = document.querySelector('input[name="shuffled"]');
 const $speed = document.querySelector('input[name="speed"]');
@@ -23,13 +24,6 @@ window.onload = () => {
     run();
 
     $order.dispatchEvent(new Event('focus')); //.focus();
-
-
-
-
-
-
-
     //    alert(sessionStorage.getItem('fancy-gallery-order'));
     sessionStorage.clear();
     sessionStorage.setItem('fancy-gallery-order', 'snail');
@@ -94,7 +88,8 @@ window.onload = () => {
     }, false);
 
     $plugin.addEventListener('change', () => {
-        document.getElementById('css-plugin').setAttribute('href', `css/main.css.php?plugin=${$plugin.value}`);
+        handlePlugin()
+        //       document.getElementById('css-plugin').setAttribute('href', `css/main.css.php?plugin=${$plugin.value}`);
     }, false);
 
     $sequence.addEventListener('change', handleSequence, false);
@@ -104,9 +99,17 @@ window.onload = () => {
     $order.addEventListener('change', handleOrder, false);
 
     $reversed.addEventListener('change', handleReversed, false);
-
     $shuffled.addEventListener('change', handleShuffled, false);
+
     //wconsole.log($shuffled);
+
+    function handlePlugin() {
+        sessionStorage.setItem('fancy-gallery-plugin', $plugin.value);
+        console.log('$plugin.value');
+        console.log($plugin.value);
+        ee.emit('orderChanged');
+
+    }
 
     function handleSequence() {
         let sequence = $sequence.value;
@@ -121,6 +124,7 @@ window.onload = () => {
     function handleOrder() {
         let order = $order.value;
         console.log(order);
+        sessionStorage.setItem('fancy-gallery-plugin', $plugin.value);
 
         sessionStorage.setItem('fancy-gallery-order', $order.value);
         ee.emit('orderChanged');
