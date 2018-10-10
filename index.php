@@ -11,7 +11,7 @@
 <body>
     <h1>fancy gallery plugin</h1>
     <div id="fancy-gallery"></div>
-    <form>
+    <form class="init">
     <label>Select a plugin </label>
     <select id="fancy-gallery-plugin">
         <?php
@@ -23,8 +23,16 @@
         <option>
             ordered
         </option>
+
+        
         <option>random</option> 
         </select>
+ <label>Set speed <br />(less is quicker)</label>
+        <input type="number" value="50" name="speed" min="0" max="500" step="10" />
+        <div id="linear"><div>0</div><div>250</div><div>500</div></div>
+        <br />
+        <input type="range" min="0" max="500" value="50"/>
+
         <div id="fancy-gallery-order">
         <label>Select an order</label>
         <select>
@@ -38,12 +46,8 @@
             <option>rainbow</option>
             <option>rainbow2</option>
         </select>
-        <label>Set speed <br />(less is quicker)</label>
-        <input type="number" value="50" name="speed" min="0" max="500" step="10" />
-        <div id="linear"><div>0</div><div>250</div><div>500</div></div>
-        <br />
-        <input type="range" min="0" max="500" value="50"/>
-                 <label>reversed</label>
+
+                         <label>reversed</label>
 <div class="onoffswitch">
 
         <input type="checkbox" value="0" name="reversed" class="onoffswitch-checkbox" id="reversed" checked>
@@ -52,6 +56,7 @@
         <span class="onoffswitch-switch"></span>
     </label>
 </div>
+
     <label>shuffled</label>
 <div class="onoffswitch">
     <input type="checkbox" value="0" name="shuffled" class="onoffswitch-checkbox" id="shuffled" checked>
@@ -63,6 +68,7 @@
 
 
     </div>
+        <div id="bottom"></div>
 </form>
 
 

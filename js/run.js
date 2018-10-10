@@ -41,13 +41,13 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
 
 
 
- /*[rm*/
- console.log(configJSON);
- 
- 
-            sessionStorage.setItem('fancy-gallery-configJSON',JSON.stringify(configJSON));
-            
-            /*rm]*/
+        /*[rm*/
+        console.log(configJSON);
+
+
+        sessionStorage.setItem('fancy-gallery-configJSON', JSON.stringify(configJSON));
+
+        /*rm]*/
         for (let i = 0; i < numberOfImgs; i++) {
 
             if (typeof data.images !== 'undefined') {
@@ -72,9 +72,11 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
         }
 
         /*[rm*/
-        changeImgsParams(imgSArr,()=>{
+        changeImgsParams(imgSArr, () => {
+            setTimeout(() => {
+                dom.adjustTiles(data);
 
-            dom.adjustTiles(data);
+            }, 200);
         }); /*rm]*/
 
         /* resize image according to the windows height */
@@ -107,9 +109,9 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
 
 
 
-      insertCss(configJSON,configJSON['plugin'],()=>{
-                  dom.adjustTiles(data);
-      });
+        insertCss(configJSON, configJSON['plugin'], () => {
+            dom.adjustTiles(data);
+        });
 
         /* events listeners */
         document.getElementById('fancy-gallery-switch-right').addEventListener('click', (e) => {
@@ -172,7 +174,7 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
 
             stateSingleton.animation.isLasting = true;
             if (images.length > 0) {
-                
+
                 document.getElementById('css-plugin').setAttribute('href', `css/main.css.php?plugin=${images[currentIndex].plugin}`);
             }
 

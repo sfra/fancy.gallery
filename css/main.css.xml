@@ -65,7 +65,7 @@
         <selector>.fancy-gallery-img-wrapper &gt; div &gt; div.hide</selector>
         <style>
             animation: anim 2s normal forwards;
-            animation-iteration-count: 1;            
+            animation-iteration-count: 1;
         </style>
     </rule>
 

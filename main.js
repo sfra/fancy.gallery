@@ -115,9 +115,10 @@ window.onload = () => {
         let sequence = $sequence.value;
         sessionStorage.setItem('fancy-gallery-sequence', sequence);
         if (sequence === 'ordered') {
-            document.getElementById('fancy-gallery-order').classList.remove('hidden');
+            document.querySelector('form').classList.remove('hidden');
         } else {
-            document.getElementById('fancy-gallery-order').classList.add('hidden');
+            document.querySelector('form').classList.add('hidden');
+            document.querySelector('form').classList.remove('init');
         }
     }
 

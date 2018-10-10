@@ -1,0 +1,21 @@
+@keyframes anim {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        filter: greyscale(1);
+    }
+
+    80% {
+        filter: greyscale(0);
+
+    }
+
+    90% {}
+
+
+    100% {
+        opacity: 0;
+    }
+}
