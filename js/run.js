@@ -22,10 +22,10 @@ define(['stateSingleton', 'ImagesSet', 'libs/__ajax', 'plugins/order0', 'classes
             });
     });
 
-
-
-
-
+    //reflow gallery
+    let $fancyGallery = document.getElementById('fancy-gallery');
+    $fancyGallery.style.display = 'none';
+    $fancyGallery.style.display = 'block';
 
 
 
