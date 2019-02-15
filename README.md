@@ -1,6 +1,9 @@
 # fancy gallery (no jquery required)  
 
 
+### Preview of the developer version (production one is, believe me, much quicker).
+See [fancy.gallery](http://frankyy.eu5.org/projects/fancy.gallery/)
+
 ### Installation
 We assume that [bower](https://github.com/bower/bower) and [node](https://github.com/nodejs/node) are installed.
 
